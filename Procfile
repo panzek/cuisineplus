@@ -1,1 +1,1 @@
-web: gunicorn cuisine-plus.wsgi
+web: gunicorn cuisine_plus.wsgi
