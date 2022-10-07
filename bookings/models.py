@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phone_field import PhoneField
 # from restaurant.models import Restaurant
 # from cuisine.models import Cuisine
 
@@ -21,6 +22,7 @@ class Booking(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='bookings'
         )
+    phone = PhoneField(blank=True, help_text='Contact phone number')
     number_of_guests = models.IntegerField()
     # restaurant = models.ForeignKey(
     #     Restaurant, on_delete=models.CASCADE, related_name='bookings'
