@@ -12,6 +12,11 @@
     </h1>
 </header>
 <body>
+    <!-- {{ user }} -->
+    {% for booking in booking_list %}
+    {{booking.user}}
+    {{booking.restaurant}}
+    {% endfor %}
     
 </body>
 </html>
