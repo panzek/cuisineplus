@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # To tell Django where our templates will be stored and in templates section 
 # below to update the DIRS key to point to this new template directory variable
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
