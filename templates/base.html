@@ -41,16 +41,27 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bookings</a>
+                    </li>  
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %} ">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %} ">Profile</a>
-                    </li>
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">{{ user }}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Edit My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">My Reservations</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %} ">Logout</a></li>
+                        </ul>
+                      </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %} ">Logout</a>
-                    </li>
+                    </li> -->
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %} ">Sign Up</a>
@@ -58,9 +69,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %} ">Log in</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bookings</a>
-                    </li>  
                     {% endif %}          
                 </ul>
             </div>
