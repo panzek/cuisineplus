@@ -41,15 +41,27 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Home</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign Up</a>
+                        <a class="nav-link" href="{% url 'account_logout' %} ">My Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %} ">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %} ">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %} ">Sign Up</a>
                     </li>              
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log in</a>
+                        <a class="nav-link" href="{% url 'account_login' %} ">Log in</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Bookings</a>
-                    </li>            
+                    </li>  
+                    {% endif %}          
                 </ul>
             </div>
         </div>
@@ -68,7 +80,7 @@
             <span class="navbar-text text-muted">(c) Panzek 2022. All Rights Reserved.</span>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">        
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log in</a>
+                    <a class="nav-link" href="{% url 'account_login' %} ">Log in</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Privacy</a>
