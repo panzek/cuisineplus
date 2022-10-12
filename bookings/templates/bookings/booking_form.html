@@ -1,0 +1,17 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<div>
+    <h1>
+        Booking Form
+    </h1>
+</div>
+    
+<div>
+    
+    {% csrf_token %}
+    {{booking_form}}
+    {% endfor %} 
+</div>
+
+{% endblock %}
