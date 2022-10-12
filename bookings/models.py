@@ -22,7 +22,10 @@ class Booking(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='bookings'
         )
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
+    email = models.EmailField(null=True)
     number_of_guests = models.IntegerField()
     # restaurant = models.ForeignKey(
     #     Restaurant, on_delete=models.CASCADE, related_name='bookings'
