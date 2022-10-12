@@ -8,7 +8,7 @@ from django.http import HttpRequest
 
 class BookingList(generic.ListView):
     model = Booking
-    queryset = Booking.objects.order_by('-created_on')
+    # queryset = Booking.objects.order_by('-created_on')
     template_name = 'bookings/booking_detail.html'
 
     context = {
@@ -23,6 +23,6 @@ class BookingList(generic.ListView):
             else:
                 booking_form = BookingForm()
 
-        return render(request, "booking/booking_form.html", context={'booking_form': booking_form})
+        return render(request, "bookings/booking_form.html", context={'booking_form': booking_form})
 
 
