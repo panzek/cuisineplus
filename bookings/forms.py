@@ -5,5 +5,5 @@ class BookingForm(ModelForm):
     class Meta:
         model = Booking
         fields = [
-            'user', 'phone', 'number_of_guests', 'additional_info'
+            'first_name', 'last_name', 'number_of_guests', 'date', 'time', 'phone', 'additional_info'
             ]
