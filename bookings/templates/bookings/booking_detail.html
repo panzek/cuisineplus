@@ -1,19 +1,37 @@
-{% extends 'bookings/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+<div>
+ 
+    <h1>
+        Booking Form
+    </h1>
+
+    <form method="POST">
+        {{ booking_form }}
+        {% csrf_token %}
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+{% else %}
+
 <div>
     <h1>
         Booking
     </h1>
 </div>
-    
+
 <div>
-    <!-- {{ user }} -->
+    {{ user }}
     {% for booking in booking_list %}
     {{booking.user}}
     {{booking.restaurant}}
     {% endfor %}
     
 </div>
-
+{% endif %}
 {% endblock %}
