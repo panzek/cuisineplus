@@ -3,7 +3,6 @@ from django.views import generic
 from django.shortcuts import render
 from .models import Booking
 from .forms import BookingForm
-from django.http import HttpResponseRedirect
 
 class BookingList(generic.ListView):
     model = Booking
@@ -37,35 +36,6 @@ class BookingList(generic.ListView):
 
     def post(self, request):
 
-        # if request.method == 'POST':
-        #     form = BookingForm(request.POST)
-        #     if form.is_valid():
-        #         return HttpResponseRedirect('bookings/booking_detail.html')
-        #     else:
-        #         form = BookingForm()
-
-        # return render(
-        #     request, 
-        #     "bookings/booking_detail.html", 
-        #     {
-        #         "form" : form
-        #         }
-        # )
-
-        # if request.method == 'POST':
-        #     booking_form = BookingForm(request.POST)
-        #     if booking_form.is_valid():
-        #         booking_form.save()
-        #         return redirect('get')
-            
-        # booking_form = BookingForm()
-        # context = {
-        #         "booking_form": booking_form
-        #     }
-
-        # return render(request, "booking_detail.html", context)
-
-
         # booking_form = get_object_or_404()
         if request.method == 'POST':
             booking_form = BookingForm(request.POST)
@@ -73,6 +43,7 @@ class BookingList(generic.ListView):
                 booking = booking_form.save(commit=False)
                 booking.booking_form = booking_form
                 booking.save()
+                return redirect('/')
             else:
                 booking_form = BookingForm()
 
