@@ -9,3 +9,9 @@ class RestaurantList(generic.ListView):
     context = {
         'restaurants': Restaurant.objects.all()
     }
+
+    def restaurant_list(request): 
+        return render(
+            request, "restaurants/restaurant_list.html"
+           
+        )
