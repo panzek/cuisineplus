@@ -9,7 +9,7 @@
         Booking Form
     </h1>
 
-    <form method="POST" action="{% url 'booking_detail' %}">
+    <form method="POST" action="{% url 'create_booking' %}">
         {% csrf_token %}
         {{ booking_form.as_p }}
         <input type="submit" value="Submit">
@@ -21,7 +21,7 @@
 
 <div>
     <h1>
-        Book a Table
+        Sign Up or Login to Book a Table
     </h1>
 </div>
 

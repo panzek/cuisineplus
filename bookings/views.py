@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.shortcuts import render
 from .models import Booking
 from .forms import BookingForm
-from django.views import View
+from django.http import HttpResponseRedirect
 
 class BookingList(generic.ListView):
     model = Booking
@@ -14,6 +14,9 @@ class BookingList(generic.ListView):
         'bookings': Booking.objects.all()
     }
     
+    """
+    Get data from forms.py and render in booking_form
+    """
 
     def get(self, request, **kwargs):
 
@@ -28,31 +31,57 @@ class BookingList(generic.ListView):
         )
 
 
-
-
-# class BookingFormView(View):
     """
-    Get data from forms.py and render in booking_form
+    Post data to database 
     """
 
-    def get_booking_form(self, request):
+    def post_booking(self, request):
 
-        # booking_form = get_object_or_404()
+        # if request.method == 'POST':
+        #     form = BookingForm(request.POST)
+        #     if form.is_valid():
+        #         return HttpResponseRedirect('bookings/booking_detail.html')
+        #     else:
+        #         form = BookingForm()
+
+        # return render(
+        #     request, 
+        #     "bookings/booking_detail.html", 
+        #     {
+        #         "form" : form
+        #         }
+        # )
+
         if request.method == 'POST':
             booking_form = BookingForm(request.POST)
             if booking_form.is_valid():
-                booking = booking_form.save(commit=False)
-                booking.booking_form = booking_form
-                booking.save()
-            else:
-                booking_form = BookingForm
+                booking_form.save()
+                return redirect('get')
+            
+        booking_form = BookingForm()
+        context = {
+                "booking_form": booking_form
+            }
 
-        return render(
-            request, 
-            "bookings/booking_form.html", 
-            {
-                "booking_form" : BookingForm()
-                }
-        )
+        return render(request, "booking_detail.html", context)
+
+
+        # booking_form = get_object_or_404()
+        # if request.method == 'POST':
+        #     booking_form = BookingForm(request.POST)
+        #     if booking_form.is_valid():
+        #         booking = booking_form.save(commit=False)
+        #         booking.booking_form = booking_form
+        #         booking.save()
+        #     else:
+        #         booking_form = BookingForm()
+
+        # return render(
+        #     request, 
+        #     "booking_detail.html", 
+        #     {
+        #         "booking_form": BookingForm()
+        #     }
+        # )
 
 
