@@ -20,7 +20,7 @@ class Booking(models.Model):
     '''
 
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='bookings'
+        User, on_delete=models.CASCADE, null=True, blank=False, related_name='bookings'
         )
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
@@ -34,8 +34,8 @@ class Booking(models.Model):
     # cuisine = models.ForeignKey(
     #     Cuisine, on_delete=models.CASCADE, related_name='bookings'
     #     )
-    cuisine = models.CharField(max_length=100)
-    table_number = models.IntegerField()
+    cuisine = models.CharField(max_length=100) 
+    table_number = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
     additional_info = models.CharField(max_length=500, blank=True)

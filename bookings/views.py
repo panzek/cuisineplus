@@ -35,7 +35,7 @@ class BookingList(generic.ListView):
     Post data to database 
     """
 
-    def post_booking(self, request):
+    def post(self, request):
 
         # if request.method == 'POST':
         #     form = BookingForm(request.POST)
@@ -52,36 +52,36 @@ class BookingList(generic.ListView):
         #         }
         # )
 
-        if request.method == 'POST':
-            booking_form = BookingForm(request.POST)
-            if booking_form.is_valid():
-                booking_form.save()
-                return redirect('get')
-            
-        booking_form = BookingForm()
-        context = {
-                "booking_form": booking_form
-            }
-
-        return render(request, "booking_detail.html", context)
-
-
-        # booking_form = get_object_or_404()
         # if request.method == 'POST':
         #     booking_form = BookingForm(request.POST)
         #     if booking_form.is_valid():
-        #         booking = booking_form.save(commit=False)
-        #         booking.booking_form = booking_form
-        #         booking.save()
-        #     else:
-        #         booking_form = BookingForm()
-
-        # return render(
-        #     request, 
-        #     "booking_detail.html", 
-        #     {
-        #         "booking_form": BookingForm()
+        #         booking_form.save()
+        #         return redirect('get')
+            
+        # booking_form = BookingForm()
+        # context = {
+        #         "booking_form": booking_form
         #     }
-        # )
+
+        # return render(request, "booking_detail.html", context)
+
+
+        # booking_form = get_object_or_404()
+        if request.method == 'POST':
+            booking_form = BookingForm(request.POST)
+            if booking_form.is_valid():
+                booking = booking_form.save(commit=False)
+                booking.booking_form = booking_form
+                booking.save()
+            else:
+                booking_form = BookingForm()
+
+        return render(
+            request, 
+            "bookings/booking_detail.html", 
+            {
+                "booking_form": BookingForm()
+            }
+        )
 
 
