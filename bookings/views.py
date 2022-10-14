@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
+from django.views.generic.edit import UpdateView
 from .models import Booking
 from .forms import BookingForm
 
@@ -16,7 +17,7 @@ class BookingList(generic.ListView):
     Get data from forms.py and render in booking_form
     """
 
-    def get(self, request, **kwargs):
+    def get(self, request, *args, **kwargs):
 
         # booking_form = get_object_or_404()
         
@@ -54,4 +55,21 @@ class BookingList(generic.ListView):
             }
         )
 
+    # def edit_booking(request, booking_id):
+    #     booking = get_object_or_404(Booking, id=booking_id)
+    #     context = {
+    #         "booking_form": BookingForm(instance=Booking)
+    #     } 
+
+    #     return render(request, "bookings/edit_booking.html", context),
+
+
+class BookingUpdateView(UpdateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'bookings/edit_booking.html'
+    success_url = '/success/'
+
+    def success(request):
+        return render(request, 'success.html')
 
