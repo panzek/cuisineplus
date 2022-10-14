@@ -41,5 +41,5 @@ class Booking(models.Model):
     additional_info = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.last_name)
     

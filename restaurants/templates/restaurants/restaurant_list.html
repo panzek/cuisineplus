@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurants</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div>
     <h2>Restaurants</h2>
-    <!-- {% for pic in restaurant %}
-    {{pic.title}}
-    <img src="{{pic.image.url}}" alt="modelling">
-    {% endfor %} -->
-</body>
-</html>
+    <form method="POST" action="{% url 'restaurants' %}">     
+        <div class="col-sm-4">
+            <div class="input-group date" id="datepicker">
+                <span >
+                    {% csrf_token %}
+                    {{ restaurant_form.as_p }}
+                    <!-- <img src="{{pic.image.url}}" alt="modelling"> -->
+                </span>
+            </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endif %}
+{% endblock %}

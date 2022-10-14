@@ -1,6 +1,5 @@
 from django.forms import ModelForm
 from .models import Booking
-from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput
 
 class BookingForm(ModelForm):
     class Meta:

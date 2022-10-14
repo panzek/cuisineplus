@@ -5,7 +5,7 @@ urlpatterns = [
     path(
         'booking_detail.html/', 
         views.BookingList.as_view(), 
-        name='booking_detail'
+        name='booking'
         ),
     
 ]

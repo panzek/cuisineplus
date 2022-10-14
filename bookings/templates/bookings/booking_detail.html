@@ -10,7 +10,7 @@
         Booking Form
     </h1>
 
-    <form method="POST" action="{% url 'booking_detail' %}">
+    <form method="POST" action="{% url 'booking' %}">
         {% csrf_token %}
         {{ booking_form.as_p }}
         <div class="col-sm-4">
