@@ -1,24 +1,32 @@
 from django.urls import path
-from .views import BookingList, BookingUpdateView
-# from bookings.views import edit_booking
-# from .views import BookingUpdateView
+from .views import BookingList, BookingUpdateView, BookingCreateView
 
 urlpatterns = [
     path(
-        'booking_detail.html/', 
+        'bookings/booking_detail.html', 
+        BookingList.as_view(), 
+        name='bookings'
+        ),
+
+    # --- self ---
+    path(
+        'booking.html', 
+        BookingCreateView.as_view(success_url="booking.html"), 
+        name='booking_create'
+        ),
+    # --- self end ----
+
+    path(
+        'list', 
         BookingList.as_view(), 
         name='booking'
         ),
-
-    # path(
-    #     'edit_booking.html/', 
-    #     views.BookingList.as_view(), 
-    #     name='edit_booking'
-    #     ),
     
     
-    
-    # path('edit/<booking_id>', edit_booking, name='edit_booking'),
-    path('edit_booking/<booking_id>', BookingUpdateView.as_view(), name='edit'),
+    path(
+        'edit_booking/<pk>', 
+        BookingUpdateView.as_view(), 
+        name='edit'
+        ),
     
 ]

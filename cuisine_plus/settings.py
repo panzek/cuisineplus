@@ -33,8 +33,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cuisine-plus.herokuapp.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['cuisine-plus.herokuapp.com', 'localhost', '127.0.0.1',]
+CORS_ALLOWED_ORIGINS = [
+    'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+    
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+]
 
 # Application definition
 
@@ -109,8 +115,20 @@ WSGI_APPLICATION = 'cuisine_plus.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#     }
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 
 # Password validation
@@ -149,7 +167,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIR = [os.path.join(BASE_DIR, 'static'), ]  # needs to be a tuple - note the extra comma
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static files (Images - Photos)

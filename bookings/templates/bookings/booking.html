@@ -2,18 +2,29 @@
 {% load crispy_forms_tags%}
 
 {% block content %}
-
+<!-- {{ form.as_p }} -->
 {% if user.is_authenticated %}
-<div class="col-sm-4">
-    {% for booking in bookings %}
-        <p>{{ booking.first_name }}</p>
-        <a href="{% url 'edit' booking.pk %}"><button class="btn btn-primary" formaction="">Edit</button></a>
-    {% endfor %}
+<div>
+ 
     <h1>
-        Booking Form
+        Booking Your Cuisine
     </h1>
+    <!-- <a href="{% url 'booking' %}"><button class="btn btn-primary" formaction="">Edit Booking</button></a>  -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ crispy_forms | crispy }}
+        <!-- {{ booking_form.as_p }} -->
+        <input type="submit" class="btn btn-primary" value="Submit">
+        
+    </form>
 
-    <form method="POST" action="{% url 'booking' %}">
+</div>
+
+{% else %}
+
+<div>
+     <form method="POST" action="{% url 'booking' %}">
         {% csrf_token %}
         {{ booking_form.as_p }}
         <div class="col-sm-4">
@@ -38,32 +49,9 @@
             </div> -->
         </div>
         <input type="submit" value="Submit">
-        <a href=""><button class="btn btn-primary" formaction="">Edit Booking</button></a> 
+        <a href="{% url 'booking' %}"><button class="btn btn-primary" formaction="">Edit Booking</button></a> 
     </form>
 </div>
 
-{% else %}
-
-<div>
-    <h1>
-        Book a Table
-    </h1>
-</div>
-
-<div>
-    <!-- {{ user }} -->
-    {% for booking in booking_list %}
-    {{booking.user}}
-    {{booking.restaurant}}
-    {% endfor %}
-    
-</div>
-
 {% endif %}
-
-<script type="text/javascript">
-    $(function() {
-        $('#datepicker').datepicker();
-    });
-</script>
 {% endblock %}
