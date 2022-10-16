@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
-from django.views.generic.edit import UpdateView, CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Booking
 from .forms import BookingForm
+from django.urls import reverse_lazy
 
 class BookingList(generic.ListView):
     model = Booking
@@ -56,13 +57,15 @@ class BookingList(generic.ListView):
             }
         )
 
-    # def edit_booking(request, booking_id):
-    #     booking = get_object_or_404(Booking, id=booking_id)
-    #     context = {
-    #         "booking_form": BookingForm(instance=Booking)
-    #     } 
+ 
+class BookingCreateView(CreateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'bookings/booking.html'
+    queryset = Booking.objects.all()
 
-    #     return render(request, "bookings/edit_booking.html", context),
+    def get_object(self):
+        return get_object_or_404('')
 
 
 class BookingUpdateView(UpdateView):
@@ -74,15 +77,11 @@ class BookingUpdateView(UpdateView):
     def success(request):
         return render(request, '/')
 
-   
-class BookingCreateView(CreateView):
-    model = Booking
-    form_class = BookingForm
-    template_name = 'bookings/booking.html'
-    queryset = Booking.objects.all()
 
-    def get_object(self):
-        return get_object_or_404('')
+class BookingDeleteView(DeleteView):
+    model = Booking
+    template_name = 'bookings/confirm_delete.html'
+    success_url = reverse_lazy('')
 
 
 # BIG SELF 

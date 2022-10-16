@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Delete Booking {% endblock %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <h4>Are you sure you want to delete "{{ form }}"?</h4>
+        <p>All of the following and their related items will be deleted.</p>
+        <div>
+            <p>
+                <button type="submit" class="btn btn-primary" formaction="">Yes, I'm Sure</button>
+                <button type="submit" class="btn btn-primary" formaction="">No, take me back</button>
+            </p>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock %}
