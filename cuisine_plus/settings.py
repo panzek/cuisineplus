@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'home',
     'restaurants',
     'cuisines',
+    'django_summernote',
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrap_datepicker_plus',
