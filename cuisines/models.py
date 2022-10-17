@@ -4,7 +4,7 @@ from cloudinary.models import CloudinaryField
 from restaurants.models import Restaurant
 
 class Menu(models.Model):
-    '''Cuisine model
+    '''Menu model
     ---
     Attributes:
         name: Name of the cuisine 
@@ -21,7 +21,9 @@ class Menu(models.Model):
 
     STATUS = ((0, "Not Ready"), (1, "Ready")) 
 
-    restaurants = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='restaurant_cuisines')
+    restaurant = models.ForeignKey(
+        Restaurant, on_delete=models.CASCADE, related_name='restaurant_cuisines'
+    )
     name = models.CharField(max_length=100, null=True)
     price = models.FloatField()
     cuisine = models.PositiveSmallIntegerField(choices=(
@@ -32,7 +34,9 @@ class Menu(models.Model):
         (1, 'Continental'),
     ), null=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='cuisine_likes', blank=True)
+    likes = models.ManyToManyField(
+        User, related_name='cuisine_likes', blank=True
+    )
     cuisine_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -48,7 +52,7 @@ class Menu(models.Model):
 
 
 class Review(models.Model):
-    '''Cuisine model
+    '''Review model
     ---
     Attributes:
         name: Name of the cuisine 
@@ -58,8 +62,17 @@ class Review(models.Model):
 
     '''
 
-    name = models.CharField(max_length=100, null=True)
+    title = models.CharField(max_length=50, null=True)
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, blank=True, null=True, related_name='reviewer'
+    )
     body = models.TextField(max_length=350, null=True)
+    restaurants = models.ForeignKey(
+        Restaurant, on_delete=models.CASCADE, null=True, related_name='restaurant_review'
+    )
+    menu = models.ForeignKey(
+        Menu, on_delete=models.CASCADE, null=True, related_name='menu_review'
+    )
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
@@ -67,6 +80,6 @@ class Review(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Review {self.body} by {self.name}"
+        return f"Review {self.body} by {self.user}"
 
 
