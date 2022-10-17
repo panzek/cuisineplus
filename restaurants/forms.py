@@ -7,12 +7,8 @@ class RestaurantForm(ModelForm):
         fields = [
             'name', 
             'address', 
-            'time', 
-            'cuisines', 
             'reserve', 
             'rating', 
-            'price', 
-            'review'
         ]
         
 
