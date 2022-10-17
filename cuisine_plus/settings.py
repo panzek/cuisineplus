@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'restaurants',
+    'cuisines',
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrap_datepicker_plus',
