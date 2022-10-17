@@ -25,6 +25,7 @@ class Menu(models.Model):
         Restaurant, on_delete=models.CASCADE, related_name='restaurant_cuisines'
     )
     name = models.CharField(max_length=100, null=True)
+    description = models.TextField(max_length=500, null=True)
     price = models.FloatField()
     cuisine = models.PositiveSmallIntegerField(choices=(
         (1, 'African'),
