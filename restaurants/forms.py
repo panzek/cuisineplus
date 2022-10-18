@@ -8,7 +8,8 @@ class RestaurantForm(ModelForm):
             'name', 
             'address', 
             'reserve', 
-            'rating', 
+            'rating',
+            'featured_image', 
         ]
         
 

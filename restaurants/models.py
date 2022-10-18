@@ -21,7 +21,7 @@ class Restaurant(models.Model):
     address = models.CharField(max_length=100)
     reserve = models.CharField(max_length=100, null=True)
     rating = models.IntegerField(blank=True)
-    featured_image = CloudinaryField('image')
+    featured_image = CloudinaryField()
 
     def __str__(self):
         return str(self.name)
