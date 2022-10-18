@@ -1,11 +1,22 @@
 from django.urls import path
-from . import views
+from .views import RestaurantList, RestaurantDetail
 
 urlpatterns = [
     path(
         'restaurant_list.html/', 
-        views.RestaurantList.as_view(), 
+        RestaurantList.as_view(), 
         name='restaurants'
-        ),
+        ),   
+
+    path(
+        'restaurant_detail/<pk>', 
+        RestaurantDetail.as_view(), 
+        name='restaurant_detail'
+        ), 
     
+    path(
+        'restaurants/restaurant_detail.html', 
+        RestaurantList.as_view(), 
+        name='restaurant'
+        ),
 ]

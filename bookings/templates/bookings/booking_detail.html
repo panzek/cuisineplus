@@ -7,7 +7,7 @@
 <div class="col-sm-4">
     {% for booking in bookings %}
         <p>{{ booking.first_name }}</p>
-        <p>{{ booking_form.as_p }}</p>
+        <!-- <p>{{ booking_form.as_p }}</p> -->
         <a href="{% url 'edit' booking.pk %}"><button class="btn btn-primary" formaction="">Edit</button></a>
         <a href="{% url 'edit' booking.pk %}"><button class="btn btn-primary" formaction="">Delete</button></a>
     {% endfor %}
@@ -19,7 +19,7 @@
 
     <form method="POST" action="{% url 'booking' %}">
         {% csrf_token %}
-        {{ booking_form.as_p }}
+        <!-- {{ booking_form.as_p }} -->
         <div class="col-sm-4">
             <!-- <div class="input-group date" id="datepicker">
                 <span >

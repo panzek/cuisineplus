@@ -7,21 +7,42 @@ from django.urls import reverse_lazy
 
 class BookingList(generic.ListView):
     model = Booking
-    # queryset = Booking.objects.order_by('-created_on')
     template_name = 'bookings/booking_detail.html'
 
     context = {
         'bookings': Booking.objects.all()
     }
     
+    # ---- End Self -----
+    # """
+    # Get data from forms.py and render in booking_form
+    # """
+
+    # def get(self, request, *args, **kwargs):
+    #     print(self, request, args, kwargs)
+
+    #     bookings = Booking.objects.all()
+        
+    #     return render(
+    #         request, 
+    #         "bookings/booking_detail.html", 
+    #         {
+    #             "booking_form": BookingForm(),
+    #             "bookings": bookings,
+    #             }
+    #     )
+
+    # ---- End Self ---
+
     """
     Get data from forms.py and render in booking_form
     """
 
     def get(self, request, *args, **kwargs):
+        print(request.user)
 
-        bookings = Booking.objects.all()
-        
+        bookings = Booking.objects.filter(user__id=request.user.id)
+
         return render(
             request, 
             "bookings/booking_detail.html", 
