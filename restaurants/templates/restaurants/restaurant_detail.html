@@ -3,36 +3,34 @@
 {% block content %}
 {% load cloudinary %}  
 
-<div class="container-fluid">
-    <h2>{{ restaurant }}</h2>
-    <div class="row" id="">
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in restaurant.image.url %}
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                {% else %}
-                                <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
-                                {% endif %}
-                            </div>
-                            <a href="" class="restaurant-link"> 
-                                <h5 class="card-title">{{ restaurant.name }}</h5>
-                                <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span>
-                                <p class="card-text"><i class="fa-regular fa-clock"></i> {{ restaurant.cuisine }}</p>
-                            </a>
-                            <hr />
-                            <span class="btn btn-primary">{{ restaurant.reserve }}</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>   
+{% if user.is_authenticated %}
+<div class="masthead">
+    <div class="container-fluid">
+        <div class="row ">
+            <div >
+                {% if "placeholder" in restaurant.image.url %}
+                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                {% else %}
+                <img src="{{ restaurant.featured_image.url }}" class="mw-100 d-inline-block p-3" height="300px">
+                {% endif %}
+            </div>
+            <h5 class="card-title">{{ restaurant.name }}</h5>
+            <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }} | <i class="fa-regular fa-clock"></i> {{ restaurant.cuisine }} | <i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+            <hr />
         </div>
     </div>
-    
 </div>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Overview</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Menu</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Overview</div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Reviews</div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">bad</div>
+  </div>
+{% endif %}
 {% endblock %}
