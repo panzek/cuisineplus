@@ -1,55 +1,19 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags%}
+<!-- {% load crispy_forms_tags %} -->
 
 {% block content %}
-<!-- {{ form.as_p }} -->
+
 {% if user.is_authenticated %}
 <div>
  
     <h1>
         Booking Your Cuisine
     </h1>
-    <!-- <a href="{% url 'booking' %}"><button class="btn btn-primary" formaction="">Edit Booking</button></a>  -->
     <form method="POST" action="">
         {% csrf_token %}
         {{ form.as_p }}
         {{ crispy_forms | crispy }}
-        <!-- {{ booking_form.as_p }} -->
-        <input type="submit" class="btn btn-primary" value="Submit">
-        
-    </form>
-
-</div>
-
-{% else %}
-
-<div>
-     <form method="POST" action="{% url 'booking' %}">
-        {% csrf_token %}
-        {{ booking_form.as_p }}
-        <div class="col-sm-4">
-            <!-- <div class="input-group date" id="datepicker">
-                <span >
-                    {{ booking_form.time }}
-                    <i class="fa fa-clock fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-            </div> -->
-            <!-- <div class="input-group date" id="datepicker"> -->
-                <!-- <input type="text" class="form-control"> -->
-                <!-- <span class="input-group-append"> -->
-                <!-- <span > -->
-                    <!-- {{ booking_form.date }}
-                    <i class="fa fa-calendar fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-        
-            </div> -->
-        </div>
-        <input type="submit" value="Submit">
-        <a href="{% url 'booking' %}"><button class="btn btn-primary" formaction="">Edit Booking</button></a> 
+        <input type="submit" class="btn btn-primary" value="Submit"> 
     </form>
 </div>
 
