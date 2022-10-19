@@ -16,9 +16,6 @@ class ReviewForm(ModelForm):
     class Meta:
         model = Review
         fields = [
-            'name', 
-            'email', 
             'body', 
-            'created_on',
         ]
         
