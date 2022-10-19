@@ -8,20 +8,27 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        <h4>Are you sure you want to delete "{{ form }}"?</h4>
-        <p>All of the following and their related items will be deleted.</p>
-        <div>
-            <p>
-                <button type="submit" class="btn btn-primary" formaction="">Yes, I'm Sure</button>
-                <button type="submit" class="btn btn-primary" formaction="">No, take me back</button>
-            </p>
+
+<div class="card mx-auto" style="width: 30rem;">
+    <div class="card-body">
+     
+        <div class="card-header text-center">
+          <div class="text-center">
+            <form method="POST">
+                {% csrf_token %}
+                <h4>{{ booking }}, are you sure you want to delete your booking?</h4>
+                <p>Your booking and its related items will be deleted.</p>
+                <div>
+                    <p>
+                        <button type="submit" class="btn btn-primary">No, take me back</button>
+                        <button type="submit" class="btn btn-danger">Yes, I'm Sure</button>
+                    </p>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 {% endif %}
-
 {% endblock %}
+

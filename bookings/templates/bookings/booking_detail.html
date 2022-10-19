@@ -4,70 +4,27 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<div class="col-sm-4">
-    {% for booking in bookings %}
-        <p>{{ booking.first_name }}</p>
-        <!-- <p>{{ booking_form.as_p }}</p> -->
-        <a href="{% url 'edit' booking.pk %}"><button class="btn btn-primary" formaction="">Edit</button></a>
-        <a href="{% url 'edit' booking.pk %}"><button class="btn btn-primary" formaction="">Delete</button></a>
-    {% endfor %}
-{% else %}
-
-    <h1>
-        Booking Form or a new form
-    </h1>
-
-    <form method="POST" action="{% url 'booking' %}">
-        {% csrf_token %}
-        <!-- {{ booking_form.as_p }} -->
-        <div class="col-sm-4">
-            <!-- <div class="input-group date" id="datepicker">
-                <span >
-                    {{ booking_form.time }}
-                    <i class="fa fa-clock fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-            </div> -->
-            <!-- <div class="input-group date" id="datepicker"> -->
-                <!-- <input type="text" class="form-control"> -->
-                <!-- <span class="input-group-append"> -->
-                <!-- <span > -->
-                    <!-- {{ booking_form.date }}
-                    <i class="fa fa-calendar fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-        
-            </div> -->
+<div class="card mx-auto text-center" style="width: 18rem;">
+    <div class="card-body">
+        {% for booking in bookings %}
+        <div class="card-header">
+            <h5 class="card-title">Your Booking Detail:</h5>
+          </div>
+        <p class="card-text">First Name: {{ booking.first_name }}</p>
+        <p class="card-text">Last Name: {{ booking.last_name }}</p>
+        <p class="card-text">No. of Guests: {{ booking.number_of_guests }}</p>
+        <p class="card-text">Date: {{ booking.date }}</p>
+        <p class="card-text">Time: {{ booking.time }}</p>
+        <p class="card-text">Phone: {{ booking.phone }}</p>
+        <p class="card-text">Additional Info: {{ booking.additional_info }}</p>
+        <div class="btn-group btn-group-justified">
+            <a href="{% url 'edit' booking.pk %}" class="btn btn-info">Edit</a>
+            <a href="{% url 'delete' booking.pk %}" class="btn btn-danger">Delete</a>
         </div>
-        <input type="submit" value="Submit">
-        <a href=""><button class="btn btn-primary" formaction="">Edit Booking</button></a> 
-    </form>
-</div>
-
-
-
-<div>
-    <h1>
-        Book a Table
-    </h1>
-</div>
-
-<div>
-    <!-- {{ user }} -->
-    {% for booking in booking_list %}
-    {{booking.user}}
-    {{booking.restaurant}}
-    {% endfor %}
-    
+        <hr><br>
+        {% endfor %}
+    </div>
 </div>
 
 {% endif %}
-
-<script type="text/javascript">
-    $(function() {
-        $('#datepicker').datepicker();
-    });
-</script>
 {% endblock %}

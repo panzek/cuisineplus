@@ -14,15 +14,37 @@ class BookingList(generic.ListView):
     }
     
     # ---- End Self -----
+    """
+    Get data from forms.py and render in booking_form
+    """
+
+    def get(self, request, *args, **kwargs):
+        print(self, request, args, kwargs)
+
+        bookings = Booking.objects.all()
+        
+        return render(
+            request, 
+            "bookings/booking_detail.html", 
+            {
+                "booking_form": BookingForm(),
+                "bookings": bookings,
+                }
+        )
+
+    # ---- End Self ---
+
+    
+    # ---- Akshat -----
     # """
     # Get data from forms.py and render in booking_form
     # """
 
     # def get(self, request, *args, **kwargs):
-    #     print(self, request, args, kwargs)
+    #     print(request.user)
 
-    #     bookings = Booking.objects.all()
-        
+    #     bookings = Booking.objects.filter(user__id=request.user.id)
+
     #     return render(
     #         request, 
     #         "bookings/booking_detail.html", 
@@ -32,25 +54,7 @@ class BookingList(generic.ListView):
     #             }
     #     )
 
-    # ---- End Self ---
-
-    """
-    Get data from forms.py and render in booking_form
-    """
-
-    def get(self, request, *args, **kwargs):
-        print(request.user)
-
-        bookings = Booking.objects.filter(user__id=request.user.id)
-
-        return render(
-            request, 
-            "bookings/booking_detail.html", 
-            {
-                "booking_form": BookingForm(),
-                "bookings": bookings,
-                }
-        )
+    # ---- End Akshat -----
 
 
     """
