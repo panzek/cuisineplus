@@ -15,7 +15,7 @@
                 {% endif %}
             </div>
             <h5 class="card-title">{{ restaurant.name }}</h5>
-            <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }} | <i class="fa-regular fa-clock"></i> {{ restaurant.cuisine }} | <i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+            <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}  | <i class="fa-regular fa-clock"></i> {{ restaurant.review }} | {{ restaurant.cuisine }} | <i class="far fa-heart"></i>{{ restaurant.rating }}</span>
             <hr />
         </div>
     </div>
@@ -34,9 +34,9 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Overview</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Reviews</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Menu</div>
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><h2>{{ restaurant.name }} | </h2> <i class="far fa-heart"></i>{{ restaurant.rating }}</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{{ cuisines.reviews }}</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">{{ menu.restaurant_set }}</div>
       </div>
     </div>
   
