@@ -21,9 +21,9 @@
         </div>
     </div>
 </div>
-  <br>
+ 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row border-end">
     
     <!-- togglebar -->
     <div class="col-sm-8">
@@ -37,18 +37,44 @@
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><h2>{{ restaurant.name }} | </h2> <i class="far fa-heart"></i>{{ restaurant.rating }}</div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{{ restaurant.review }}
-          {% if user.is_authenticated %}
+          
           <div class="container-fluid">
-            <div class="row justify-content-center">
-              <div class="col-8">{{ review.body }}:</div>
-              <div class="col-4">
+            <div class="row text-center ">
+              <div class="col-6 border-end">{{ review.body }}:
+                <h3>Reviews:</h3>
+                <div class="card-body">
+                    {% for review in reviews %}
+                    <div class="reviews" style="padding: 10px;">
+                        <p class="font-weight-bold">
+                            {{ review.name }}
+                            <span class=" text-muted font-weight-normal">
+                                {{ review.created_on }}
+                            </span> wrote:
+                        </p>
+                        {{ review.body | linebreaks }}
+                    </div>
+            
+                    {% endfor %}
+                </div>
+
+              </div>
+
+
+              <div class="col-6 ">
+                {% if reviewed %}
+                <div class="alert alert-success" role="alert">
+                    Your review is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
                 <h3>Leave a Review:</h3>
                 <p>Commenting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
+                <form method="post" action="" style="margin-top: 1.3em;">
                   {{ review_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                {% endif %}
                 {% endif %}
               </div>
             </div>
@@ -62,7 +88,6 @@
     <!-- Booking form -->
     <div class="card mx-auto" style="width: 30rem;">
       <div class="card-body">
-       
           <div class="card-header text-center">
               <h3 class="card-title">Booking Your Cuisine</h3>
             </div><br>
@@ -80,7 +105,5 @@
   </div>  
   </div>
 </div>
-  
-
 {% endif %}
 {% endblock %}

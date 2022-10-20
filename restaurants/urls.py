@@ -15,7 +15,7 @@ urlpatterns = [
         ), 
     
     path(
-        'restaurants/restaurant_detail.html', 
+        'restaurant_detail.html', 
         RestaurantList.as_view(), 
         name='restaurant'
         ),

@@ -5,7 +5,7 @@ urlpatterns = [
     path(
         'bookings/booking_detail.html', 
         BookingList.as_view(), 
-        name='bookings'
+        name='booking_detail'
         ),
 
     # --- END New self ---

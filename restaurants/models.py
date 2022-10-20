@@ -87,7 +87,7 @@ class Review(models.Model):
     restaurants = models.ForeignKey(
         Restaurant, on_delete=models.CASCADE, null=True, related_name='reviews'
     )
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     email = models.EmailField()
     body = models.TextField(max_length=350, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
