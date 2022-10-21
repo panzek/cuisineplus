@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
-from .models import Restaurant, Review
+from restaurants.models import Restaurant, Review
 from .forms import ReviewForm
 from bookings.forms import BookingForm
 from bookings.models import Booking
@@ -60,15 +60,16 @@ class RestaurantDetail(generic.DetailView):
     #     )
     
     def post(self, request, pk, *args, **kwargs):
-        review = get_object_or_404(Review, pk=1)
-        # review.Review.filter(approved=True).order_by('created_on')
-        
+        queryset = Review.objects.filter(name='Panzek')
+        review = get_object_or_404(queryset)
+        # review = reviews.review.filter(approved=True).order_by('created_on')
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
             review_form.instance.email = request.user.email
             review_form.instance.user = request.user.username 
+            review_form.instance.Restaurant = request.user
             review = review_form.save(commit=False)
-            review.review = review
+            review.restaurant = Restaurant
             review.save()
             return redirect('/')
         else:
@@ -79,7 +80,7 @@ class RestaurantDetail(generic.DetailView):
             "restaurants/restaurant_detail.html", 
             {
                 'restaurant': Restaurant,
-                'review': Review,
+                'review': review,
                 "reviewed": True,
                 'bookings': Booking,
                 "review_form": ReviewForm(),

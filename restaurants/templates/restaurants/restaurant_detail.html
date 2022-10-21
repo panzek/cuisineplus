@@ -36,17 +36,18 @@
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><h2>{{ restaurant.name }} | </h2> <i class="far fa-heart"></i>{{ restaurant.rating }}</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{{ restaurant.review }}
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           
           <div class="container-fluid">
             <div class="row text-center ">
-              <div class="col-6 border-end">{{ review.body }}:
+              <div class="col-6 border-end">
                 <h3>Reviews:</h3>
+                {{ review }}
                 <div class="card-body">
                     {% for review in reviews %}
                     <div class="reviews" style="padding: 10px;">
                         <p class="font-weight-bold">
-                            {{ review.name }}
+                            {{ review.body }}
                             <span class=" text-muted font-weight-normal">
                                 {{ review.created_on }}
                             </span> wrote:
@@ -63,7 +64,7 @@
               <div class="col-6 ">
                 {% if reviewed %}
                 <div class="alert alert-success" role="alert">
-                    Your review is awaiting approval
+                  {{ user.username }}, your review is awaiting approval
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}

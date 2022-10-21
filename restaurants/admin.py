@@ -13,7 +13,7 @@ class RestaurantAdmin(SummernoteModelAdmin):
     search_fields = ('name', 'Restaurant',)
 
 @admin.register(Menu)
-class ReviewAdmin(SummernoteModelAdmin):
+class MenuAdmin(SummernoteModelAdmin):
     """ Add Menu model to admin page"""
     list_filter = ('status', 'created_on',)
     list_display = ('name', 'price', 'status', 'created_on',)
