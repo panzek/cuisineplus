@@ -19,10 +19,11 @@ class RestaurantDetail(generic.DetailView):
     def get(self, request, *args, **kwargs):
         print(self, request, args, kwargs)
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
+        reviews = Review.objects.filter(restaurants=restaurant)
 
         context = {
             'restaurant': restaurant,
-            'review': Review,
+            'reviews': reviews,
             "reviewed": False,
             'bookings': Booking,
             "review_form": ReviewForm(),
@@ -59,18 +60,29 @@ class RestaurantDetail(generic.DetailView):
     #         },
     #     )
     
+    # def post(self, request, pk, *args, **kwargs):
+    #     restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+    #     review_form = ReviewForm(data=request.POST)
+    #     if review_form.is_valid():
+    #         review_form.instance.email = request.user.email
+    #         review_form.instance.user = request.user.username 
+    #         review_form.instance.Restaurant = request.user
+    #         review = review_form.save(commit=False)
+    #         review.restaurant = Restaurant
+    #         review.save()
+    #         return redirect('/')
+    #     else:
+    #         review_form = ReviewForm()
+
     def post(self, request, pk, *args, **kwargs):
-        queryset = Review.objects.filter(name='Panzek')
-        review = get_object_or_404(queryset)
-        # review = reviews.review.filter(approved=True).order_by('created_on')
+        restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
-            review_form.instance.email = request.user.email
-            review_form.instance.user = request.user.username 
-            review_form.instance.Restaurant = request.user
             review = review_form.save(commit=False)
-            review.restaurant = Restaurant
-            review.save()
+            review.email = request.user.email
+            review.name = request.user.username
+            review.restaurants = restaurant
+            review_form.save()
             return redirect('/')
         else:
             review_form = ReviewForm()

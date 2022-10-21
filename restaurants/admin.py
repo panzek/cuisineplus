@@ -23,4 +23,4 @@ class ReviewAdmin(SummernoteModelAdmin):
     """ Add Review model to admin page"""
     summernote_fields = ('body',)
     list_filter = ('created_on', 'approve',)
-    list_display = ('name', 'email', 'body', 'created_on',)
+    list_display = ('name', 'email', 'body', 'created_on', 'restaurants',)

@@ -71,7 +71,8 @@
                 <h3>Leave a Review:</h3>
                 <p>Commenting as: {{ user.username }}</p>
                 <form method="post" action="" style="margin-top: 1.3em;">
-                  {{ review_form | crispy }}
+                  <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
+                    {{ review_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
