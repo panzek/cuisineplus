@@ -15,9 +15,9 @@
                 <img src="{{ restaurant.featured_image.url }}" class="mw-100 d-inline-block p-3" height="300px">
                 {% endif %}
             </div>
-            <h5 class="card-title">{{ restaurant.name }}</h5>
+            <!-- <h5 class="card-title">{{ restaurant.name }}</h5>
             <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}  | <i class="fa-regular fa-clock"></i> {{ restaurant.review }} | {{ restaurant.cuisine }} | <i class="far fa-heart"></i>{{ restaurant.rating }}</span>
-            <hr />
+            <hr /> -->
         </div>
     </div>
 </div>
@@ -35,47 +35,115 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><h2>{{ restaurant.name }} | </h2> <i class="far fa-heart"></i>{{ restaurant.rating }}</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           
-          <div class="container-fluid">
-            <div class="row text-center ">
-              <div class="col-6 border-end">
-                <h3>Reviews:</h3>
-                {{ review }}
+          <div class="container-fluid "><br>
+            <h5 class="card-title">{{ restaurant.name }}</h5>
+            <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+              molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+              numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+              optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+              obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+              nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+              tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+              quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+              sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+              recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
+              minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
+              quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
+              fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
+              consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+              doloremque. Quaerat provident commodi consectetur veniam similique ad 
+              earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
+              fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
+              suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+              modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
+              totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
+              quasi aliquam eligendi, placeat qui corporis!
+            </p>
+            <div class="row">
+              <div class="col-6">
                 <div class="card-body">
+                    <div class="reviews" style="padding: 10px;">
+                      <h5><i class="fa-solid fa-circle-check"></i> Cuisines</h5>
+                      <h5><i class="fa-solid fa-circle-check"></i> African</h5>
+                      <h5><i class="fa-solid fa-circle-check"></i> Chinese</h5>
+                      <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>
+                        
+                    </div><br>
+                </div>
+              </div>
+              <div class="col-6 border-end">
+              <hr />
+                <h5><i class="fa-regular fa-clock"></i></i> Operation Hours</h5>
+                <h5><i class="fa-solid fa-phone"></i> Phone Numbers</h5>
+                <h6><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</h6>
+            
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="container-fluid">
+            <div class="row ">
+              <div class="col-6">
+                <div class="card-body">
+                  <br>
+                  <h5>Customer Reviews:</h5>
                     {% for review in reviews %}
                     <div class="reviews" style="padding: 10px;">
                         <p class="font-weight-bold">
-                            {{ review.body }}
                             <span class=" text-muted font-weight-normal">
-                                {{ review.created_on }}
-                            </span> wrote:
+                              Wrote on: {{ review.created_on | date:"D, d M Y" }},
+                              {{ review.created_on | time:"H:ia" }}
+                            </span> 
                         </p>
-                        {{ review.body | linebreaks }}
+                        "{{ review.body }}"" - {{ review.name }}
+                        
+                    </div><br>
+                    {% empty %}
+                    <div>
+                      <p>No customer reviews yet for this restaurant.</p>
+                      <span>Be the first to write a review</span>
                     </div>
-            
                     {% endfor %}
                 </div>
-
               </div>
-
-
-              <div class="col-6 ">
+              <div class="col-6 border-end text-center ">
                 {% if reviewed %}
                 <div class="alert alert-success" role="alert">
                   {{ user.username }}, your review is awaiting approval
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}
-                <h3>Leave a Review:</h3>
-                <p>Commenting as: {{ user.username }}</p>
-                <form method="post" action="" style="margin-top: 1.3em;">
-                  <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
-                    {{ review_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <br>
+
+                <!-- Reviews form -->
+                <div class="card mx-auto" style="width: 30rem;">
+                  <div class="card-body">
+                      <div class="card-header text-center">
+                        <h3 class="card-title">Review this restaurant:</h3>
+                        <p>Share your thoughts with other customers</p>
+                        </div>
+                        <div class="text-center">
+                          <p>Reviewing as: {{ user.username }}</p>
+                          <form method="POST">
+                            <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
+                              {% csrf_token %}
+                              {{ review_form | crispy }}
+                              {{ crispy_forms | crispy }}
+                              <div>
+                                  <button type="submit" style="width: 28rem;" class="btn btn-primary">Submit</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>                  
                 {% endif %}
                 {% endif %}
               </div>
@@ -91,7 +159,7 @@
     <div class="card mx-auto" style="width: 30rem;">
       <div class="card-body">
           <div class="card-header text-center">
-              <h3 class="card-title">Booking Your Cuisine</h3>
+              <h3 class="card-title">Make a Booking</h3>
             </div><br>
             <div class="text-center">
               <form method="POST">
