@@ -8,13 +8,6 @@ urlpatterns = [
         name='booking_detail'
         ),
 
-    # --- END New self ---
-    path(
-        'booking.html', 
-        BookingCreateView.as_view(success_url="booking.html"), 
-        name='booking_create'
-        ),
-
     # --- self ---
     path(
         'booking.html', 
@@ -37,7 +30,7 @@ urlpatterns = [
         ),
     
     path(
-        'confirm_delete/<pk>', 
+        'delete_booking/<pk>', 
         BookingDeleteView.as_view(), 
         name='delete'
         ),
