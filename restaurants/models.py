@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from phone_field import PhoneField
 
 class Restaurant(models.Model):
     '''Restaurant model
@@ -98,5 +99,36 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review {self.body} by {self.name}"
+
+class Reservation(models.Model):
+    '''Reservation model
+    ---
+    Attributes:
+        name: Name of the person that made the booking
+        number_of_guests: Number of guests expected
+        restaurant: Name of the restaurant being booked
+        table_number: Table number
+        date: Date of the booking
+        time: Time of the booking
+        additional_info: Any additional information provided
+    '''
+    
+    restaurants = models.ForeignKey(
+        Restaurant, on_delete=models.CASCADE, null=True, related_name='reservations'
+    )
+    name = models.CharField(max_length=100)
+    phone = PhoneField(blank=True)
+    number_of_guests = models.IntegerField()
+    table_number = models.IntegerField(null=True, blank=True)
+    date = models.DateField()
+    time = models.TimeField()
+    additional_info = models.CharField(max_length=250, null=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return str(self.name)
+
 
 

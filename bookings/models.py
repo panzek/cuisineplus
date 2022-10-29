@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phone_field import PhoneField
-# from restaurant.models import Restaurant
+from restaurants.models import Restaurant
 # from cuisine.models import Cuisine
 
 class Booking(models.Model):
@@ -27,10 +27,9 @@ class Booking(models.Model):
     phone = PhoneField(blank=True, help_text='Contact phone number')
     email = models.EmailField(null=True)
     number_of_guests = models.IntegerField()
-    # restaurant = models.ForeignKey(
-    #     Restaurant, on_delete=models.CASCADE, related_name='bookings'
-    #     )
-    restaurant = models.CharField(max_length=100)
+    restaurants = models.ForeignKey(
+        Restaurant, on_delete=models.CASCADE, related_name='bookings'
+        )
     # cuisine = models.ForeignKey(
     #     Cuisine, on_delete=models.CASCADE, related_name='bookings'
     #     )

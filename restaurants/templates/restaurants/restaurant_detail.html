@@ -168,11 +168,12 @@
               </div><br>
               <div class="text-center">
                 <form method="POST">
+                  <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
                     {% csrf_token %}
                     {{ booking_form.as_p }}
                     {{ crispy_forms | crispy }}
                     <div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" style="width: 22rem;" class="btn btn-primary">Confirm Reservation</button>
                     </div>
                 </form>
             </div>

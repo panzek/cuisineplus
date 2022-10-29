@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Restaurant, Review, Menu
+from .models import Restaurant, Review, Reservation, Menu
 from django_summernote.admin import SummernoteModelAdmin
 
-# Register Restaurant, Menu, and review models.
+# Register Restaurant, Menu, Reservation, and review models.
 @admin.register(Restaurant)
 class RestaurantAdmin(SummernoteModelAdmin):
     """ Add Restaurant model to admin page"""
@@ -23,3 +23,10 @@ class ReviewAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
     list_filter = ('created_on', 'approve',)
     list_display = ('name', 'email', 'body', 'created_on', 'restaurants',)
+
+@admin.register(Reservation)
+class ReservationAdmin(SummernoteModelAdmin):
+    """ Add Reservation model to admin page"""
+    summernote_fields = ('additional_info',)
+    list_filter = ('name', 'number_of_guests', 'restaurants',)
+    list_display = ('name', 'number_of_guests', 'date', 'time', 'phone', 'additional_info', 'restaurants',)

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Restaurant, Review
+from .models import Restaurant, Review, Reservation
 
 class RestaurantForm(ModelForm):
     class Meta:
@@ -19,4 +19,15 @@ class ReviewForm(ModelForm):
             'name',
             'body', 
         ]
-        
+
+class ReservationForm(ModelForm):
+    class Meta:
+        model = Reservation
+        fields = [
+            'name', 
+            'number_of_guests', 
+            'date', 
+            'time', 
+            'phone', 
+            'additional_info'
+        ]    

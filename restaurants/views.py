@@ -17,7 +17,7 @@ class RestaurantDetail(generic.DetailView):
     model = Restaurant
     
     def get(self, request, *args, **kwargs):
-        print(self, request, args, kwargs)
+        # print(self, request, args, kwargs)
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
         reviews = Review.objects.filter(restaurants=restaurant)
 
@@ -92,7 +92,7 @@ class RestaurantDetail(generic.DetailView):
             "restaurants/restaurant_detail.html", 
             {
                 'restaurant': Restaurant,
-                'review': review,
+                # 'review': review,
                 "reviewed": True,
                 'bookings': Booking,
                 "review_form": ReviewForm(),

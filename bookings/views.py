@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Booking
+from restaurants.models import Restaurant
 from .forms import BookingForm
 from django.urls import reverse_lazy
 
@@ -22,6 +23,8 @@ class BookingList(generic.ListView):
         print(self, request, args, kwargs)
 
         bookings = Booking.objects.all()
+        restaurant = Restaurant.objects.get(pk=kwargs["pk"])
+        bookings = Booking.objects.filter(restaurants=restaurant)
         
         return render(
             request, 
@@ -29,6 +32,7 @@ class BookingList(generic.ListView):
             {
                 "booking_form": BookingForm(),
                 "bookings": bookings,
+                'restaurant': restaurant,
                 }
         )
 
@@ -62,26 +66,55 @@ class BookingList(generic.ListView):
     """
 
     def post(self, request):
+        booking_form = BookingForm(data=request.POST)
+        restaurant = Restaurant.objects.get(id=request.POST.get("restaurants"))
 
-        if request.method == 'POST':
-            booking_form = BookingForm(request.POST)
-            if booking_form.is_valid():
-                booking = booking_form.save(commit=False)
-                booking.booking_form = booking_form
-                booking.save()
-                return redirect('/')
-            else:
-                booking_form = BookingForm()
+        if booking_form.is_valid():
+            booking = booking_form.save(commit=False)
+            booking.email = request.user.email
+            booking.name = request.user.username
+            booking.restaurants = restaurant
+            # booking.booking_form = booking_form
+            booking_form.save()
+            return redirect('/')
+        else:
+            booking_form = BookingForm()
 
         return render(
             request, 
             "bookings/booking_detail.html", 
             {
+                "restaurant": Restaurant,
                 "booking_form": BookingForm()
             }
         )
 
- 
+# def post(self, request, pk, *args, **kwargs):
+#         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+#         review_form = ReviewForm(data=request.POST)
+#         if review_form.is_valid():
+#             review = review_form.save(commit=False)
+#             review.email = request.user.email
+#             review.name = request.user.username
+#             review.restaurants = restaurant
+#             review_form.save()
+#             return redirect('/')
+#         else:
+#             review_form = ReviewForm()
+
+#         return render(
+#             request, 
+#             "restaurants/restaurant_detail.html", 
+#             {
+#                 'restaurant': Restaurant,
+#                 'review': review,
+#                 "reviewed": True,
+#                 'bookings': Booking,
+#                 "review_form": ReviewForm(),
+#                 "booking_form": BookingForm()
+#             },
+#         )
+
 class BookingCreateView(CreateView):
     model = Booking
     form_class = BookingForm
