@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
-from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView, DeleteView
 from restaurants.models import Restaurant, Review, Reservation
 from .forms import ReviewForm, ReservationForm
 from bookings.forms import BookingForm
@@ -123,8 +124,6 @@ class ReservationList(generic.ListView):
         )
     
 
-    
-
 #  --- Reservation Update ---
 
 class ReservationUpdateView(UpdateView):
@@ -136,4 +135,7 @@ class ReservationUpdateView(UpdateView):
     def success(request):
         return render(request, '/')
 
-
+class ReservationDeleteView(DeleteView):
+    model = Reservation
+    template_name = 'restaurants/delete_reservation.html'
+    success_url = reverse_lazy('reservation')
