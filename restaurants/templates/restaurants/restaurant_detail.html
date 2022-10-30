@@ -182,6 +182,29 @@
         </div>
     </div> 
     </div>
+
+    <!-- Edit Reservation Form -->
+    <!-- <div class="card mx-auto text-center" style="width: 18rem;">
+      <div class="card-body">
+          {% for reservation in reservations %}
+          <div class="card-header">
+              <h5 class="card-title">Your Booking Detail:</h5>
+            </div>
+          <p class="card-text">First Name: {{ reservation.first_name }}</p>
+          <p class="card-text">Last Name: {{ reservation.last_name }}</p>
+          <p class="card-text">No. of Guests: {{ reservation.number_of_guests }}</p>
+          <p class="card-text">Date: {{ reservation.date }}</p>
+          <p class="card-text">Time: {{ reservation.time }}</p>
+          <p class="card-text">Phone: {{ reservation.phone }}</p>
+          <p class="card-text">Additional Info: {{ reservation.additional_info }}</p>
+          <div class="btn-group btn-group-justified">
+              <a href="{% url 'edit' reservation.pk %}" class="btn btn-info">Edit</a>
+              <a href="{% url 'delete' reservation.pk %}" class="btn btn-danger">Delete</a>
+          </div>
+          <hr> 
+          {% endfor %}
+      </div>
+  </div> -->
   </div>
 </div>
 {% endif %}

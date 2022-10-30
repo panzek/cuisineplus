@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="card mx-auto" style="width: 30rem;">
+    <div class="card-body">
+     
+        <div class="card-header text-center">
+            <h3 class="card-title">Edit Your Booking</h3>
+          </div><br>
+          <div class="text-center">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div>
+                    <button type="submit" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Edit Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div>
+    <h1>
+        You must be a registered user to access this page
+    </h1>
+</div>
+
+{% endif %}
+
+{% endblock %}

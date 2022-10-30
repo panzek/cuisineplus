@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
+from django.views.generic.edit import UpdateView
 from restaurants.models import Restaurant, Review, Reservation
 from .forms import ReviewForm, ReservationForm
 from bookings.forms import BookingForm
@@ -17,7 +18,6 @@ class RestaurantDetail(generic.DetailView):
     model = Restaurant
     
     def get(self, request, *args, **kwargs):
-        # print(self, request, args, kwargs)
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
         reviews = Review.objects.filter(restaurants=restaurant)
         reservations = Reservation.objects.filter(restaurants=restaurant)
@@ -42,41 +42,6 @@ class RestaurantDetail(generic.DetailView):
     Post data to database 
     """
 
-    # def post(self, request):
-    #     if request.method == 'POST':
-    #         review_form = ReviewForm(request.POST)
-    #         if review_form.is_valid():
-    #             review = review_form.save(commit=False)
-    #             review.review_form = review_form
-    #             review.save()
-    #             return redirect('/')
-    #         else:
-    #             review_form = ReviewForm()
-
-    #     return render(
-    #         request, 
-    #         "restaurants/restaurant_detail.html", 
-    #         {
-    #             "review_form": ReviewForm(),
-    #             "booking_form": BookingForm(),
-    #             "liked": liked,
-    #         },
-    #     )
-    
-    # def post(self, request, pk, *args, **kwargs):
-    #     restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
-    #     review_form = ReviewForm(data=request.POST)
-    #     if review_form.is_valid():
-    #         review_form.instance.email = request.user.email
-    #         review_form.instance.user = request.user.username 
-    #         review_form.instance.Restaurant = request.user
-    #         review = review_form.save(commit=False)
-    #         review.restaurant = Restaurant
-    #         review.save()
-    #         return redirect('/')
-    #     else:
-    #         review_form = ReviewForm()
-
     def post(self, request, pk, *args, **kwargs):
         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
         review_form = ReviewForm(data=request.POST)
@@ -95,15 +60,45 @@ class RestaurantDetail(generic.DetailView):
             "restaurants/restaurant_detail.html", 
             {
                 'restaurant': Restaurant,
-                # 'review': review,
+                # --- 'review': review, ---
                 "reviewed": True,
-                'bookings': Booking,
+                # 'bookings': Booking,
                 "review_form": ReviewForm(),
-                "booking_form": BookingForm()
             },
         )
     
-    # Reservation view 
+    # --- Reservation view ---
+    def post(self, request, pk, *args, **kwargs):
+        restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+        reservation_form = ReservationForm(data=request.POST)
+        if reservation_form.is_valid():
+            reservation = reservation_form.save(commit=False)
+            reservation.email = request.user.email
+            reservation.name = request.user.username
+            reservation.restaurants = restaurant
+            reservation_form.save()
+            return redirect('/')
+        else:
+            reservation_form = ReservationForm()
+
+        return render(
+            request, 
+            "restaurants/restaurant_detail.html", 
+            {
+                'restaurant': Restaurant,
+                "reservation_form": ReservationForm(),
+            },
+        )
+
+
+
+class ReservationList(generic.ListView):
+    model = Reservation
+    queryset: Restaurant.objects.all()
+    template_name = 'restaurants/reservation_list.html'
+    pagination = 8
+
+    # --- Reservation view ---
     def post(self, request, pk, *args, **kwargs):
         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
         reservation_form = ReservationForm(data=request.POST)
@@ -123,10 +118,22 @@ class RestaurantDetail(generic.DetailView):
             {
                 'restaurant': Restaurant,
                 'reservation': reservation,
-                # "reviewed": True,
-                # 'bookings': Booking,
                 "reservation_form": ReservationForm(),
-                # "booking_form": BookingForm()
             },
         )
+    
+
+    
+
+#  --- Reservation Update ---
+
+class ReservationUpdateView(UpdateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'restaurants/edit_reservation.html'
+    success_url = '/'
+    
+    def success(request):
+        return render(request, '/')
+
 
