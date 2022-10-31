@@ -1,13 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+{% load cloudinary %}  
 
 <div class="container-fluid">
     <div class="row">
+        <img class="hero-image" src="{{ home.hero_image.url }}" alt="Hero Image" width="100%">
 
         <!-- Restaurant Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
+                <p>Restaurant Entries</p>
+                
+                {% url 'reservation' %}
 
             </div>
         </div>
