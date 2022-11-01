@@ -118,7 +118,14 @@ class Reservation(models.Model):
     )
     name = models.CharField(max_length=100)
     phone = PhoneField(blank=True)
-    number_of_guests = models.IntegerField()
+    number_of_guests = models.PositiveSmallIntegerField(choices=(         
+    (1, '1'),         
+    (2, '2'),         
+    (3, '3'),         
+    (4, '4'),         
+    (5, '5'),         
+    (6, '6'),     
+    ))
     table_number = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
