@@ -65,8 +65,6 @@ class Menu(models.Model):
     ), null=True)
     status = models.IntegerField(choices=STATUS, default=0)
     cuisine_image = CloudinaryField('image', default='placeholder')
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-name"]
@@ -118,23 +116,16 @@ class Reservation(models.Model):
     )
     name = models.CharField(max_length=100)
     phone = PhoneField(blank=True)
-    number_of_guests = models.PositiveSmallIntegerField(choices=(         
-    (1, '1'),         
-    (2, '2'),         
-    (3, '3'),         
-    (4, '4'),         
-    (5, '5'),         
-    (6, '6'),     
-    ))
+    number_of_guests = models.IntegerField()
     table_number = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
     additional_info = models.CharField(max_length=250, null=True)
-    created_on = models.DateTimeField(auto_now_add=True, null=True)     
+    created_on = models.DateTimeField(auto_now_add=True, null=True) 
     updated_on = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
-        ordering = ["-date"]
+        ordering = ["name"]
 
     def __str__(self):
         return str(self.name)
