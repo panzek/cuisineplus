@@ -29,4 +29,14 @@ class ReservationAdmin(SummernoteModelAdmin):
     """ Add Reservation model to admin page"""
     summernote_fields = ('additional_info',)
     list_filter = ('name', 'number_of_guests', 'restaurants',)
-    list_display = ('name', 'number_of_guests', 'date', 'time', 'phone', 'additional_info', 'restaurants',)
+    list_display = (
+        'name', 
+        'number_of_guests', 
+        'date', 
+        'time', 
+        'phone', 
+        'additional_info', 
+        'created_on', 
+        'updated_on', 
+        'restaurants',
+    )
