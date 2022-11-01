@@ -125,7 +125,7 @@ class Reservation(models.Model):
     additional_info = models.CharField(max_length=250, null=True)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["-date"]
 
     def __str__(self):
         return str(self.name)
