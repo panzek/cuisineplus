@@ -167,13 +167,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static'), ]  # needs to be a tuple - note the extra comma
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]  # needs to be a tuple - note the extra comma
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static files (Images - Photos)
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
