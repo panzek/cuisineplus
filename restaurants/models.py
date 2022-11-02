@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from phone_field import PhoneField
+from django import forms
+from .widgets import FengyuanChenDatePickerInput
 
 class Restaurant(models.Model):
     '''Restaurant model
@@ -110,7 +112,11 @@ class Reservation(models.Model):
         time: Time of the booking
         additional_info: Any additional information provided
     '''
-    
+    date = forms.DateTimeField(
+            input_formats=['%d/%m/%Y %H:%M'],
+            widget=FengyuanChenDatePickerInput()
+        )
+
     restaurants = models.ForeignKey(
         Restaurant, on_delete=models.CASCADE, null=True, related_name='reservations'
     )
@@ -125,7 +131,7 @@ class Reservation(models.Model):
     updated_on = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["-created_on"]
 
     def __str__(self):
         return str(self.name)
