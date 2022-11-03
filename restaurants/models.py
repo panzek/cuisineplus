@@ -4,12 +4,14 @@ from cloudinary.models import CloudinaryField
 from phone_field import PhoneField
 from django import forms
 from .widgets import FengyuanChenDatePickerInput
+from multiselectfield import MultiSelectField
+
 
 class Restaurant(models.Model):
     '''Restaurant model
     ---
     Attributes:
-        name: Name of the restaurant 
+        name: Name of the restaurant
         reserve: Reservations made by guests
         avg_rating: Average number of ratings by customers
         location: Address of restaurant
@@ -18,7 +20,11 @@ class Restaurant(models.Model):
     '''
 
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=False, related_name='restaurants'
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=False,
+        related_name='restaurants'
         )
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
@@ -27,22 +33,36 @@ class Restaurant(models.Model):
     likes = models.ManyToManyField(
         User, related_name='restaurant_likes', blank=True
     )
+    CHOICES = (
+        (1, 'African'),
+        (2, 'Chinese'),
+        (3, 'Asian'),
+        (4, 'Irish'),
+        (5, 'Continental')
+    )
+    cuisine = MultiSelectField(
+        choices=CHOICES,
+        null=True,
+        max_choices=5,
+        max_length=11,
+        )
     featured_image = CloudinaryField()
 
     def __str__(self):
         return str(self.name)
-    
+
     def number_of_likes(self):
         return self.likes.count()
+
 
 class Menu(models.Model):
     '''Menu model
     ---
     Attributes:
-        name: Name of the cuisine 
+        name: Name of the cuisine
         menu: Details of the food to be served
         price: Price of the cuisine
-        cuisine: Type of cuisine such as Chinese, African, Irish, intercontinental
+        cuisine: Type of cuisine such as Chinese, African, Irish, continental
         status: States whether the cuisine is ready or not
         cuisine_image: Photo image of the cuisine
         created_on: Date and time created
@@ -50,7 +70,7 @@ class Menu(models.Model):
 
     '''
 
-    STATUS = ((0, "Not Ready"), (1, "Ready")) 
+    STATUS = ((0, "Not Ready"), (1, "Ready"))
 
     restaurant = models.ForeignKey(
         Restaurant, on_delete=models.CASCADE, related_name='restaurant_menu'
@@ -58,21 +78,15 @@ class Menu(models.Model):
     name = models.CharField(max_length=100, null=True)
     description = models.TextField(max_length=500, null=True)
     price = models.FloatField()
-    cuisine = models.PositiveSmallIntegerField(choices=(
-        (1, 'African'),
-        (2, 'Chinese'),
-        (3, 'Asian'),
-        (1, 'Irish'),
-        (1, 'Continental'),
-    ), null=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    cuisine_image = CloudinaryField('image', default='placeholder')
+    menu_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ["-name"]
 
     def __str__(self):
         return str(self.name)
+
 
 class Review(models.Model):
     '''Review model
@@ -100,6 +114,7 @@ class Review(models.Model):
     def __str__(self):
         return f"Review {self.body} by {self.name}"
 
+
 class Reservation(models.Model):
     '''Reservation model
     ---
@@ -118,7 +133,10 @@ class Reservation(models.Model):
         )
 
     restaurants = models.ForeignKey(
-        Restaurant, on_delete=models.CASCADE, null=True, related_name='reservations'
+        Restaurant,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='reservations'
     )
     name = models.CharField(max_length=100)
     phone = PhoneField(blank=True)
@@ -127,7 +145,7 @@ class Reservation(models.Model):
     date = models.DateField()
     time = models.TimeField()
     additional_info = models.CharField(max_length=250, null=True)
-    created_on = models.DateTimeField(auto_now_add=True, null=True) 
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
@@ -135,6 +153,3 @@ class Reservation(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-
-
