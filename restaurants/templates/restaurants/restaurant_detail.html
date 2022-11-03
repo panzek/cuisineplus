@@ -36,8 +36,8 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
+        <!-- Overview tab -->
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          
           <div class="container-fluid border-end"><br>
             <h5 class="card-title">{{ restaurant.name }}</h5>
             <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</p>
@@ -51,18 +51,7 @@
               tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
               quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
               sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-              recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
-              minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
-              quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
-              fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
-              consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-              doloremque. Quaerat provident commodi consectetur veniam similique ad 
-              earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
-              fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
-              suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-              modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
-              totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
-              quasi aliquam eligendi, placeat qui corporis!
+              recusandae alias error harum maxime adipisci amet laborum!
             </p>
             <div class="row">
               <div class="col-6">
@@ -71,24 +60,19 @@
                       <h5><i class="fa-solid fa-circle-check"></i> Cuisines</h5>
                       <h5><i class="fa-solid fa-circle-check"></i> African</h5>
                       <h5><i class="fa-solid fa-circle-check"></i> Chinese</h5>
-                      <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>
-                        
+                      <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>  
                     </div><br>
                 </div>
               </div>
               <div class="col-6 ">
-              <!-- <hr /> -->
                 <h5><i class="fa-regular fa-clock"></i></i> Operation Hours</h5>
                 <h5><i class="fa-solid fa-phone"></i> Phone Numbers</h5>
                 <h6><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</h6>
-            
               </div>
             </div>
           </div>
-
-
         </div>
-        
+        <!-- Review tab -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <div class="container-fluid ">
             <div class="row ">
@@ -153,10 +137,27 @@
             </div>
           </div>
         </div>
-
+        <!-- Menu tab -->
         <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
           <div class="border-end">
-            Menu 
+            <!-- Bootstrap tab with vertical message  -->
+            <div class="d-flex align-items-start">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Food</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</button>
+              </div>
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                  Assorted Chicken
+                  <hr>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                  Suya, Assorted Chicken
+                  <hr>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
