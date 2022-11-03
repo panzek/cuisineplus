@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django import forms
 from .models import Restaurant, Review, Reservation
 
 class RestaurantForm(ModelForm):
@@ -21,6 +22,9 @@ class ReviewForm(ModelForm):
         ]
 
 class ReservationForm(ModelForm):
+    name = forms.CharField(widget=forms.Textarea(attrs={'rows': 1}))
+    additional_info = forms.CharField(widget=forms.Textarea(attrs={'rows': 5}))
+
     class Meta:
         model = Reservation
         fields = [

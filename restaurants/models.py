@@ -144,7 +144,7 @@ class Reservation(models.Model):
     table_number = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
-    additional_info = models.CharField(max_length=250, null=True)
+    additional_info = models.TextField(max_length=150, null=True)
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, null=True)
 
