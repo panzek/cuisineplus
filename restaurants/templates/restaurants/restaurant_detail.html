@@ -16,9 +16,6 @@
                 <img src="{{ restaurant.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
-            <!-- <h5 class="card-title">{{ restaurant.name }}</h5>
-            <span class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}  | <i class="fa-regular fa-clock"></i> {{ restaurant.review }} | {{ restaurant.cuisine }} | <i class="far fa-heart"></i>{{ restaurant.rating }}</span>
-            <hr /> -->
         </div>
     </div>
 </div>
@@ -27,7 +24,7 @@
   <div class="row border-end">
     
     <!-- togglebar -->
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Overview</button>
@@ -36,42 +33,70 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
+
         <!-- Overview tab -->
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <div class="container-fluid border-end"><br>
-            <h5 class="card-title">{{ restaurant.name }}</h5>
-            <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-              molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-              numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-              optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-              obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-              nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-              tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-              quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-              sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-              recusandae alias error harum maxime adipisci amet laborum!
-            </p>
-            <div class="row">
+            <div class="row ">
+              <!-- Restaurant Overview -->
               <div class="col-6">
-                <div class="card-body">
-                    <div class="reviews" style="padding: 10px;">
-                      <h5><i class="fa-solid fa-circle-check"></i> Cuisines</h5>
-                      <h5><i class="fa-solid fa-circle-check"></i> African</h5>
-                      <h5><i class="fa-solid fa-circle-check"></i> Chinese</h5>
-                      <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>  
-                    </div><br>
+                <h5 class="card-title">{{ restaurant.name }}</h5>
+                <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                  molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                  numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                  optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                  obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                  nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                  tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                  quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+                  sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                  recusandae alias error harum maxime adipisci amet laborum!
+                </p>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="card-body">
+                        <div class="reviews" style="padding: 10px;">
+                          <h5><i class="fa-solid fa-circle-check"></i> Cuisines</h5>
+                          <h5><i class="fa-solid fa-circle-check"></i> African</h5>
+                          <h5><i class="fa-solid fa-circle-check"></i> Chinese</h5>
+                          <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>  
+                        </div><br>
+                    </div>
+                  </div>
+                  <div class="col-6 ">
+                    <h5><i class="fa-regular fa-clock"></i></i> Operation Hours</h5>
+                    <h5><i class="fa-solid fa-phone"></i> Phone Numbers</h5>
+                    <h6><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</h6>
+                  </div>
+              </div>
+              </div>
+              <!-- Booking form -->
+              <div class="col-6">
+                  <div class="card mx-auto" style="width: 25rem;">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <h3 class="card-title">Make a Booking</h3>
+                          </div><br>
+                          <div class="text-center">
+                            <form method="POST">
+                              <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
+                                {% csrf_token %}
+                                {{ reservation_form.as_p }}
+                                {{ crispy_forms | crispy }}
+                                <div>
+                                    <button type="submit" style="width: 22rem;" class="btn btn-primary">Confirm Reservation</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> 
                 </div>
-              </div>
-              <div class="col-6 ">
-                <h5><i class="fa-regular fa-clock"></i></i> Operation Hours</h5>
-                <h5><i class="fa-solid fa-phone"></i> Phone Numbers</h5>
-                <h6><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</h6>
-              </div>
             </div>
           </div>
         </div>
+
         <!-- Review tab -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <div class="container-fluid ">
@@ -137,6 +162,7 @@
             </div>
           </div>
         </div>
+
         <!-- Menu tab -->
         <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
           <div class="border-end">
@@ -162,28 +188,6 @@
         </div>
       </div>
     </div>
-  
-    <!-- Booking form -->
-    <div class="col-sm-4">
-      <div class="card mx-auto" style="width: 25rem;">
-        <div class="card-body">
-            <div class="card-header text-center">
-                <h3 class="card-title">Make a Booking</h3>
-              </div><br>
-              <div class="text-center">
-                <form method="POST">
-                  <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
-                    {% csrf_token %}
-                    {{ reservation_form.as_p }}
-                    {{ crispy_forms | crispy }}
-                    <div>
-                        <button type="submit" style="width: 22rem;" class="btn btn-primary">Confirm Reservation</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> 
-    </div>
     <script>
       $(function () {
         $("#id_date").datepicker({
@@ -191,29 +195,6 @@
         });
       });
     </script>
-
-    <!-- Edit Reservation Form -->
-    <!-- <div class="card mx-auto text-center" style="width: 18rem;">
-      <div class="card-body">
-          {% for reservation in reservations %}
-          <div class="card-header">
-              <h5 class="card-title">Your Booking Detail:</h5>
-            </div>
-          <p class="card-text">First Name: {{ reservation.first_name }}</p>
-          <p class="card-text">Last Name: {{ reservation.last_name }}</p>
-          <p class="card-text">No. of Guests: {{ reservation.number_of_guests }}</p>
-          <p class="card-text">Date: {{ reservation.date }}</p>
-          <p class="card-text">Time: {{ reservation.time }}</p>
-          <p class="card-text">Phone: {{ reservation.phone }}</p>
-          <p class="card-text">Additional Info: {{ reservation.additional_info }}</p>
-          <div class="btn-group btn-group-justified">
-              <a href="{% url 'edit' reservation.pk %}" class="btn btn-info">Edit</a>
-              <a href="{% url 'delete' reservation.pk %}" class="btn btn-danger">Delete</a>
-          </div>
-          <hr> 
-          {% endfor %}
-      </div>
-  </div> -->
   </div>
 </div>
 {% endif %}
