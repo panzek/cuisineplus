@@ -42,6 +42,16 @@ class Restaurant(models.Model):
         (5, 'Continental')
     )
     cuisine = models.PositiveSmallIntegerField(choices=CUISINE_TYPES, null=True)
+
+    OPERATION_HOURS = (
+        (1, '11:00am - 08:00pm'),
+        (2, '12:00am - 08:00pm'),
+        (3, '12:00am - 10:00pm'),
+        (4, '01:00pm - 09:00pm'),
+        (5, '03:00pm - 09:00pm'),
+        (6, '03:00pm - 10:00pm'),
+    )
+    time = models.PositiveSmallIntegerField(choices=OPERATION_HOURS, null=True)
     
     featured_image = CloudinaryField()
 

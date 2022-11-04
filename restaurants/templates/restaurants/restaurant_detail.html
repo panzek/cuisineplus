@@ -66,9 +66,9 @@
                     </div>
                   </div>
                   <div class="col-6 ">
-                    <h5><i class="fa-regular fa-clock"></i></i> Operation Hours</h5>
-                    <h5><i class="fa-solid fa-phone"></i> Phone Numbers</h5>
-                    <h6><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</h6>
+                    <p><i class="fa-regular fa-clock"></i> <strong>Open Hours:</strong> {{ restaurant.get_time_display }}</p>
+                    <p><i class="fa-solid fa-phone"></i> <strong>Phone Numbers:</strong> {{ restaurant.phone }} </p>
+                    <p><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> {{ restaurant.address }}</p>
                   </div>
               </div>
               </div>
