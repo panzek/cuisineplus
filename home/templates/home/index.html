@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <img class="hero-image" src="{{ restaurant.featured_image.url }}" format="jpg" width="100%" height=220 crop="fill" >
+        <img class="hero-image" src="{% cloudinary restaurant.featured_image.url %}" format="jpg" width="100%" height=220 crop="fill" >
     
         <!-- Restaurant Entries Column -->
         <div class="col-12 mt-3 left">
@@ -28,7 +28,8 @@
                             <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
                                 <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span><br>
                                 <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.cuisine }}</span>
+                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.time }}</span><br>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span>
                             </a>
                             <hr />
                             <span class="btn btn-primary">  reservation</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>

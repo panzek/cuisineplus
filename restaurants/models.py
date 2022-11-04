@@ -4,7 +4,7 @@ from cloudinary.models import CloudinaryField
 from phone_field import PhoneField
 from django import forms
 from .widgets import FengyuanChenDatePickerInput
-from multiselectfield import MultiSelectField
+
 
 
 class Restaurant(models.Model):
@@ -29,23 +29,20 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
     reserve = models.CharField(max_length=100, null=True)
+    description = models.TextField(max_length=500, null=True)
     rating = models.IntegerField(blank=True)
     likes = models.ManyToManyField(
         User, related_name='restaurant_likes', blank=True
     )
-    CHOICES = (
+    CUISINE_TYPES = (
         (1, 'African'),
         (2, 'Chinese'),
         (3, 'Asian'),
         (4, 'Irish'),
         (5, 'Continental')
     )
-    cuisine = MultiSelectField(
-        choices=CHOICES,
-        null=True,
-        max_choices=5,
-        max_length=11,
-        )
+    cuisine = models.PositiveSmallIntegerField(choices=CUISINE_TYPES, null=True)
+    
     featured_image = CloudinaryField()
 
     def __str__(self):
