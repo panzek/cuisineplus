@@ -25,3 +25,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('summernote/', include('django_summernote.urls')),
 ]
+
+handler404 = "cuisine_plus.views.page_not_found_view"
