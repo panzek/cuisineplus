@@ -58,6 +58,16 @@ main {
     width: 350px;
 }
 
+.page-not-found {
+    display: flex;
+    flex-direction: column;
+    font-family: 'poppins', sans-serif;
+    font-size: 3em;
+    margin: auto;
+    padding: 1em;
+    text-align: center;
+}
+
 /* Footer */
 footer {
     display: flex;
