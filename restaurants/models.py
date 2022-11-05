@@ -156,7 +156,7 @@ class Reservation(models.Model):
     updated_on = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
-        ordering = ["-created_on"]
+        ordering = ["created_on"]
 
     def __str__(self):
         return str(self.name)

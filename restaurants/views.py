@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.conf import settings
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
@@ -16,7 +15,7 @@ class RestaurantList(generic.ListView):
     template_name = 'restaurants/restaurant_list.html'
     pagination = 8
 
-# @login_required
+
 class RestaurantDetail(generic.DetailView):
     
     model = Restaurant
@@ -37,36 +36,14 @@ class RestaurantDetail(generic.DetailView):
             "booking_form": BookingForm(),
         }
 
-        return render(request, 'restaurants/restaurant_detail.html', context)
+        return render(
+            request, 
+            'restaurants/restaurant_detail.html',
+            context)
     
     """
     Post data to database 
     """
-
-    # def post(self, request, pk, *args, **kwargs):
-    #     restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
-    #     review_form = ReviewForm(data=request.POST)
-    #     if review_form.is_valid():
-    #         review = review_form.save(commit=False)
-    #         review.email = request.user.email
-    #         review.name = request.user.username
-    #         review.restaurants = restaurant
-    #         review_form.save()
-    #         return redirect('/')
-    #     else:
-    #         review_form = ReviewForm()
-
-    #     return render(
-    #         request, 
-    #         "restaurants/restaurant_detail.html", 
-    #         {
-    #             'restaurant': Restaurant,
-    #             ---- 'review': review, ----
-    #             'reviewed': True,
-    #             'review_form': ReviewForm(),
-    #         },
-    #     )
-    
     # --- Review and Reservation view ---
     def post(self, request, pk, *args, **kwargs):
         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
@@ -102,42 +79,13 @@ class RestaurantDetail(generic.DetailView):
         )
 
 
-    
 class ReservationList(generic.ListView):
     model = Reservation
-    queryset = Restaurant.objects.all()
+    queryset: Restaurant.objects.all()
     template_name = 'restaurants/reservation_list.html'
     pagination = 8
 
-    # --- Reservation view ---
-    # def post(self, request, pk, *args, **kwargs):
-    #     restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
-    #     reservation_form = ReservationForm(data=request.POST)
-    #     if reservation_form.is_valid():
-    #         reservation = reservation_form.save(commit=False)
-    #         reservation.email = request.user.email
-    #         reservation.name = request.user.username
-    #         reservation.restaurants = restaurant
-    #         reservation_form.save()
-    #         return redirect('/')
-    #     else:
-    #         reservation_form = ReservationForm()
-
-    #     return render(
-    #         request, 
-    #         "restaurants/restaurant_detail.html", 
-    #         {
-    #             'restaurant': Restaurant,
-    #             'reservation': reservation,
-    #             "reservation_form": ReservationForm(),
-    #         },
-    #     )
-    
-    
-
-
 #  --- Reservation Update ---
-
 class ReservationUpdateView(UpdateView):
     model = Reservation
     form_class = ReservationForm
@@ -147,7 +95,18 @@ class ReservationUpdateView(UpdateView):
     def success(request):
         return render(request, '/')
 
-class ReservationDeleteView(DeleteView):
+
+class ReservationDeleteView(PermissionRequiredMixin, DeleteView):
     model = Reservation
     template_name = 'restaurants/delete_reservation.html'
     success_url = reverse_lazy('reservation')
+    permission_required = ('reservation.delete_reservation')
+
+    def has_permission(self):
+        has_perms = super().has_permission()
+        self.object = self.get_object()
+        author = self.object.author == self.request.user  
+        return author
+
+
+
