@@ -9,14 +9,15 @@
 
 {% if user.is_authenticated %}
 
+
 <div class="card mx-auto" style="width: 30rem;">
     <div class="card-body">
-     
+        {% if request.user == creator %}
         <div class="card-header text-center">
           <div class="text-center">
             <form method="POST">
                 {% csrf_token %}
-                <h4>{{ reservation }}, are you sure you want to delete your booking?</h4>
+                <h4>{{ user }}, are you sure you want to delete your booking?</h4>
                 <p>Your booking and its related items will be deleted.</p>
                 <div>
                     <p>
@@ -25,7 +26,13 @@
                     </p>
                 </div>
             </form>
+            
+            <!-- {% endif %} -->
+            
         </div>
+        <!-- {% if request.user != creator %} 
+            <h3>You cannot delete this Reservation</h3> 
+        {% endif %} -->
     </div>
 </div>
 

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
@@ -7,13 +9,14 @@ from .forms import ReviewForm, ReservationForm
 from bookings.forms import BookingForm
 from bookings.models import Booking
 
+
 class RestaurantList(generic.ListView):
     model = Restaurant
     queryset: Restaurant.objects.all()
     template_name = 'restaurants/restaurant_list.html'
     pagination = 8
 
-
+# @login_required
 class RestaurantDetail(generic.DetailView):
     
     model = Restaurant
@@ -34,10 +37,7 @@ class RestaurantDetail(generic.DetailView):
             "booking_form": BookingForm(),
         }
 
-        return render(
-            request, 
-            'restaurants/restaurant_detail.html',
-            context)
+        return render(request, 'restaurants/restaurant_detail.html', context)
     
     """
     Post data to database 
@@ -105,7 +105,7 @@ class RestaurantDetail(generic.DetailView):
     
 class ReservationList(generic.ListView):
     model = Reservation
-    queryset: Restaurant.objects.all()
+    queryset = Restaurant.objects.all()
     template_name = 'restaurants/reservation_list.html'
     pagination = 8
 

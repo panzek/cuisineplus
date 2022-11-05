@@ -14,8 +14,8 @@
       <h3>{% trans "Sign In" %}</h3>
 
 
-<p>{% blocktrans %}Welcome to CuisinePlus. To make a reservation in your favourite 
-  restaurant, please log in. If you have not created an account yet, then 
+<p>{% blocktrans %}To make a reservation and/or view restaurants, 
+  please log in. If you have not created an account yet, then 
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 
   </div>
@@ -29,7 +29,7 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+  <button class="btn btn-primary right" type="submit">{% trans "Sign In" %}</button>
 </form>
     </div>
   </div>
