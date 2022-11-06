@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings 
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -24,6 +26,6 @@ urlpatterns = [
     path('restaurants/', include('restaurants.urls')),
     path('accounts/', include('allauth.urls')),
     path('summernote/', include('django_summernote.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = "cuisine_plus.views.page_not_found_view"
