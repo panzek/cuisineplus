@@ -7,24 +7,35 @@ class RestaurantForm(ModelForm):
     class Meta:
         model = Restaurant
         fields = [
-            'name', 
-            'address', 
-            'reserve', 
+            'name',
+            'address',
+            'reserve',
             'rating',
-            'featured_image', 
+            'featured_image',
         ]
+
+
+# class MenuForm(ModelForm):
+#     class Meta:
+#         model = Restaurant
+#         fields = [
+#             'name',
+#             'description',
+#             'body',
+#             'price',
+#             'menu_image',
+#         ]
 
 
 class ReviewForm(ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}))
     body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Write a Review'}))
 
-
     class Meta:
         model = Review
         fields = [
             'name',
-            'body', 
+            'body',
         ]
 
 
@@ -38,10 +49,10 @@ class ReservationForm(ModelForm):
     class Meta:
         model = Reservation
         fields = [
-            'name', 
-            'number_of_guests', 
-            'date', 
-            'time', 
-            'phone', 
+            'name',
+            'number_of_guests',
+            'date',
+            'time',
+            'phone',
             'additional_info'
-        ]    
+        ]

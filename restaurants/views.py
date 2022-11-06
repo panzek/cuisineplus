@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
-from restaurants.models import Restaurant, Review, Reservation
+from restaurants.models import Restaurant, Review, Reservation, Menu
 from .forms import ReviewForm, ReservationForm
 from bookings.forms import BookingForm
 from bookings.models import Booking
@@ -24,11 +24,13 @@ class RestaurantDetail(generic.DetailView):
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
         reviews = Review.objects.filter(restaurants=restaurant)
         reservations = Reservation.objects.filter(restaurants=restaurant)
+        menus = Menu.objects.filter(restaurants=restaurant)
 
         context = {
             'restaurant': restaurant,
             'reviews': reviews,
             'reservations': reservations,
+            'menus': menus,
             "reviewed": False,
             'bookings': Booking,
             "review_form": ReviewForm(),

@@ -66,26 +66,22 @@ class Menu(models.Model):
     '''Menu model
     ---
     Attributes:
-        name: Name of the cuisine
+        name: Name of the menu
         menu: Details of the food to be served
-        price: Price of the cuisine
-        cuisine: Type of cuisine such as Chinese, African, Irish, continental
-        status: States whether the cuisine is ready or not
-        cuisine_image: Photo image of the cuisine
+        price: Price of the menu
+        menu_image: Photo image of the menu
         created_on: Date and time created
         updated_on: Date and time updated
 
     '''
 
-    STATUS = ((0, "Not Ready"), (1, "Ready"))
-
-    restaurant = models.ForeignKey(
-        Restaurant, on_delete=models.CASCADE, related_name='restaurant_menu'
+    restaurants = models.ForeignKey(
+        Restaurant, on_delete=models.CASCADE, related_name='menus'
     )
     name = models.CharField(max_length=100, null=True)
     description = models.TextField(max_length=500, null=True)
+    body = models.TextField(max_length=500, null=True)
     price = models.FloatField()
-    status = models.IntegerField(choices=STATUS, default=0)
     menu_image = CloudinaryField('image', default='placeholder')
 
     class Meta:

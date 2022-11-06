@@ -3,6 +3,8 @@ from .models import Restaurant, Review, Reservation, Menu
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register Restaurant, Menu, Reservation, and review models.
+
+
 @admin.register(Restaurant)
 class RestaurantAdmin(SummernoteModelAdmin):
     """ Add Restaurant model to admin page"""
@@ -10,12 +12,13 @@ class RestaurantAdmin(SummernoteModelAdmin):
     list_display = ('name', 'address', 'rating',)
     search_fields = ('name', 'Restaurant',)
 
+
 @admin.register(Menu)
 class MenuAdmin(SummernoteModelAdmin):
     """ Add Menu model to admin page"""
-    list_filter = ('status',)
-    list_display = ('name', 'price', 'status',)
-    search_fields = ('date', 'time', 'number_of_guests', 'cuisine',)
+    list_filter = ('name',)
+    list_display = ('name', 'price', 'description', 'body', 'restaurants',)
+
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
@@ -24,19 +27,21 @@ class ReviewAdmin(SummernoteModelAdmin):
     list_filter = ('created_on', 'approve',)
     list_display = ('name', 'email', 'body', 'created_on', 'restaurants',)
 
+
 @admin.register(Reservation)
 class ReservationAdmin(SummernoteModelAdmin):
     """ Add Reservation model to admin page"""
     summernote_fields = ('additional_info',)
     list_filter = ('name', 'restaurants',)
     list_display = (
-        'name', 
-        'number_of_guests', 
-        'date', 
-        'time', 
-        'phone', 
-        'additional_info', 
-        'created_on', 
-        'updated_on', 
+        'name',
+        'number_of_guests',
+        'date',
+        'time',
+        'phone',
+        'additional_info',
+        'created_on',
+        'updated_on',
         'restaurants',
     )
+    
