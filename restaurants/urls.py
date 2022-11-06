@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import RestaurantList, RestaurantDetail, ReservationList, ReservationUpdateView, ReservationDeleteView
+from .views import RestaurantList, RestaurantDetail, ReservationList, MenuList, ReservationUpdateView, ReservationDeleteView
 
 urlpatterns = [
     path(
@@ -36,5 +36,11 @@ urlpatterns = [
         'delete_reservation/<pk>', 
         ReservationDeleteView.as_view(), 
         name='delete'
+        ),
+    
+     path(
+        'menu_list.html/', 
+        MenuList.as_view(), 
+        name='menu'
         ),
 ]

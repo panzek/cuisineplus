@@ -4,7 +4,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from restaurants.models import Restaurant, Review, Reservation, Menu
-from .forms import ReviewForm, ReservationForm
+from .forms import ReviewForm, ReservationForm, MenuForm
 from bookings.forms import BookingForm
 from bookings.models import Booking
 
@@ -34,6 +34,7 @@ class RestaurantDetail(generic.DetailView):
             "reviewed": False,
             'bookings': Booking,
             "review_form": ReviewForm(),
+            "menu_form": MenuForm(),
             "reservation_form": ReservationForm(),
             "booking_form": BookingForm(),
         }
@@ -70,6 +71,16 @@ class RestaurantDetail(generic.DetailView):
             return redirect('/')
         else:
             review_form = ReviewForm()
+        
+        if menu_form.is_valid():
+            menu = menu_form.save(commit=False)
+            menu.email = request.user.email
+            menu.name = request.user.username
+            menu.restaurants = restaurant
+            menu_form.save()
+            return redirect('/')
+        else:
+            menu_form = MenuForm()
 
         return render(
             request, 
@@ -79,6 +90,13 @@ class RestaurantDetail(generic.DetailView):
                 "reservation_form": ReservationForm(),
             },
         )
+
+
+class MenuList(generic.ListView):
+    model = Menu
+    queryset: Restaurant.objects.all()
+    template_name = 'restaurants/menu_list.html'
+    pagination = 8
 
 
 class ReservationList(generic.ListView):

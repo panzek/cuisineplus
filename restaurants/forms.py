@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Restaurant, Review, Reservation
+from .models import Restaurant, Review, Reservation, Menu
 
 
 class RestaurantForm(ModelForm):
@@ -15,16 +15,18 @@ class RestaurantForm(ModelForm):
         ]
 
 
-# class MenuForm(ModelForm):
-#     class Meta:
-#         model = Restaurant
-#         fields = [
-#             'name',
-#             'description',
-#             'body',
-#             'price',
-#             'menu_image',
-#         ]
+class MenuForm(ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}))
+    body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Write a menu List'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Describe the menu'}))
+    class Meta:
+        model = Menu
+        fields = [
+            'name',
+            'description',
+            'body',
+            'price',
+        ]
 
 
 class ReviewForm(ModelForm):
