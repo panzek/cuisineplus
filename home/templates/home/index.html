@@ -11,40 +11,39 @@
         </div>
     </div>
     
-        <!-- Restaurant Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                <p>Featured Restaurants</p>
-
-                {% for restaurant in restaurant_list %}
-                <div class="col-md-2">
-                    <div class="shadow-sm card mb-2">
-                        <div class="card-body mb-2" >
-                            <div class="image-container">
-                                {% if "placeholder" in restaurant.image.url %}
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                {% else %}
-                                <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
-                                {% endif %}
-                            </div>
-                            <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
-                                <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span><br>
-                                <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span>
-                            </a>
-                            <hr />
-                            <span class="btn btn-primary">  reservation</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+    <!-- Restaurant Entries Column -->
+    <div class="col-12 mt-3 left">
+        <div class="row">
+            <h6>Featured Restaurants</h6>
+            {% for restaurant in restaurant_list %}
+            <div class="col-md-3">
+                <div class="shadow-sm card mb-2">
+                    <div class="card-body mb-2" >
+                        <div class="image-container">
+                            {% if "placeholder" in restaurant.image.url %}
+                            <img class="card-img-top"
+                                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                            {% else %}
+                            <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
+                            {% endif %}
                         </div>
+                        <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
+                            <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span>
+                            <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
+                            <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
+                            <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span><br>
+                            <span class="card-text small text-muted"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+                        </a>
                     </div>
                 </div>
-                {% endfor %}
-
             </div>
+            {% if forloop.counter|divisibleby:6 %}
         </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>   
     </div>
-
 </div>
 
 {%endblock%}

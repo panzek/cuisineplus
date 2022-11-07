@@ -14,6 +14,10 @@
     --content-text: 'Roboto', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: var(--off-white);
     display: flex;
@@ -24,8 +28,12 @@ body {
 }
 
 main {
-    /* height: 100%; */
     flex: 1 0 auto;
+}
+
+/* Navigation bar  */
+.navbar {
+    padding: 5px 35px 5px;
 }
 
 .nav-link {
@@ -37,6 +45,11 @@ main {
     color: green;
 }
 
+h6 {
+    font: italic 600 1rem roboto;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}
 
   /* Cloudinary images  */
 
@@ -75,6 +88,11 @@ main {
 }
 
  /* End of Cloudinary images  */
+
+ /* Accounts form  */
+
+ /* Accounts form ends */
+
 
 .page-not-found {
     display: flex;

@@ -6,13 +6,19 @@
 {% if user.is_authenticated %}
 
 <div class="container-fluid">
-    <h6>Restaurants</h6>
+    <div class="row">
+        <div class="hero-image" >
+            <h2 class="hero-image-text"> <em>Find a Restaurant</em></h2>
+        </div>
+    </div>
     <hr />
+    <h6 class="featured-restaurants">Featured Restaurants</h6>
+    <!-- <hr /> -->
     <div class="row" id="">
         <div class="col-12 left" >
             <div class="row" >
                 {% for restaurant in restaurant_list %}
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="shadow-sm card mb-2">
                         <div class="card-body mb-2" >
                             <div class="image-container">
@@ -24,12 +30,14 @@
                                 {% endif %}
                             </div>
                             <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
-                                <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span><br>
+                                <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span>
                                 <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.cuisine }}</span>
+                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span><br>
+                                <span class="card-text small text-muted"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
                             </a>
                             <hr />
-                            <span class="btn btn-primary">reservation</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+                            <!-- <span class="btn btn-primary">reservation</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span> -->
                         </div>
                     </div>
                 </div>
