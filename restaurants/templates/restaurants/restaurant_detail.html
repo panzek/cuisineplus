@@ -15,7 +15,13 @@
                 <div class="row">
                   <div >
                     <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
-                    <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>
+                    <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>  
+                    <div>
+                      <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span> |
+                      <span class="card-text small"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span> |
+                      <span class="card-text small"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span> |
+                      <span class="card-text small"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+                    </div>
                   </div>
                 </div>
                 {% endif %}
