@@ -76,7 +76,16 @@ h6 {
     /* margin-top: 10; */
     max-width: 100%;
     height: auto;  
+    position: relative;
+}
 
+.img-restaurant-detail-text {
+    font-size: 2em;
+    padding: 1em;
+    position: absolute;
+    top: 35%;
+    left: 16px;
+    transform: translate(-10%, -10%);
 }
 
 .menu-image {
@@ -93,6 +102,9 @@ h6 {
 
  /* Accounts form ends */
 
+button#v-pills-home-tab {
+    border: 1px dotted;
+}
 
 .page-not-found {
     display: flex;

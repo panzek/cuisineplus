@@ -12,10 +12,12 @@
                 {% if "placeholder" in restaurant.image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
                 {% else %}
-                <p >
-                  <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}"  >
-                </p>
-                
+                <div class="row">
+                  <div >
+                    <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
+                    <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>
+                  </div>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -176,56 +178,41 @@
                 <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</button>
               </div>
               <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                  <!-- First Accordion  -->
-                  <div class="accordion" id="accordionExample">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">                  
+                  <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <!-- First Accordion  -->
                     <div class="accordion-item">
-                      
-                      <h2 class="accordion-header" id="headingOne">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Menu Image 
+                          Menu Image
                         </button>
                       </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
                           <div class="reviews" style="padding: 10px;">
-                              <p class="font-weight-bold menu-image">
-                              </p>
-                          </div>
-                          <div>{{ menu.body }}</div>
+                            <p class="font-weight-bold menu-image">
+                            </p>
+                        </div>
+                        <div>{{ menu.body }}</div>
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Menu List 
-                        </button>
-                      </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          {{ menu.body }}
-                        </div>
-                      </div>
-                    </div> -->
+                     <!-- Second Accordion  -->
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                           Menu Description
                         </button>
                       </h2>
-                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
-                          {{ menu.description }}  
+                          <div><strong>Menu</strong></div> 
+                          <div>Served Mon-Fri from <strong>{{ restaurant.get_time_display }}</strong></div>
+                          {{ menu.description }}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <hr>
-                </div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                  Suya, Assorted Chicken
-                  <hr>
                 </div>
               </div>
             </div>
