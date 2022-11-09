@@ -24,7 +24,7 @@
                             <img class="card-img-top"
                                 src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                             {% else %}
-                            <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
+                            <img class="card-img-top img-restaurant-list" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
                             {% endif %}
                         </div>
                         <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
