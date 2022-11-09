@@ -32,12 +32,10 @@
                             <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
                                 <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span>
                                 <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span><br>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }} </span><br>
                                 <span class="card-text small text-muted"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
                             </a>
-                            <hr />
-                            <!-- <span class="btn btn-primary">reservation</span> | <span class="card-text text-muted h6"><i class="far fa-heart"></i>{{ restaurant.rating }}</span> -->
                         </div>
                     </div>
                 </div>

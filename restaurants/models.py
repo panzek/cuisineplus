@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 from phone_field import PhoneField
 from django import forms
 from .widgets import FengyuanChenDatePickerInput
+from multiselectfield import MultiSelectField
 
 
 
@@ -41,7 +42,7 @@ class Restaurant(models.Model):
         (4, 'Irish'),
         (5, 'Continental')
     )
-    cuisine = models.PositiveSmallIntegerField(choices=CUISINE_TYPES, null=True)
+    cuisine = MultiSelectField(choices=CUISINE_TYPES, max_choices=5, max_length=5, null=True)
 
     OPERATION_HOURS = (
         (1, '11:00am - 08:00pm'),
