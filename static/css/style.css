@@ -145,6 +145,11 @@ h6 {
     color: #000
  }
 
+ .messages {
+    background-color: #c3b091;
+    border: 1px solid 
+ }
+
   /* reservations end */
 
 button#v-pills-home-tab {

@@ -77,6 +77,14 @@
                         <div class="card-header text-center">
                             <h3 class="card-title">Make a Booking</h3>
                           </div><br>
+                          {% if messages %}
+                          {% for message in messages %}
+                          <div class="alert alert-success" role="alert">
+                            {{ message }}
+                          </div>
+                          <!-- <div class="messages"> {{ message }} </div> -->
+                          {% endfor %}
+                          {% endif %}
                           <div class="text-center">
                             <form method="POST">
                               <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">

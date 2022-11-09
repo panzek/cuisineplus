@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
@@ -57,6 +58,7 @@ class RestaurantDetail(generic.DetailView):
             reservation.name = request.user.username
             reservation.restaurants = restaurant
             reservation_form.save()
+            messages.success(request, "Your reservation successfully submitted")
             return redirect('/')
         else:
             reservation_form = ReservationForm()
