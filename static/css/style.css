@@ -132,6 +132,20 @@ h6 {
 
  /* Accounts form ends */
 
+ /* reservations  */
+
+ .mx-auto {
+    margin-top: 50px;
+ }
+
+ .cancel-button {
+    border: 1px solid #a8a8a8;
+    background-color:#f5f5f5;
+    color: #000
+ }
+
+  /* reservations end */
+
 button#v-pills-home-tab {
     border: 1px dotted;
 }
