@@ -14,7 +14,7 @@
     <!-- Restaurant Entries Column -->
     <div class="col-12 mt-3 left">
         <div class="row">
-            <h6>Featured Restaurants<span>&raquo;</span></h6>
+            <h6>Featured Restaurants <span>&raquo;</span></h6>
             {% for restaurant in restaurant_list %}
             <div class="col-md-3">
                 <div class="shadow-sm card mb-2">
@@ -29,10 +29,10 @@
                         </div>
                         <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
                             <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span>
-                            <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span><br>
-                            <span class="card-text small text-muted"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span><br>
-                            <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span><br>
-                            <span class="card-text small text-muted"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+                            <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span><br>
+                            <span class="card-text small text-muted"><i class="fa-solid fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span><br>
+                            <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span><br>
+                            <span class="card-text small text-muted"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.rating }}</span>
                         </a>
                     </div>
                 </div>

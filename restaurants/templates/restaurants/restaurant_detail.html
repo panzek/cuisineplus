@@ -17,10 +17,10 @@
                     <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
                     <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>  
                     <div>
-                      <span class="card-text small link-dark"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</span> |
-                      <span class="card-text small"><i class="fa-regular fa-clock"></i> {{ restaurant.get_time_display }}</span> |
-                      <span class="card-text small"><i class="fa-solid fa-bowl-rice"></i> {{ restaurant.get_cuisine_display }}</span> |
-                      <span class="card-text small"><i class="far fa-heart"></i>{{ restaurant.rating }}</span>
+                      <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span> |
+                      <span class="card-text small"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span> |
+                      <span class="card-text small"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span> |
+                      <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.rating }}</span>
                     </div>
                   </div>
                 </div>
@@ -50,35 +50,23 @@
             <div class="row ">
               <!-- Restaurant Overview -->
               <div class="col-6">
-                <h5 class="card-title">{{ restaurant.name }}</h5>
-                <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</p>
+                <h5 class="card-title">About {{ restaurant.name }}</h5>
+                
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                  molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                  numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                  optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                  obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                  nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                  tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                  quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-                  sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                  recusandae alias error harum maxime adipisci amet laborum!
+                  {{ restaurant.description }}
                 </p>
                 <div class="row">
                   <div class="col-6">
                     <div class="card-body">
                         <div class="reviews" style="padding: 10px;">
-                          <h5><i class="fa-solid fa-circle-check"></i> Cuisines</h5>
-                          <h5><i class="fa-solid fa-circle-check"></i> African</h5>
-                          <h5><i class="fa-solid fa-circle-check"></i> Chinese</h5>
-                          <h5><i class="fa-solid fa-circle-check"></i> Intercontinental</h5>  
-                        </div><br>
+                          <h5><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <strong>Address:</strong> {{ restaurant.address }}</h5>                           
+                        </div>
                     </div>
                   </div>
                   <div class="col-6 ">
-                    <p><i class="fa-regular fa-clock"></i> <strong>Open Hours:</strong> {{ restaurant.get_time_display }}</p>
-                    <p><i class="fa-solid fa-phone"></i> <strong>Phone Numbers:</strong> {{ restaurant.phone }} </p>
-                    <p><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> {{ restaurant.address }}</p>
+                    <p><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> <strong>Cuisines:</strong> {{ restaurant.get_cuisine_display }}</p>
+                    <p><i class="fa-regular fa-clock" aria-hidden="true"></i> <strong>Open Hours:</strong> {{ restaurant.get_time_display }}</p>
+                    <p><i class="fa-solid fa-phone" aria-hidden="true"></i> <strong>Phone Numbers:</strong> {{ restaurant.phone }} </p>
                   </div>
               </div>
               </div>
