@@ -88,7 +88,21 @@
             </div>
         </div>
     </nav>
-
+    <!-- Messages  -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <!-- messages are built into Django-->
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <!-- Using the safe filter to ensure that any HTML or scripts provided are rendered safe before they're viewed by the user.-->
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <!-- Main -->
     <main>
         {% block content %}
@@ -135,6 +149,16 @@
         </div>
     </nav>
 </footer>
-
+<!-- 
+    using a standard JavaScript setTimeout function to dismiss the signin and signout alert messages.
+    And the alert close method is all part of Bootstrap's JavaScript toolkit
+-->
+<script>
+    setTimeout(function () {
+        let messages = document.getElementById('msg');
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+    }, 2500);
+</script>
 </body>
 </html>

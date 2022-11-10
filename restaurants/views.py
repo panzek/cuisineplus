@@ -73,7 +73,10 @@ class RestaurantDetail(generic.DetailView):
             review.name = request.user.username
             review.restaurants = restaurant
             review_form.save()
-            return redirect('/')
+            messages.success(
+                request, "Your review successfully submitted"
+                )
+            return HttpResponseRedirect(request.path_info)
         else:
             review_form = ReviewForm()
         
