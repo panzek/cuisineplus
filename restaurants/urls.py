@@ -38,7 +38,7 @@ urlpatterns = [
         name='delete'
         ),
     
-     path(
+    path(
         'menu_list.html/', 
         MenuList.as_view(), 
         name='menu'

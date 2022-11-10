@@ -151,6 +151,11 @@ class Reservation(models.Model):
     additional_info = models.TextField(max_length=150, null=True)
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, null=True)
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
     class Meta:
         ordering = ["created_on"]
