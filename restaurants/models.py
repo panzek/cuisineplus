@@ -110,7 +110,7 @@ class Review(models.Model):
     email = models.EmailField()
     body = models.TextField(max_length=250, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    approve = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["created_on"]

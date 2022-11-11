@@ -31,6 +31,7 @@ class RestaurantDetail(generic.DetailView):
         context = {
             'restaurant': restaurant,
             'reviews': reviews,
+            'reviewed': True,
             'reservations': reservations,
             'menus': menus,
             "reviewed": False,
@@ -68,11 +69,11 @@ class RestaurantDetail(generic.DetailView):
 
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.name = request.user.username
             review = review_form.save(commit=False)
-            review.email = request.user.email
-            review.name = request.user.username
             review.restaurants = restaurant
-            review_form.save()
+            review.save()
             messages.success(
                 request, "Your review successfully submitted"
                 )
@@ -95,6 +96,7 @@ class RestaurantDetail(generic.DetailView):
             "restaurants/restaurant_detail.html", 
             {
                 'restaurant': Restaurant,
+                'reviewed': True,
                 "reservation_form": ReservationForm(),
             },
         )
