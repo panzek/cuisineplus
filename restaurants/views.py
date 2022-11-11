@@ -13,7 +13,7 @@ from bookings.models import Booking
 
 class RestaurantList(generic.ListView):
     model = Restaurant
-    queryset: Restaurant.objects.all()
+    queryset = Restaurant.objects.all()
     template_name = 'restaurants/restaurant_list.html'
     pagination = 8
 
@@ -24,22 +24,21 @@ class RestaurantDetail(generic.DetailView):
     
     def get(self, request, *args, **kwargs):
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
-        reviews = Review.objects.filter(restaurants=restaurant)
+        reviews = Review.objects.filter(restaurants=restaurant, approved=True)
         reservations = Reservation.objects.filter(restaurants=restaurant)
         menus = Menu.objects.filter(restaurants=restaurant)
 
         context = {
             'restaurant': restaurant,
             'reviews': reviews,
-            'reviewed': True,
+            'reviewed': False,
             'reservations': reservations,
             'menus': menus,
-            "reviewed": False,
             'bookings': Booking,
-            "review_form": ReviewForm(),
-            "menu_form": MenuForm(),
-            "reservation_form": ReservationForm(),
-            "booking_form": BookingForm(),
+            'review_form': ReviewForm(),
+            'menu_form': MenuForm(),
+            'reservation_form': ReservationForm(),
+            'booking_form': BookingForm(),
         }
 
         return render(
@@ -53,6 +52,7 @@ class RestaurantDetail(generic.DetailView):
     # --- Review and Reservation view ---
     def post(self, request, pk, *args, **kwargs):
         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+        reviews = Review.objects.filter(restaurants=restaurant, approved=True)
         reservation_form = ReservationForm(data=request.POST)
         if reservation_form.is_valid():
             reservation = reservation_form.save(commit=False)
@@ -96,6 +96,7 @@ class RestaurantDetail(generic.DetailView):
             "restaurants/restaurant_detail.html", 
             {
                 'restaurant': Restaurant,
+                'reviews': reviews,
                 'reviewed': True,
                 "reservation_form": ReservationForm(),
             },

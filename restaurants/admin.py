@@ -25,7 +25,12 @@ class ReviewAdmin(SummernoteModelAdmin):
     """ Add Review model to admin page"""
     summernote_fields = ('body',)
     list_filter = ('created_on', 'approved',)
-    list_display = ('name', 'email', 'body', 'created_on', 'restaurants',)
+    list_display = ('name', 'body', 'created_on', 'approved', 'restaurants',)
+    search_fields = ('name', 'email', 'body',)
+    actions = ['approve_reviews']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(approved=True)
 
 
 @admin.register(Reservation)

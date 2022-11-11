@@ -9,9 +9,9 @@
     <div class="container-fluid">
         <div class="row ">
             <div >
-                {% if "placeholder" in restaurant.image.url %}
+                <!-- {% if "placeholder" in restaurant.image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
-                {% else %}
+                {% else %} -->
                 <div class="row">
                   <div >
                     <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
@@ -24,7 +24,7 @@
                     </div>
                   </div>
                 </div>
-                {% endif %}
+                <!-- {% endif %} -->
             </div>
         </div>
     </div>
@@ -113,7 +113,7 @@
                               {{ review.created_on | time:"H:ia" }}
                             </span> 
                         </p>
-                        "{{ review.body }}"" - {{ review.name }}
+                        "{{ review.body }}" - {{ review.name }}
                         
                     </div><br><hr>
                     {% empty %}
@@ -125,17 +125,20 @@
                 </div>
               </div>
               <div class="col-6 border-end text-center ">
-                {% if reviewed %}
-                <div class="alert alert-success" role="alert">
-                  {{ user.username }}, your review is awaiting approval
-                </div>
-                {% else %}
-                {% if user.is_authenticated %}
+                
                 <br>
 
                 <!-- Reviews form -->
                 <div class="card mx-auto" style="width: 25rem;">
                   <div class="card-body">
+                      {% if reviewed %}
+                      <h1>Test</h1>
+                      <div class="alert alert-success" role="alert">
+                        {{ user.username }}, your review is awaiting approval
+                      </div>
+                      {% else %}
+                      
+                    <!-- {% if user.is_authenticated %} -->
                       <div class="card-header text-center">
                         <h3 class="card-title">Review this restaurant:</h3>
                         <p>Share your thoughts with other customers</p>
@@ -154,8 +157,8 @@
                       </div>
                   </div>
               </div>                  
-                {% endif %}
-                {% endif %}
+                <!-- {% endif %} -->
+                <!-- {% endif %} -->
               </div>
             </div>
           </div>
