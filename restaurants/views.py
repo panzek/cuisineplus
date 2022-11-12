@@ -74,17 +74,19 @@ class RestaurantDetail(generic.DetailView):
             review = review_form.save(commit=False)
             review.restaurants = restaurant
             review.save()
-            messages.success(
-                request, "Your review successfully submitted"
-                )
-            return HttpResponseRedirect(request.path_info)
+            # messages.success(
+            #     request, "Your review successfully submitted"
+            #     )
+            # return HttpResponseRedirect(request.path_info)
+            # return redirect('/')
         else:
             review_form = ReviewForm()
         
+        menu_form = MenuForm(data=request.POST)
         if menu_form.is_valid():
-            menu = menu_form.save(commit=False)
             menu.email = request.user.email
             menu.name = request.user.username
+            menu = menu_form.save(commit=False)
             menu.restaurants = restaurant
             menu_form.save()
             return redirect('/')

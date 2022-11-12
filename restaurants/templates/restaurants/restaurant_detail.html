@@ -126,39 +126,34 @@
               </div>
               <div class="col-6 border-end text-center ">
                 
-                <br>
+                <!-- <br> -->
+              {% if reviewed %}
+              <div class="alert alert-success" role="alert">
+                {{ user.username }}, your review is awaiting approval
+              </div>
+              {% else %}
 
                 <!-- Reviews form -->
-                <div class="card mx-auto" style="width: 25rem;">
-                  <div class="card-body">
-                      {% if reviewed %}
-                      <h1>Test</h1>
-                      <div class="alert alert-success" role="alert">
-                        {{ user.username }}, your review is awaiting approval
-                      </div>
-                      {% else %}
-                      
-                    <!-- {% if user.is_authenticated %} -->
-                      <div class="card-header text-center">
-                        <h3 class="card-title">Review this restaurant:</h3>
-                        <p>Share your thoughts with other customers</p>
-                        </div>
-                        <div class="text-center">
-                          <p>Reviewing as: {{ user.username }}</p>
-                          <form method="POST">
-                            <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
-                              {% csrf_token %}
-                              {{ review_form.as_p}}
-                              {{ crispy_forms | crispy }}
-                              <div>
-                                  <button type="submit" style="width: 23rem;" class="btn btn-primary">Submit</button>
-                              </div>
-                          </form>
-                      </div>
+              <div class="card mx-auto review-form" style="width: 25rem;">
+                <div class="card-body">
+                  <div class="card-header text-center">
+                    <h3 class="card-title">Review this restaurant:</h3>
+                    <p>Share your thoughts with other customers</p>
                   </div>
+                  <div class="text-center">
+                    <p>Reviewing as: {{ user.username }}</p>
+                    <form method="POST">
+                      <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
+                        {% csrf_token %}
+                        {{ review_form.as_p}}
+                        {{ crispy_forms | crispy }}
+                      <div>
+                          <button type="submit" style="width: 23rem;" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>                  
-                <!-- {% endif %} -->
-                <!-- {% endif %} -->
               </div>
             </div>
           </div>
@@ -227,5 +222,6 @@
     </script>
   </div>
 </div>
+{% endif %}
 {% endif %}
 {% endblock %}
