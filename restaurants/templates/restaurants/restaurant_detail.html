@@ -46,7 +46,7 @@
 
         <!-- Overview tab -->
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="container-fluid border-end"><br>
+          <div class="container border-end"><br>
             <div class="row ">
               <!-- Restaurant Overview -->
               <div class="col-6">
@@ -97,13 +97,12 @@
 
         <!-- Review tab -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <div class="container-fluid ">
-            <div class="row ">
-              <div class="col-6">
+          <div class="container">
+            <div class="row">
+              <div class="col-8">
                 <div class="card-body">
                   <br>
-                  <h5>Customer Reviews:</h5>
-                  <p>Reviews can only be made by registered diners</p>
+                  <h5><strong>Customer Reviews:</strong></h5>
                   <hr>
                     {% for review in reviews %}
                     <div class="reviews" style="padding: 10px;">
@@ -124,23 +123,17 @@
                     {% endfor %}
                 </div>
               </div>
-              <div class="col-6 border-end text-center ">
-                
-                <!-- <br> -->
-              {% if reviewed %}
-              <div class="alert alert-success" role="alert">
-                {{ user.username }}, your review is awaiting approval
-              </div>
-              {% else %}
-
+              <div class="col-4 border-end text-center">
                 <!-- Reviews form -->
-              <div class="card mx-auto review-form" style="width: 25rem;">
+              <div class="review-form" style="width: 25rem;">
                 <div class="card-body">
-                  <div class="card-header text-center">
-                    <h3 class="card-title">Review this restaurant:</h3>
+                    {% if reviewed %}
+                    <div class="alert alert-success" role="alert">
+                      {{ user.username }}, your review is awaiting approval
+                    </div>
+                    {% else %}
+                    <h5><strong>Review this Restaurant:</strong></h5>
                     <p>Share your thoughts with other customers</p>
-                  </div>
-                  <div class="text-center">
                     <p>Reviewing as: {{ user.username }}</p>
                     <form method="POST">
                       <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
@@ -151,7 +144,6 @@
                           <button type="submit" style="width: 23rem;" class="btn btn-primary">Submit</button>
                       </div>
                     </form>
-                  </div>
                 </div>
               </div>                  
               </div>
@@ -161,54 +153,56 @@
 
         <!-- Menu tab -->
         {% for menu in menus %}
-        <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-          <div class="border-end">
-            <!-- Bootstrap tab with vertical message  -->
-            <div class="d-flex align-items-start">
-              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Food</button>
-                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</button>
-              </div>
-              <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">                  
-                  <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <!-- First Accordion  -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Menu Image
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                          <div class="reviews" style="padding: 10px;">
-                            <p class="font-weight-bold menu-image">
-                            </p>
-                        </div>
-                        <div>{{ menu.body }}</div>
+        <div class="container">
+          <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="border-end">
+              <!-- Bootstrap tab with vertical message  -->
+              <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Food</button>
+                  <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</button>
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">                  
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                      <!-- First Accordion  -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Menu Image
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                          <div class="accordion-body">
+                            <div class="reviews" style="padding: 10px;">
+                              <p class="font-weight-bold menu-image">
+                              </p>
+                          </div>
+                          <div>{{ menu.body }}</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                     <!-- Second Accordion  -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                          Menu Description
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                        <div class="accordion-body">
-                          <div><strong>Menu</strong></div> 
-                          <div>Served Mon-Fri from <strong>{{ restaurant.get_time_display }}</strong></div>
-                          {{ menu.description }}
+                       <!-- Second Accordion  -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            Menu Description
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                          <div class="accordion-body">
+                            <div><strong>Menu</strong></div> 
+                            <div>Served Mon-Fri from <strong>{{ restaurant.get_time_display }}</strong></div>
+                            {{ menu.description }}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              {% endfor %}
             </div>
-            {% endfor %}
           </div>
         </div>
       </div>

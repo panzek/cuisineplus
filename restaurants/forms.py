@@ -30,13 +30,11 @@ class MenuForm(ModelForm):
 
 
 class ReviewForm(ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}))
     body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Write a Review'}))
 
     class Meta:
         model = Review
         fields = [
-            'name',
             'body',
         ]
 
@@ -55,6 +53,6 @@ class ReservationForm(ModelForm):
             'number_of_guests',
             'date',
             'time',
-            'phone',
+            # 'phone',
             'additional_info'
         ]
