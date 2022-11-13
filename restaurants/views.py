@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views import generic
+from django.views import generic, View
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from restaurants.models import Restaurant, Review, Reservation, Menu
@@ -27,6 +27,9 @@ class RestaurantDetail(generic.DetailView):
         reviews = Review.objects.filter(restaurants=restaurant, approved=True)
         reservations = Reservation.objects.filter(restaurants=restaurant)
         menus = Menu.objects.filter(restaurants=restaurant)
+        liked = False
+        if restaurant.likes.filter(id=self.request.user.id).exists():
+            liked = True
 
         context = {
             'restaurant': restaurant,
@@ -35,6 +38,7 @@ class RestaurantDetail(generic.DetailView):
             'reservations': reservations,
             'menus': menus,
             'bookings': Booking,
+            'liked': liked,
             'review_form': ReviewForm(),
             'menu_form': MenuForm(),
             'reservation_form': ReservationForm(),
@@ -54,6 +58,10 @@ class RestaurantDetail(generic.DetailView):
         restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
         reviews = Review.objects.filter(restaurants=restaurant, approved=True)
         reservation_form = ReservationForm(data=request.POST)
+        liked = False
+        if restaurant.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
         if reservation_form.is_valid():
             reservation = reservation_form.save(commit=False)
             reservation.email = request.user.email
@@ -100,6 +108,7 @@ class RestaurantDetail(generic.DetailView):
                 'restaurant': Restaurant,
                 'reviews': reviews,
                 'reviewed': True,
+                'liked': liked,
                 "reservation_form": ReservationForm(),
             },
         )
@@ -141,5 +150,15 @@ class ReservationDeleteView(PermissionRequiredMixin, DeleteView):
         author = self.object.author == self.request.user  
         return author
 
+
+class RestaurantLike(View):
+    def post(self, request, pk, *args, **kwargs):
+        # restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+        restaurant = get_object_or_404(Restaurant, pk=pk)
+        if restaurant.likes.filter(id=self.request.user.id).exists():
+            restaurant.likes.remove(request.user)
+        else:
+            restaurant.likes.add(request.user)
+        return HttpResponseRedirect(reverse('restaurant_detail', args=[pk]))
 
 

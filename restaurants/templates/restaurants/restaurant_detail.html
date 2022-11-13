@@ -7,27 +7,83 @@
 {% if user.is_authenticated %}
 <div class="masthead">
     <div class="container-fluid">
-        <div class="row ">
-            <div >
+        <!-- <div class="row "> -->
+            <!-- <div > -->
                 <!-- {% if "placeholder" in restaurant.image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
                 {% else %} -->
-                <div class="row">
-                  <div >
-                    <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
-                    <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>  
-                    <div>
-                      <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span> |
-                      <span class="card-text small"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span> |
-                      <span class="card-text small"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span> |
-                      <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.rating }}</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- {% endif %} -->
-            </div>
+        <div class="row">
+          <div >
+            <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
+            <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>  
+            <!-- <div class="col-1">
+              <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span> |
+              
+            </div> -->
+            <!-- <div class="col-1">
+              <span class="card-text small"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span> |
+              <span class="card-text small"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span> |
+              <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.likes }}</span>
+              <span class="card-text small"><i class="far fa-comments" aria-hidden="true"></i>{{ restaurant.review }}</span>
+            </div> -->
+          </div>
         </div>
+                <!-- {% endif %} -->
+            <!-- </div> -->
+        <!-- </div> -->
     </div>
+    <div class="container-fluid">
+      <!-- <div class="row "> -->
+          <!-- <div > -->
+              <!-- {% if "placeholder" in restaurant.image.url %}
+              <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+              {% else %} -->
+      <div class="row">
+        <!-- <div > -->
+          <!-- <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
+          <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>   -->
+          <div class="col">
+            <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span> |
+          <!-- </div> -->
+          <!-- <div class="col-10"> -->
+            <span class="card-text small"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span> |
+            <span class="card-text small"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span> |
+            <!-- Likes and number of likes  -->
+            <strong>
+              {% if user.is_authenticated %}
+              <form class="d-line" action="{% url 'restaurant_like' restaurant.pk %}" method="POST">
+                {% csrf_token %}
+
+                {% if liked %}
+                <button type="submit" name="restaurantlike_id" value="{{ restaurant.pk }}" class="btn-like">
+                  <i class="fas fa-heart" aria-hidden="true"></i>
+                </button>
+
+                {% else %}
+                <button type="submit" name="restaurantlike_id" value="{{ restaurant.pk }}" class="btn-like">
+                  <i class="far fa-heart" aria-hidden="true"></i>
+                </button>
+
+                {% endif %}
+
+              </form>
+              {% else %}
+              <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i></span> 
+              {% endif %}
+
+              <span class="card-text small">{{ restaurant.number_of_likes }}</span> |
+
+            </strong>
+            <!-- <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i> {{ restaurant.number_of_likes }}</span> | -->
+            <!-- Reviews and review count  -->
+            <span class="card-text small"><i class="far fa-comments" aria-hidden="true"></i>{{ restaurant.review }}</span>
+          </div>
+        <!-- </div> -->
+      </div>
+              <!-- {% endif %} -->
+          <!-- </div> -->
+      <!-- </div> -->
+  </div>
 </div>
 <br>
 <div class="container-fluid">

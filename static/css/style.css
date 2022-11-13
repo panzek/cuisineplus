@@ -156,6 +156,20 @@ h6 {
 
   /* reservations end */
 
+  /* like buttons  */
+  .btn-like {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #E84610;
+    background: transparent;
+    border: none;
+}
+
 button#v-pills-home-tab {
     border: 1px dotted;
 }
