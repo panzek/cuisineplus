@@ -82,11 +82,10 @@ class RestaurantDetail(generic.DetailView):
             review = review_form.save(commit=False)
             review.restaurants = restaurant
             review.save()
-            # messages.success(
-            #     request, "Your review successfully submitted"
-            #     )
-            # return HttpResponseRedirect(request.path_info)
-            # return redirect('/')
+            messages.success(
+                request, "Your review successfully submitted, but awaiting approval"
+                )
+            return HttpResponseRedirect(reverse('restaurant_detail', args=[pk]))
         else:
             review_form = ReviewForm()
         
@@ -153,7 +152,6 @@ class ReservationDeleteView(PermissionRequiredMixin, DeleteView):
 
 class RestaurantLike(View):
     def post(self, request, pk, *args, **kwargs):
-        # restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
         restaurant = get_object_or_404(Restaurant, pk=pk)
         if restaurant.likes.filter(id=self.request.user.id).exists():
             restaurant.likes.remove(request.user)

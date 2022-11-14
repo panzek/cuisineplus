@@ -16,16 +16,7 @@
           <div >
             <img class="img-restaurant-detail" src="{{ restaurant.featured_image.url }}">
             <span class="img-restaurant-detail-text"> {{ restaurant.name }}</span>  
-            <!-- <div class="col-1">
-              <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span> |
-              
-            </div> -->
-            <!-- <div class="col-1">
-              <span class="card-text small"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span> |
-              <span class="card-text small"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span> |
-              <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.likes }}</span>
-              <span class="card-text small"><i class="far fa-comments" aria-hidden="true"></i>{{ restaurant.review }}</span>
-            </div> -->
+            
           </div>
         </div>
                 <!-- {% endif %} -->
@@ -51,7 +42,7 @@
             <!-- Likes and number of likes  -->
             <strong>
               {% if user.is_authenticated %}
-              <form class="d-line" action="{% url 'restaurant_like' restaurant.pk %}" method="POST">
+              <form class="d-inline" action="{% url 'restaurant_like' restaurant.pk %}" method="POST">
                 {% csrf_token %}
 
                 {% if liked %}
@@ -74,7 +65,6 @@
               <span class="card-text small">{{ restaurant.number_of_likes }}</span> |
 
             </strong>
-            <!-- <span class="card-text small"><i class="far fa-heart" aria-hidden="true"></i> {{ restaurant.number_of_likes }}</span> | -->
             <!-- Reviews and review count  -->
             <span class="card-text small"><i class="far fa-comments" aria-hidden="true"></i>{{ restaurant.review }}</span>
           </div>
@@ -134,7 +124,7 @@
                             <h3 class="card-title">Make a Booking</h3>
                           </div><br>
                           <div class="text-center">
-                            <form method="POST">
+                            <form method="POST" id="id_date">
                               <input type="hidden" name="restaurant" value="{{ restaurant.pk }}">
                                 {% csrf_token %}
                                 {{ reservation_form.as_p }}
