@@ -13,8 +13,6 @@ class RestaurantForm(ModelForm):
         fields = [
             'name',
             'address',
-            'reserve',
-            'rating',
             'featured_image',
         ]
 

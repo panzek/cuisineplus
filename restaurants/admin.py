@@ -9,7 +9,7 @@ from django_summernote.admin import SummernoteModelAdmin
 class RestaurantAdmin(SummernoteModelAdmin):
     """ Add Restaurant model to admin page"""
     list_filter = ('name', 'address',)
-    list_display = ('name', 'address', 'rating',)
+    list_display = ('name', 'address',)
     search_fields = ('name', 'Restaurant',)
 
 
