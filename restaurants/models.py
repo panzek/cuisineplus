@@ -78,8 +78,8 @@ class Menu(models.Model):
         Restaurant, on_delete=models.CASCADE, related_name='menus'
     )
     name = models.CharField(max_length=100, null=True)
-    description = models.TextField(max_length=500, null=True)
-    body = models.TextField(max_length=500, null=True)
+    description = models.TextField(max_length=3500, null=True)
+    body = models.TextField(max_length=2500, null=True)
     price = models.FloatField()
     menu_image = CloudinaryField('image', default='placeholder')
 
