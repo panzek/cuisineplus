@@ -15,7 +15,7 @@ class RestaurantList(generic.ListView):
     model = Restaurant
     queryset = Restaurant.objects.all()
     template_name = 'restaurants/restaurant_list.html'
-    pagination = 8
+    pagination = 4
 
 
 class RestaurantDetail(generic.DetailView):

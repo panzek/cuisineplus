@@ -29,7 +29,7 @@ class Restaurant(models.Model):
         )
     name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100)
-    description = models.TextField(max_length=500, null=True)
+    description = models.TextField(max_length=1500, null=True)
     likes = models.ManyToManyField(
         User, related_name='restaurant_likes', blank=True
     )
