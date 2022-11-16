@@ -57,7 +57,6 @@ h6 {
 .hero-image {
     aspect-ratio: 3/1;
     background: #000 url('https://res.cloudinary.com/dxjcjyynt/image/upload/v1667207333/wtdgymkdpk3rhfyv6htn.jpg') center center/cover no-repeat;
-    /* margin-top: 10%; */
     min-width: 100%;
     height: 40vh;
 
@@ -76,16 +75,12 @@ h6 {
 }
 
 .img-restaurant-list {
-    /* aspect-ratio: 3/1; */
-    /* background: #000 url('https://res.cloudinary.com/dxjcjyynt/image/upload/v1666088176/hrxrsyl89wwchskud4mo.jpg') center center/cover no-repeat; */
-    /* margin-top: 10; */
     max-width: 100%;
     height: 250px;  
 }
 
 .restaurant-list {
     margin-top: 5%;
-    /* position: absolute; */
     position: relative;
 }
 
@@ -94,7 +89,6 @@ h6 {
    
     min-width: 100%;
     height:50vh;
-    /* height: auto;   */
     position: relative;
 }
 
@@ -109,7 +103,6 @@ h6 {
 
 .menu-image {
     aspect-ratio: 3/1;
-    /* background: #000 url('https://res.cloudinary.com/dxjcjyynt/image/upload/v1666728863/qfd81q0viojnl0c7rhs8.jpg') center center/cover no-repeat; */
     margin-top: 10;
     min-width: 100%;
     height: 30vh;
@@ -123,9 +116,6 @@ h6 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid red; */
-    /* margin-bottom: 10; */
-    /* max-width: 30%; */
  }
 
  .login-signup-border {
