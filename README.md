@@ -1,108 +1,285 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# CuisinePlus
 
-Welcome Peter Anny-Nzekwue,
+* **Introduction**
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+**CuisinePlus** is online restaurant reservation platform for diners. The goal of the application is to aggregate and showcase restaurants in Ireland. Users are able to find a restaurant they love from the featured restaurants across Ireland and make reservations at their chosen restaurants. Also, signed in users should be able to leave a review, read reviews left by other users, and like a restaurant. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+The site is built in Django using Python, JavaScript, CSS, and HTML. It provides full CRUD functionality reservations: users can create, read, update, and delete their bookings. 
 
-## Gitpod Reminders
+![CuisinePlus Mockup](docs/images/cuisine-plus-mockup.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+[View Live Project Here](https://cuisine-plus.herokuapp.com/)
 
-`python3 -m http.server`
+**Please Note:** the needs within this project are for illustrative and educational purpose. 
 
-A blue button should appear to click: _Make Public_,
+## Table of Contents
 
-Another blue button should appear to click: _Open Browser_.
+1. [User Experience](#user-experience)
+    * [Epics](#epics-and-user-stories)
+    * [Design](#design)
+    * [Color Scheme](#color-scheme)
+    * [Wireframes](#wireframes)
+  
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+2. [Features](#features)
 
-A blue button should appear to click: _Make Public_,
+3. [Technology Stack](#tech-stack)
+    * [Languages Used](#languages-used)
+    * [Python Libraries](#python-libraries)
+    * [VSCode Extensions Used](#vscode-extensions-used)
 
-Another blue button should appear to click: _Open Browser_.
+4. [Testing](#testing)
+    * [PEP8 Testing](#pep8-testing)
+    * [Validator Testing](#validator-testing)
+    * [Accessibility Testing](#accessibility-testing)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+5. [Clone](#clone)
+6. [Credits](#credits)
+    * [Acknowledgements](#acknowledgements)
 
-To log into the Heroku toolbelt CLI:
+## User Experience 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### EPICS and USER STORIES
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### EPIC: Sign In feature #1
 
-------
+#### USER STORY: Sign in with username and password #7
 
-## Release History
+* As a a registered user I want to sign in using my username and preferred password so that I can search for a restaurant and make a booking.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+#### USER STORY: Remember me checkbox #10
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+* As a a registered user I can check a remember me checkbox before I sign in so that I can always have automatic access to my account from the same system until I manually sign out.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### User Stories planned for next sprint
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### USER STORY: Sign in with Social Networks #8
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+* As a a registered user I want to sign in into my account using social network so that I have a convenient alternative to login into my account.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### EPIC: Sign Up #2
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+#### USER STORY: Sign up by creating a username and password #26
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+* As a new user I can register by creating a username and password so that I have access to featured restaurants and menus.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### EPIC: Bookings #5
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+#### USER STORY: Make a Booking #12
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+* As a user I want to make a booking so that I can dine in my preferred restaurant.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### USER STORY: View my Booking #13
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+* View my Booking#13.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+#### USER STORY: Manage my Booking #14
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+* As a User I want to edit my booking so that I can update my booking information such as date, time, and number of guests.
 
-------
+#### USER STORY: Cancel my Booking #15
 
-## FAQ about the uptime script
+* As a User I want to cancel my booking so that I can leave the date for others to use.
 
-**Why have you added this script?**
+### EPIC: Reviews and Ratings #6
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+#### USER STORY: Write a review on a restaurant #30
 
-**How will this affect me?**
+* As a logged in user I want to leave a review so that I can provide my honest comment based on my experience with the restaurant and their cuisine.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+#### USER STORY: Like and Unlike restaurant #31
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+* As a logged in user I want to see a like or dislike button so that I can click to like or dislike the restaurant and their cuisine.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
+### EPICS and User Stories planned for next sprint
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
+#### USER STORY: Rate a restaurant #28
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+* As a logged in user I can rate a restaurant so that I can leave my impression of the food.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+#### USER STORY: View Ratings by Others #29
 
-**Anything more?**
+* As a logged in user I can view ratings left by others so that I can choose the meal that is best for me.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+#### USER STORY: Make a recommendation #32
 
----
+* As a logged in user I can rate a restaurant so that I can leave my impression of the food.As a logged in user I want to recommend a restaurant so that I can provide a the name of a good restaurant that is not listed on the site.
 
-Happy coding!
+  
+### EPIC: User Profile #3
+
+#### USER STORY: Read personal information #20
+
+* As a logged in user I want to view my profile so that I can be sure my personal information is correct and up-to-date.
+
+#### USER STORY: Update personal information #21
+
+* As a logged in user I want to edit my profile so that I can update my personal information.
+
+#### USER STORY: Add profile image #22
+
+* As a logged in user I want to upload my photo so that my profile will have my image.
+
+#### USER STORY: Change my password #23
+
+* As a logged in user I want to update my password regularly so that I can prevent my account access if it was compromised.
+
+#### USER STORY: Reset my password #24
+
+* As a logged in user I want to reset my password so that if I forget my password I can create a new password.
+
+#### USER STORY: Delete my Account #25
+
+* As a logged in user I can delete my account so that I can close my account with personal information.
+
+#### USER STORY: Social Sign up #27
+
+* As a new user I can sign up using a social network provider so that I can access the application using my existing social account IDs.
+
+### EPIC: Search Restaurant and Cuisine #4
+
+#### USER STORY: Search by Restaurant #16
+
+* As a User I want to view a list of Restaurants in my search so that I can select one to book a table in.
+
+* #### USER STORY: Search by Cuisine #17
+
+* As a User I want to search for meal so that I can find the restaurant that offers a country’s meal of my choice.
+
+#### USER STORY: Search by City #18
+
+* As a User I want to search location so that I can find the restaurant near me.
+
+#### USER STORY: Search by Date and Time #19
+
+* As a User I want to search a date/time frame so that I can book a restaurant based on my preferred date and time.
+
+#### USER STORY: View a location map #33
+
+* As a logged in user I want to see a Google map so that I can get a quick direction to the restaurant's location.
+
+### Design
+
+* Color Scheme
+  * The colors used are Green, Blue, White, and Black.
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Green Color | ![#00FF00](https://via.placeholder.com/10/00FF00?text=+) #00FF00 |
+| Blue Color | ![#0275d8](https://via.placeholder.com/10/0275d8?text=+) #0275d8 |
+| White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
+| Black Color | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+
+* Wireframes
+  * The wireframe was created using [Balsamiq](https://balsamiq.com/). And it was designed for desktop only.
+
+    ![Desktop - Homepage](docs/wireframes/homepage.png)
+
+    ![Desktop - Bookings](docs/wireframes/booking.png)
+
+    ![Desktop - Manage Bookings](docs/wireframes/manage_bookings.png)
+
+    ![Desktop - restaurant list](docs/wireframes/restaurants.png)
+
+    ![Desktop - restaurant detail](docs/wireframes/restaurant_irawo.png)
+
+    ![Desktop - restaurant detail](docs/wireframes/register.png)
+
+    ![Desktop - restaurant detail](docs/wireframes/login.png)
+
+    ![Desktop - restaurant detail](docs/wireframes/review.png)
+
+    ![Desktop - restaurant detail](docs/wireframes/404.png)
+
+## Features
+
+![Mobile - Header](media/images/header.png)
+![Desktop - Account Menu](media/images/account-menu.png)
+![Desktop - Reservation List](media/images/reservation-list.png)
+![Desktop - Edit Reservation](media/images/edit-reservation.png)
+![Desktop - Delete Reservation](media/images/delete-reservation.png)
+![Desktop - Restaurant Overview](media/images/restaurant-overview.png)
+![Desktop - Restaurant Review](media/images/restaurant-review.png)
+![Desktop - Restaurant Menu](media/images/restaurant-menu.png)
+
+## Tech Stack
+
+* Languages Used
+  * [Python](https://www.python.org/)
+  * [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+  * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  * [JavaScript](https://www.javascript.com/)
+
+* **Python Libraries**
+  * [Django](https://www.djangoproject.com/)
+  * [Gunicorn](https://gunicorn.org/)
+  * [Cloudinary](https://cloudinary.com/)
+  * [Dj3-Cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
+  * [Dj-database-url](https://pypi.org/project/dj-database-url/)
+  * [Psycopg2](https://pypi.org/project/psycopg2/)
+  * [Pylint-Django](https://pypi.org/project/pylint-django/)
+  * [Pep8](https://peps.python.org/pep-0008/)
+  * [Heroku](https://dashboard.heroku.com/)
+  * [django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
+  * [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+  * [Summernote](https://summernote.org/)
+
+* **VSCode Extensions Used**
+  * [Jinja template language support for VSCode](https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja).
+  * [Markdown lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) - used For style checking and to maintaining standard.
+  * [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) – a language support for python for writing a better code.
+  * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) – a language support for python for writing a better code.
+
+## Testing
+
+* PEP8 Testing
+  * [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+
+* Accessibility Testing
+  * [Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
+  * [Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) - used to test accessibility.
+  
+
+## Clone
+
+* Clone from GitHub to VSCode:
+    1. Log in to [GitHub](https://github.com/panzek/portfolio3-mortgage-advisor)
+    2. Click on the code button beside the green gitpod button. 
+    3. Copy the link and go to VSCode
+    4. Press F1 to display the command palette. 
+    5. Enter gitcl, select the Git: Clone command, press Enter
+    6. When prompted for the Repository URL, enter the copied GitHub repository url, then press Enter. 
+    7. Select (or create) the local directory into which you want to clone the project.
+    8. Repository is now ready for development
+
+* Environment Variable:
+    1. Create virtual environment in the project folder - d:\workspaces>python –m venv my_project\venv 
+    2. Activate the virtual environment - d:\workspaces>my_project\venv\Scripts\activate.ps1 
+    3. cd into new project folder - d:\workspaces>cd my_project
+    4. To open in VSCode - d:\workspaces\my_project>code. 
+    5. Open VSCode and Press CONTROL+SHIFT+P, type‘Python Interpreter’ and select it.
+    6. Either select the venv environment from the list or click ‘Enter interpreter path’ and navigate to the venv folder, and proceed into Scripts and select python.exe 
+    7. venv\Scripts\python.exe
+
+
+## Credits
+
+* [Code Institute](https://codeinstitute.net/) lectures and “Hello Django” and "Django Blog" walkthrough projects shaped and firmed the ideas and techniques that frame this Portfolio Project 4 for Diploma the [Full Stack Software Development](https://codeinstitute.net/ie/full-stack-software-development-diploma/).
+* I drew inspiration for the structural makeup of the site from [DineSurf](https://app.dinesurf.com/dashboard).  
+* [Mark Down Guide](https://www.markdownguide.org/basic-syntax/)  
+* [Bootstrap](https://getbootstrap.com/)
+* [Django documentation](https://docs.djangoproject.com/) -
+* [Customizing Form Fields, Widgets, Placeholders, & CSS - Python & Django](https://www.youtube.com/watch?v=quJzUzCs6Q0) - quite a helpful video on how to customize Form Fields, Widgets, and Placeholders in Django.
+* [Tinypng.com](https://tinypng.com/) – used to reduce the file size.
+* [Stackoverflow](https://stackoverflow.com/), always an important resource for answers to almost all knotty coding issues. 
+  
+## Acknowledgements
+
+I am eternally grateful for your care, love, help, and support:
+  
+- [Andrew Dempsey](https://github.com/andrewdempsey2018);
+- [Akshat Garg](https://github.com/akshatnitd) and Jubril Akolade, my [Code Institute](https://github.com/Code-Institute-Org) mentors;
+- [Code Institute](https://github.com/Code-Institute-Org) tutors: Ed, Gemma, John, and Scott;   
+- Rachel and the [Code Institute](https://github.com/Code-Institute-Org) Student care team.

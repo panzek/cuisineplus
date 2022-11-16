@@ -7,15 +7,14 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="hero-image" >
-            <h2 class="hero-image-text"> <em>Find a Restaurant</em></h2>
+        <div class="hero-image pt-5 text-center" >   
         </div>
     </div>
-    <hr />
-    <h6 class="featured-restaurants">Featured Restaurants<span>&raquo;</span></h6>
+ 
     <div class="row">
-        <div class="col-12 left" >
-            <div class="row" >
+        <div class="col-12 mt-3 left restaurant-list">
+            <div class="row">
+                <h6>Featured Restaurants <span>&raquo;</span></h6>
                 {% for restaurant in restaurant_list %}
                 <div class="col-md-3">
                     <div class="shadow-sm card mb-2">
@@ -25,21 +24,22 @@
                                 <img class="card-img-top"
                                     src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
-                                <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
+                                <img class="card-img-top img-restaurant-list" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
                                 {% endif %}
                             </div>
                             <a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none"> 
                                 <span class="card-title font-weight-bold"><strong>{{ restaurant.name }}</strong></span>
                                 <span class="card-text small link-dark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ restaurant.address }}</span><br>
                                 <span class="card-text small text-muted"><i class="fa-solid fa-clock" aria-hidden="true"></i> {{ restaurant.get_time_display }}</span><br>
-                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }} </span><br>
-                                <span class="card-text small text-muted"><i class="far fa-heart" aria-hidden="true"></i>{{ restaurant.rating }}</span>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-bowl-rice" aria-hidden="true"></i> {{ restaurant.get_cuisine_display }}</span><br>
                             </a>
+                                <span class="card-text small text-muted"><i class="fa-solid fa-heart" aria-hidden="true"></i> {{ restaurant.like }}</span>
+                                <span class="card-text small">{{ restaurant.number_of_likes }}</span><br>
+                                <span class="card-text small"><i class="far fa-comments" aria-hidden="true"></i>{{ restaurant.review }} Reviews</span>
                         </div>
                     </div>
                 </div>
-
-                {% if forloop.counter|divisibleby:6 %}
+                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
                 {% endif %}

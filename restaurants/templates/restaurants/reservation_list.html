@@ -6,16 +6,11 @@
 {% if user.is_authenticated %}
 
 <!-- Reservation List -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="hero-image" >
-            <h2 class="hero-image-text"> <em>Find a Restaurant</em></h2>
-        </div>
-    </div>
+<div class="container">
+
     <div class="reservation-top">
         <h5>Your Reservations</h5>
     </div>
-    <!-- <hr /> -->
     <div class="row" id="">
         <div class="col-12" >
             <div class="row text-center" >
@@ -24,29 +19,29 @@
                     <div class="shadow-sm card mb-2">
                         <div class="card-body mb-2" >
                             <div class="image-container">
+                                {% for restaurant in restaurant_list %}
                                 {% if "placeholder" in restaurant.image.url %}
                                 <img class="card-img-top"
                                     src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
                                 <img class="card-img-top" src="{{ restaurant.featured_image.url }}" alt="Restaurant image">
                                 {% endif %}
+                                {% endfor %}
                             </div>
                             <div class="card-header">
-                                <h5 class="card-title">Your Booking Detail:</h5>
+                                <h5 class="card-title">{{ user }}, Your Booking Detail:</h5>
                             </div>
                                 <p class="card-text">First Name: {{ reservation.first_name }} </p>
                                 <p class="card-text">Last Name: {{ reservation.last_name }}</p>
                                 <p class="card-text">No. of Guests: {{ reservation.number_of_guests }}</p>
                                 <p class="card-text">Date: {{ reservation.date }}</p>
                                 <p class="card-text">Time: {{ reservation.time }}</p>
-                                <p class="card-text">Phone: {{ reservation.phone }}</p>
                                 <p class="card-text">Additional Info: {{ reservation.additional_info }}</p>
                             <div class="btn-group btn-group-justified" style="width: 20rem;">
                                 <a href="{% url 'edit' reservation.pk %}" class="btn btn-info">Edit</a>
                                 <a href="{% url 'delete' reservation.pk %}" class="btn btn-danger">Delete</a> 
                             </div>
                             <hr />
-                            
                         </div>
                     </div>
                 </div>

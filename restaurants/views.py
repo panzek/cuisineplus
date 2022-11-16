@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
@@ -137,17 +136,10 @@ class ReservationUpdateView(UpdateView):
         return render(request, '/')
 
 
-class ReservationDeleteView(PermissionRequiredMixin, DeleteView):
+class ReservationDeleteView(DeleteView):
     model = Reservation
     template_name = 'restaurants/delete_reservation.html'
     success_url = reverse_lazy('reservation')
-    permission_required = ('reservation.delete_reservation')
-
-    def has_permission(self):
-        has_perms = super().has_permission()
-        self.object = self.get_object()
-        author = self.object.author == self.request.user  
-        return author
 
 
 class RestaurantLike(View):
