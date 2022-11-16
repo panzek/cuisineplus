@@ -126,6 +126,7 @@ class ReservationList(generic.ListView):
     pagination = 8
 
 #  --- Reservation Update ---
+
 class ReservationUpdateView(UpdateView):
     model = Reservation
     form_class = ReservationForm
