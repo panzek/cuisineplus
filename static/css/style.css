@@ -2,13 +2,11 @@
 
 :root {
     /* ------- COLORS ------ */
-    --earthy-green: #cfdbc5;
-    --Asparagus: #89a670;
-    --khaki: #c3b091; 
-    --red-ochre: #913831; 
-    --off-white: #f2f2f1;
-    --pale-gold: #e6be8a;
-    --envy: #8dac9a;
+    --green: #4b7c20;
+    --red: #E84610;
+    --blue: #0275d8; 
+    --black: #000000; 
+    --white: #ffffff;
 
     /* TYPOGRAPHY */
     --content-text: 'Roboto', sans-serif;

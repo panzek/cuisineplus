@@ -179,7 +179,7 @@ The colors used are Green (#00FF00), Red (#E84610), Blue (#0275d8), White (#ffff
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Green Color | ![#00FF00](https://via.placeholder.com/10/00FF00?text=+) #00FF00 |
+| Green Color | ![#4b7c20](https://via.placeholder.com/10/4b7c20?text=+) #4b7c20 |
 | Red Color | ![#E84610](https://via.placeholder.com/10/E84610?text=+) #E84610 |
 | Blue Color | ![#0275d8](https://via.placeholder.com/10/0275d8?text=+) #0275d8 |
 | White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
