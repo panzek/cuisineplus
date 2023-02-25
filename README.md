@@ -162,8 +162,9 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 ### Design
 
-* Color Scheme
-  * The colors used are Green, Blue, White, and Black.
+#### Color Scheme
+
+* The colors used are Green, Blue, White, and Black.
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -172,8 +173,9 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 | White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
 | Black Color | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
 
-* Wireframes
-  * The wireframe was created using [Balsamiq](https://balsamiq.com/). And it was designed for desktop only.
+#### Wireframes
+
+* The wireframe was created using [Balsamiq](https://balsamiq.com/). And it was designed for desktop only.
 
     ![Desktop - Homepage](docs/wireframes/homepage.png)
 
@@ -206,41 +208,72 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 ## Tech Stack
 
-* Languages Used
-  * [Python](https://www.python.org/)
-  * [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
-  * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
-  * [JavaScript](https://www.javascript.com/)
+### Languages Used
 
-* **Python Libraries**
-  * [Django](https://www.djangoproject.com/)
-  * [Gunicorn](https://gunicorn.org/)
-  * [Cloudinary](https://cloudinary.com/)
-  * [Dj3-Cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
-  * [Dj-database-url](https://pypi.org/project/dj-database-url/)
-  * [Psycopg2](https://pypi.org/project/psycopg2/)
-  * [Pylint-Django](https://pypi.org/project/pylint-django/)
-  * [Pep8](https://peps.python.org/pep-0008/)
-  * [Heroku](https://dashboard.heroku.com/)
-  * [django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
-  * [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
-  * [Summernote](https://summernote.org/)
+* [Python](https://www.python.org/)
+* [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://www.javascript.com/)
 
-* **VSCode Extensions Used**
-  * [Jinja template language support for VSCode](https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja).
-  * [Markdown lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) - used For style checking and to maintaining standard.
-  * [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) – a language support for python for writing a better code.
-  * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) – a language support for python for writing a better code.
+#### Python Libraries
+
+* [Django](https://www.djangoproject.com/)
+* [Gunicorn](https://gunicorn.org/)
+* [Cloudinary](https://cloudinary.com/)
+* [Dj3-Cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
+* [Dj-database-url](https://pypi.org/project/dj-database-url/)
+* [Psycopg2](https://pypi.org/project/psycopg2/)
+* [Pylint-Django](https://pypi.org/project/pylint-django/)
+* [Pep8](https://peps.python.org/pep-0008/)
+* [Heroku](https://dashboard.heroku.com/)
+* [django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
+* [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+* [Summernote](https://summernote.org/)
+
+#### VSCode Extensions Used
+
+* [Jinja template language support for VSCode](https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja).
+* [Markdown lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) - used For style checking and to maintaining standard.
+* [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) – a language support for python for writing a better code.
+* [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) – a language support for python for writing a better code.
 
 ## Testing
 
-* PEP8 Testing
-  * [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+### PEP8 Testing
 
-* Accessibility Testing
-  * [Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
-  * [Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) - used to test accessibility.
+* [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+
+### Accessibility Testing
+
+[Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
+
+* It found one issue of aria-hidden focus on homepage.
+
+**Fixed bug:**
+The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
+
+### Chrome's Lighthouse
+
+[Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) - used to test accessibility.
   
+### W3C CSS Validator testing
+
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) found error in menu-image class, which has no unit after 10 in margin-top.
+
+![W3C CSS Validator - Error](media/images/w3c-css-validator-error.png)
+
+```
+.menu-image{
+    aspect-ratio:3/1;
+    margin-top: 10;
+    min-width: 100%;
+    height: 30vh;
+}
+```
+
+**Fixed bug:**
+![W3C CSS Validator- Fixed](media/images/w3c-css-validator-fixed.png)
+Fied the issue by add rem unit: **margin-top: 0.6rem;**
 
 ## Clone
 

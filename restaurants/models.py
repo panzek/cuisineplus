@@ -51,7 +51,6 @@ class Restaurant(models.Model):
         (6, '03:00pm - 10:00pm'),
     )
     time = models.PositiveSmallIntegerField(choices=OPERATION_HOURS, null=True)
-    
     featured_image = CloudinaryField()
 
     def __str__(self):

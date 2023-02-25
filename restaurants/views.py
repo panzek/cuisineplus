@@ -18,9 +18,9 @@ class RestaurantList(generic.ListView):
 
 
 class RestaurantDetail(generic.DetailView):
-    
+
     model = Restaurant
-    
+
     def get(self, request, *args, **kwargs):
         restaurant = Restaurant.objects.get(pk=kwargs["pk"])
         reviews = Review.objects.filter(restaurants=restaurant, approved=True)
@@ -45,12 +45,12 @@ class RestaurantDetail(generic.DetailView):
         }
 
         return render(
-            request, 
+            request,
             'restaurants/restaurant_detail.html',
             context)
-    
+
     """
-    Post data to database 
+    Post data to database
     """
     # --- Review and Reservation view ---
     def post(self, request, pk, *args, **kwargs):
@@ -87,7 +87,7 @@ class RestaurantDetail(generic.DetailView):
             return HttpResponseRedirect(reverse('restaurant_detail', args=[pk]))
         else:
             review_form = ReviewForm()
-        
+
         menu_form = MenuForm(data=request.POST)
         if menu_form.is_valid():
             menu.email = request.user.email
@@ -100,8 +100,8 @@ class RestaurantDetail(generic.DetailView):
             menu_form = MenuForm()
 
         return render(
-            request, 
-            "restaurants/restaurant_detail.html", 
+            request,
+            "restaurants/restaurant_detail.html",
             {
                 'restaurant': Restaurant,
                 'reviews': reviews,
@@ -132,7 +132,7 @@ class ReservationUpdateView(UpdateView):
     form_class = ReservationForm
     template_name = 'restaurants/edit_reservation.html'
     success_url = '/'
-    
+
     def success(request):
         return render(request, '/')
 
