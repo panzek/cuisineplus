@@ -14,28 +14,32 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 ## Table of Contents
 
-1. [User Experience](#user-experience)
-    * [Epics](#epics-and-user-stories)
-    * [Design](#design)
-    * [Color Scheme](#color-scheme)
-    * [Wireframes](#wireframes)
+[User Experience](#user-experience)
+
+* [Epics](#epics-and-user-stories)
+* [Design](#design)
+* [Color Scheme](#color-scheme)
+* [Wireframes](#wireframes)
   
+[Features](#features)
 
-2. [Features](#features)
+[Information Architecture](#information-architecture)
 
-3. [Technology Stack](#tech-stack)
-    * [Languages Used](#languages-used)
-    * [Python Libraries](#python-libraries)
-    * [VSCode Extensions Used](#vscode-extensions-used)
+[Technology Stack](#tech-stack)
 
-4. [Testing](#testing)
-    * [PEP8 Testing](#pep8-testing)
-    * [Validator Testing](#validator-testing)
-    * [Accessibility Testing](#accessibility-testing)
+* [Languages Used](#languages-used)
+* [Python Libraries](#python-libraries)
+* [VSCode Extensions Used](#vscode-extensions-used)
 
-5. [Clone](#clone)
-6. [Credits](#credits)
-    * [Acknowledgements](#acknowledgements)
+[Testing](#testing)
+
+* [PEP8 Testing](#pep8-testing)
+* [Validator Testing](#validator-testing)
+* [Accessibility Testing](#accessibility-testing)
+
+[Clone](#clone)
+[Credits](#credits)
+[Acknowledgements](#acknowledgements)
 
 ## User Experience 
 
@@ -164,7 +168,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 #### Color Scheme
 
-* The colors used are Green, Blue, White, and Black.
+The colors used are Green, Blue, White, and Black.
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -173,38 +177,123 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 | White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
 | Black Color | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
 
+The Black and white are default colours, used as the site’s as core building blocks. Considering that the cuisine site is a representation of food and hospitality industry, the Green and Blue colours are intended to visually communicate nourishment and the feeling of human emotions. In combination, these four colours express the aesthetic beauty that shapes the site's form and function in order to please and delight the site’s visitors.
+
+The color values were then checked for accessible contrast using EightShapes’ color contrast grid tool to ensure they meet WCAG 2.0 criteria.
+
 #### Wireframes
 
-* The wireframe was created using [Balsamiq](https://balsamiq.com/). And it was designed for desktop only.
+The wireframe was created using [Balsamiq](https://balsamiq.com/). And it was designed for desktop only.
 
-    ![Desktop - Homepage](docs/wireframes/homepage.png)
+![Desktop - Homepage](docs/wireframes/homepage.png)
 
-    ![Desktop - Bookings](docs/wireframes/booking.png)
+![Desktop - Bookings](docs/wireframes/booking.png)
 
-    ![Desktop - Manage Bookings](docs/wireframes/manage_bookings.png)
+![Desktop - Manage Bookings](docs/wireframes/manage_bookings.png)
 
-    ![Desktop - restaurant list](docs/wireframes/restaurants.png)
+![Desktop - restaurant list](docs/wireframes/restaurants.png)
 
-    ![Desktop - restaurant detail](docs/wireframes/restaurant_irawo.png)
+![Desktop - restaurant detail](docs/wireframes/restaurant_irawo.png)
 
-    ![Desktop - restaurant detail](docs/wireframes/register.png)
+![Desktop - restaurant detail](docs/wireframes/register.png)
 
-    ![Desktop - restaurant detail](docs/wireframes/login.png)
+![Desktop - restaurant detail](docs/wireframes/login.png)
 
-    ![Desktop - restaurant detail](docs/wireframes/review.png)
+![Desktop - restaurant detail](docs/wireframes/review.png)
 
-    ![Desktop - restaurant detail](docs/wireframes/404.png)
+![Desktop - restaurant detail](docs/wireframes/404.png)
 
 ## Features
 
-![Mobile - Header](media/images/header.png)
-![Desktop - Account Menu](media/images/account-menu.png)
-![Desktop - Reservation List](media/images/reservation-list.png)
-![Desktop - Edit Reservation](media/images/edit-reservation.png)
-![Desktop - Delete Reservation](media/images/delete-reservation.png)
+## Home Page
+
+### Header
+
+The header has the logo and navigation menus arranged in order of priority of information and features.
+
+#### Logo & Title
+
+![CuisinePlus Logo](media/images/cuisine-plus-logo.png)
+
+The logo is a Font Awesome bow rice icon, a symbolic representation of sustenance and abundance, a symbol of nourishment of the physical body and well-being. The logo and title have an implicit link to the homepage, following a long-standing web convention and for fluid user experience.
+
+#### Navigation Menus
+
+Hero Image - Desktop View             |        Hero Image - Mobile View
+:-------------------------:|:-------------------------:
+![Navbar - Users View](media/images/navbar-users-view.png)  |  ![Navbar - Logged In Users View](media/images/account-menu.png)
+
+The navigation menus, for anonymous users Home, Bookings, Sign Up, and Login. And for the logged in users, only Home and My Account menus are visible to logged in users. And My Account drop-down has Manage Bookings and Logout menus.
+
+This Full responsive header is fixed and consistent across in all pages of the website to allow for easy navigation and without the user having to rely on the browser’s “forward” and “back” arrows as navigation substitutes.
+
+### Homepage Main Section
+
+![Homepage Main Section](media/images/homepage-main-section.png)
+
+The main section is split into three areas: the background image that displays an image of a dinning environment, How CuisinePlus works section that sums up the three critical processes of choosing the restaurant of your choice, book the restaurant, and arrive the restaurant at the expected date and time to have your meal. The third second is the Featured Restaurants that has only eight restaurants on display.
+
+The main section introduces the user/customer to the relevant sections of the site, and takes a progressive disclosure approach by revealing to the user that CuisinePlus is an online restaurant reservation platform for diners, and more importantly, encourages them to go further beyond the homepage to create fluid user experience.
+
+### Individual Restaurant Page
+
+![Individual Restaurant Page](media/images/individual-restaurant-page.png)
+
+All users can view the list of restaurants on display, but only registered logged in users have access to the full detail of each restaurant. When non-registered or non-logged in users click on any of the displayed restaurant, they are taking to the sign in page to log in first.
+
+And when logged in users click on any of the displayed restaurant, they are taken to the individual restaurant page of that specific product to continue with their purchase.
+
+The Individual Restaurant Page has an image of either one of the restaurant’s menus or the building itself and summary of restaurant name, cuisine types, like icon (with a counter, if the restaurant has been liked by a happy customer. A liked icon is highlighted in red colour and a yet-to-liked icon is black) and a review icon. 
+
+In broader terms, the individual restaurant page has has three broad sections: Overview, Reviews, and Menus sections:
+
+#### Overview
+
 ![Desktop - Restaurant Overview](media/images/restaurant-overview.png)
+
+The overview section that shows the restaurant information such as about the restaurant, address, open hours, Cuisines, phone number, and a booking form for users to make a booking.
+
+#### Review
+
 ![Desktop - Restaurant Review](media/images/restaurant-review.png)
+
+The Reviews section is divided into two sections. The first section shows customers’ reviews and the second section contains a form to leave a review about the restaurant.
+
+#### Restaurant Menu
+
 ![Desktop - Restaurant Menu](media/images/restaurant-menu.png)
+
+The Menus section holds the menu image and menu description.
+
+### My Account page
+
+A registered logged in user can manage his booking by clicking on the **Manage Bookings** menu on **My Account** drop-down. This page holds only the list of reservation made by the user.
+
+#### Your Reservations
+
+![Desktop - Reservation List](media/images/reservation-list.png)
+
+The reservation contains the information about the reservation. There is edit and delete button should the user wants to change their booking information or to delete their booking.
+
+#### Edit Your Booking
+
+![Desktop - Edit Reservation](media/images/edit-reservation.png)
+
+When the users click on the edit button, it opens the edit form that contains the user’s booking information such as name, number of guests, booking date and time, and any additional information entered by the user when making the reservation. The user can then make changes and click the “Save Changes” button to update the information. But should the users no longer wants to make any changes to their button, they can click the “Cancel” button and go back to Your Reservations page.
+
+#### Delete Your Booking
+
+![Desktop - Delete Reservation](media/images/delete-reservation.png)
+
+Users may choose to delete the booking completely. Should that be the case, the user will have to click the delete button.
+
+A deletion requires a second level for confirmation for deletion to take effect. So, when the logged users click on the delete button, it opens the confirmation form with a warning that deleting the booking will also delete related items. To go ahead, the user has to click the “Yes, I’m sure” button. And should the users change their mind, they have to click the “No, take me back” button to return to the Your Reservations page.
+
+The process from navigation menus to bookings deletion, as progressive action of the user, is graphically represented in the information architecture in the next section.
+
+## Information Architecture
+
+![Information Architecture](media/images/information-architecture.png)
 
 ## Tech Stack
 
@@ -273,7 +362,7 @@ The accessibility issue was as a result of not closing the target=“_blank” f
 
 **Fixed bug:**
 ![W3C CSS Validator- Fixed](media/images/w3c-css-validator-fixed.png)
-Fied the issue by add rem unit: **margin-top: 0.6rem;**
+Fixed the issue by adding rem unit: **margin-top: 0.6rem;**
 
 ## Clone
 
