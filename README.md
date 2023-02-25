@@ -166,20 +166,31 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 ### Design
 
+#### Typography
+
+* [Roboto](https://fonts.google.com/specimen/Roboto)
+* Sans-serif
+
+The main font used for the website is [Roboto](https://fonts.google.com/specimen/Roboto) with sans-serif as the fallback. Friendly and straightforward in appearance, Roboto is a “neo-grotesque” sans-serif typeface family. To keep things simple and clean, Roboto is the only font used throughout the website, but with font weights of bold 700 for headings and lower headings and thin 100 for body text. The beauty of Roboto is that it is modern, contemporary, minimalistic, readable, and serves well for an e-commerce website.
+
 #### Color Scheme
 
-The colors used are Green, Blue, White, and Black.
+The colors used are Green (#00FF00), Red (#E84610), Blue (#0275d8), White (#ffffff), and Black (#000000).
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Green Color | ![#00FF00](https://via.placeholder.com/10/00FF00?text=+) #00FF00 |
+| Red Color | ![#E84610](https://via.placeholder.com/10/E84610?text=+) #E84610 |
 | Blue Color | ![#0275d8](https://via.placeholder.com/10/0275d8?text=+) #0275d8 |
 | White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
 | Black Color | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+|
 
-The Black and white are default colours, used as the site’s as core building blocks. Considering that the cuisine site is a representation of food and hospitality industry, the Green and Blue colours are intended to visually communicate nourishment and the feeling of human emotions. In combination, these four colours express the aesthetic beauty that shapes the site's form and function in order to please and delight the site’s visitors.
+The Black and white are default colours, used as the site’s as core building blocks. **CuisinePlus** is a representation of food and hospitality industry so the Green and Blue colours are used to visually communicate nourishment and the feeling of human emotions. The red colour represents warmth and passion; the heart icon changes from black to red colour when a user likes a restaurant. These five colours in combination express the aesthetic beauty that shapes the site's form and function in order to please and delight the site’s visitors.
 
-The color values were then checked for accessible contrast using EightShapes’ color contrast grid tool to ensure they meet WCAG 2.0 criteria.
+![Color Scheme](/media/images/eightshapes-colour-contrast-grid.png)
+
+The color values were then checked for accessible contrast using [EightShapes’](https://contrast-grid.eightshapes.com/)’ color contrast grid tool to ensure they meet [WCAG 2.0 criteria](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html).
 
 #### Wireframes
 
@@ -219,7 +230,7 @@ The logo is a Font Awesome bow rice icon, a symbolic representation of sustenanc
 
 #### Navigation Menus
 
-Hero Image - Desktop View             |        Hero Image - Mobile View
+Navbar - Users View             |        Navbar - Logged In Users View
 :-------------------------:|:-------------------------:
 ![Navbar - Users View](media/images/navbar-users-view.png)  |  ![Navbar - Logged In Users View](media/images/account-menu.png)
 
