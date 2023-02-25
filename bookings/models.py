@@ -30,9 +30,6 @@ class Booking(models.Model):
     restaurants = models.ForeignKey(
         Restaurant, on_delete=models.CASCADE, related_name='bookings'
         )
-    # cuisine = models.ForeignKey(
-    #     Cuisine, on_delete=models.CASCADE, related_name='bookings'
-    #     )
     cuisine = models.CharField(max_length=100) 
     table_number = models.IntegerField(null=True, blank=True)
     date = models.DateField()

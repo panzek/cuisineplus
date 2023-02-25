@@ -3,7 +3,6 @@ from .models import Booking
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register models 
-# admin.site.register(Booking)
 @admin.register(Booking)
 class BookingAdmin(SummernoteModelAdmin):
     """ Add Booking model to admin page"""

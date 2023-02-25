@@ -21,25 +21,6 @@
         {% csrf_token %}
         {{ booking_form.as_p }}
         <div class="col-sm-4">
-            <!-- <div class="input-group date" id="datepicker">
-                <span >
-                    {{ booking_form.time }}
-                    <i class="fa fa-clock fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-            </div> -->
-            <!-- <div class="input-group date" id="datepicker"> -->
-                <!-- <input type="text" class="form-control"> -->
-                <!-- <span class="input-group-append"> -->
-                <!-- <span > -->
-                    <!-- {{ booking_form.date }}
-                    <i class="fa fa-calendar fa-2x"></i> -->
-                    <!-- </span> -->
-                    <!-- <span>{{ booking_form.date }} </span> -->
-                <!-- </span>
-        
-            </div> -->
         </div>
         <input type="submit" value="Submit">
         <a href=""><button class="btn btn-primary" formaction="">Edit Booking</button></a> 
@@ -55,7 +36,6 @@
 </div>
 
 <div>
-    <!-- {{ user }} -->
     {% for booking in booking_list %}
     {{booking.user}}
     {{booking.restaurant}}

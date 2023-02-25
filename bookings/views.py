@@ -5,6 +5,7 @@ from .models import Booking
 from .forms import BookingForm
 from django.urls import reverse_lazy
 
+
 class BookingList(generic.ListView):
     model = Booking
     template_name = 'bookings/booking_detail.html'
@@ -13,7 +14,6 @@ class BookingList(generic.ListView):
         'bookings': Booking.objects.all()
     }
     
-    # ---- End Self -----
     """
     Get data from forms.py and render in booking_form
     """
@@ -31,31 +31,6 @@ class BookingList(generic.ListView):
                 "bookings": bookings,
                 }
         )
-
-    # ---- End Self ---
-
-    
-    # ---- Akshat -----
-    # """
-    # Get data from forms.py and render in booking_form
-    # """
-
-    # def get(self, request, *args, **kwargs):
-    #     print(request.user)
-
-    #     bookings = Booking.objects.filter(user__id=request.user.id)
-
-    #     return render(
-    #         request, 
-    #         "bookings/booking_detail.html", 
-    #         {
-    #             "booking_form": BookingForm(),
-    #             "bookings": bookings,
-    #             }
-    #     )
-
-    # ---- End Akshat -----
-
 
     """
     Post data to database 
