@@ -38,12 +38,18 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 [Testing](#testing)
 
-* [PEP8 Testing](#pep8-testing)
 * [Validator Testing](#validator-testing)
 * [Accessibility Testing](#accessibility-testing)
+* [Chrome Lighthouse](#chrome-lighthouse-testing)
+* [PEP8 Testing](#pep8-testing)
+* [Manual Testing](#manual-testing)
 
 [Clone](#clone)
+
+[Deployment](#deployment)
+
 [Credits](#credits)
+
 [Acknowledgements](#acknowledgements)
 
 ## User Experience 
@@ -408,7 +414,7 @@ All users can view the list of restaurants on display, but only registered logge
 
 And when logged in users click on any of the displayed restaurant, they are taken to the individual restaurant page of that specific product to continue with their purchase.
 
-The Individual Restaurant Page has an image of either one of the restaurant’s menus or the building itself and summary of restaurant name, cuisine types, like icon (with a counter, if the restaurant has been liked by a happy customer. A liked icon is highlighted in red colour and a yet-to-liked icon is black) and a review icon. 
+The Individual Restaurant Page has an image of either one of the restaurant’s menus or the building itself and summary of restaurant name, cuisine types, like icon (with a counter, if the restaurant has been liked by a happy customer. A liked icon is highlighted in red colour and a yet-to-liked icon is black) and a review icon.
 
 In broader terms, the individual restaurant page has has three broad sections: Overview, Reviews, and Menus sections:
 
@@ -541,9 +547,9 @@ Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 
 ![Accessibility Insights - Signup and Signin Error](media/images/Accessibility-Insights-signup-signin.png)
 
-**Fixed bug**
+Fixed bug
 
-### Chrome's Lighthouse
+### Chrome Lighthouse Testing
 
 [Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) was used to test accessibility, and the check returned the initial reports below:
 
@@ -586,11 +592,11 @@ Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 
 * [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
 
-## Manual Testing
+### Manual Testing
 
 All pages, links, buttons, and forms were tested to ensure they work as expected:
   
-### Test Header
+#### Test Header
 
 | Feature      | Expected | Works as Expected |
 | :--- | :----: | ----------- |
@@ -599,7 +605,7 @@ All pages, links, buttons, and forms were tested to ensure they work as expected
 | Sign Up      | Click the Sign Up link       | Opens the Sign Up page       |
 | Log In      | Click the Log In link       | Opens the Log In page       |
 
-### Test Homepage
+#### Test Homepage
 
 Eight restaurants are displayed on the homepage. Click a restaurant name, it opens the individual restaurant’s detail page for logged in users and opens the login page for the non-logged in users, both as expected:
 
@@ -608,7 +614,7 @@ Eight restaurants are displayed on the homepage. Click a restaurant name, it ope
 | restaurants      | Click a restaurant name - non-logged-in Users)      | Opens the Log In page       |
 | restaurants      | Click a restaurant name - logged-in Users)      | Opens individual restaurant’s detail page       |
 
-### Test Footer
+#### Test Footer
 
 The footer contains the copyright information and social networks icons, Instagram, GitHub, and Twitter. Click each social media icon, it opens the social media page on a new tab, as expected:
 
@@ -618,7 +624,7 @@ The footer contains the copyright information and social networks icons, Instagr
 | Instagram      | Click the Instagram icon      | Opens Instagram page in a new tab     |
 | Twitter      | Click the Twitter icon      | Opens Twitter page in a new tab     |
 
-### Test Individual Restaurant Page
+#### Test Individual Restaurant Page
 
 The Restaurant detail page contains the restaurant relevant information, and forms to leave a review, and make a booking.
 
@@ -630,7 +636,7 @@ The Restaurant detail page contains the restaurant relevant information, and for
 | Customers Reviews and Review form      |   View the Review form    |      |
 | Restaurant menu      |    View the Restaurant menu    |     |
 
-### Test Forms
+#### Test Forms
 
 | Feature     | Prepopulated fields | Required attributes | Cancel Button | Submit Button | Validation message | Toast Message | Saved in Database |
 | :--- | :----: | :----: | :----: | :----: | :----: | :----: | ----------- |
@@ -645,7 +651,7 @@ The Restaurant detail page contains the restaurant relevant information, and for
 ## Clone
 
 * Clone from GitHub to VSCode:
-    1. Log in to [GitHub](https://github.com/panzek/portfolio3-mortgage-advisor)
+    1. Log in to [GitHub](https://github.com/panzek/portfolio4-cuisine-plus)
     2. Click on the code button beside the green gitpod button. 
     3. Copy the link and go to VSCode
     4. Press F1 to display the command palette. 
@@ -663,6 +669,163 @@ The Restaurant detail page contains the restaurant relevant information, and for
     6. Either select the venv environment from the list or click ‘Enter interpreter path’ and navigate to the venv folder, and proceed into Scripts and select python.exe 
     7. venv\Scripts\python.exe
 
+## Deployment
+
+### Create the Heroku app
+
+* Log in to [Heroku](https://dashboard.heroku.com/login)
+* Create new Heroku App
+* Add Database to App Resources
+  * Located in the Resources Tab, Add-ons, search and add e.g. ‘Heroku Postgres’
+* Copy DATABASE_URL value
+
+### Attach the Database
+
+* In VSCode (also in gitpod, if its your IDE), create new **env.py** file on top level directory
+* In the env.py, import os library
+* Set environment variables
+* Add in secret key
+
+    ```
+    import os
+    os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"
+    os.environ["SECRET_KEY"] = "Make up your own randomSecretKey"
+    ```
+
+### Back to [Heroku Dashboard](https://dashboard.heroku.com/login)
+
+* Click the settings tab
+* Click Reveal Config Vars
+  * Add Secret Key to Config Vars
+
+```
+  SECRET_KEY, “randomSecretKey”
+
+```
+
+### Prepare our environment and settings.py file
+
+* In settings.py, reference env.py:
+
+    ```
+
+    import os
+    import dj_database_url
+
+    if os.path.isfile("env.py"):
+    import env
+
+    ```
+
+* Remove the insecure secret key and replace - links to the SECRET_KEY variable on Heroku:
+
+    ```
+
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
+    ```
+
+* Comment out the old DataBases Section and Add new DATABASES Section:
+
+    ```
+
+    DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+
+    ```
+
+* Save all files and Make Migrations
+
+### Get our static and media files stored on Cloudinary
+
+* Login to [Cloudinary](https://cloudinary.com/) and Copy your CLOUDINARY_URL e.g. API Environment Variable
+* Back to env.py and Add Cloudinary URL  
+
+    ```
+
+    os.environ["CLOUDINARY_URL"] = "cloudinary://************************"
+
+    ```
+
+* Go to [Heroku Dashboard](https://dashboard.heroku.com/login) and in Config Vars: 
+  * Add Cloudinary URL
+  * Add DISABLE_COLLECTSTATIC, 1
+
+* Back to VSCode and in settings.py
+* Add Cloudinary Libraries to installed apps
+
+    ```
+
+    INSTALLED_APPS = [
+        …,
+        'cloudinary_storage',
+        'django.contrib.staticfiles',
+        'cloudinary',
+        …,
+    ]
+
+    ```
+
+    Note that the order is important
+
+* Tell Django to use Cloudinary to store media and static files (pPlace under the Static files Note). 
+
+    ```
+
+    STATIC_URL = '/static/'
+
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+    ```
+
+* Link file to the templates directory in Heroku (place under the BASE_DIR line)
+  
+  ```
+
+  TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+  ```
+
+* Change the templates directory to TEMPLATES_DIR (Place within the TEMPLATES array)
+
+    ```
+
+    TEMPLATES = [
+        {
+            …,
+            'DIRS': [TEMPLATES_DIR],
+        …,
+                ],
+            },
+        },
+    ]
+
+    ```
+
+* Add Heroku Hostname to ALLOWED_HOSTS (e.g. cuisineplus)
+
+    ```
+
+    ALLOWED_HOSTS = ["PROJ_NAME.herokuapp.com", "localhost"]
+
+    ```
+
+* Create Procfile (with a capital P) on the top level directory
+* In Procfile, Add code:
+
+    ```
+
+    web: gunicorn PROJ_NAME.wsgi
+
+    ```
+
+* Add, Commit, and Push
 
 ## Credits
 
