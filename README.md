@@ -595,16 +595,52 @@ All pages, links, buttons, and forms were tested to ensure they work as expected
 | Feature      | Expected | Works as Expected |
 | :--- | :----: | ----------- |
 | Logo      | Click the logo       | Opens the homepage       |
-| restaurants      | Click a restaurant name       | Opens individual restaurant’s detail page       |
-
+| home      | Click the home link       | Opens the homepage       |
+| Sign Up      | Click the Sign Up link       | Opens the Sign Up page       |
+| Log In      | Click the Log In link       | Opens the Log In page       |
 
 ### Test Homepage
 
-Eight restaurants are displayed on the homepage. Click a restaurant name, it opens the individual restaurant’s detail page, as expected. 
+Eight restaurants are displayed on the homepage. Click a restaurant name, it opens the individual restaurant’s detail page for logged in users and opens the login page for the non-logged in users, both as expected:
 
-### Forms
+| Feature      | Expected | Works as Expected |
+| :--- | :----: | ----------- |
+| restaurants      | Click a restaurant name - non-logged-in Users)      | Opens the Log In page       |
+| restaurants      | Click a restaurant name - logged-in Users)      | Opens individual restaurant’s detail page       |
 
-* Sign Up form
+### Test Footer
+
+The footer contains the copyright information and social networks icons, Instagram, GitHub, and Twitter. Click each social media icon, it opens the social media page on a new tab, as expected:
+
+| Feature      | Expected | Works as Expected |
+| :--- | :----: | ----------- |
+| GitHub      | Click the GitHub icon      | Opens GitHub page in a new tab     |
+| Instagram      | Click the Instagram icon      | Opens Instagram page in a new tab     |
+| Twitter      | Click the Twitter icon      | Opens Twitter page in a new tab     |
+
+### Test Individual Restaurant Page
+
+The Restaurant detail page contains the restaurant relevant information, and forms to leave a review, and make a booking.
+
+| Feature      | Expected | Works as Expected |
+| :--- | :----: | ----------- |
+| Individual Restaurant Page      | Click the Restaurant Name link      | Opens Individual Restaurant Page     |
+| Restaurant information      |    View the Restaurant information   |      |
+| Booking form      |    View the Booking form   |      |
+| Customers Reviews and Review form      |   View the Review form    |      |
+| Restaurant menu      |    View the Restaurant menu    |     |
+
+### Test Forms
+
+| Feature     | Prepopulated fields | Required attributes | Cancel Button | Submit Button | Validation message | Toast Message | Saved in Database |
+| :--- | :----: | :----: | :----: | :----: | :----: | :----: | ----------- |
+| Sign Up form      | No      | Yes     | No | Yes | Yes | Yes | Yes |
+| Login form      | No      | Yes     | No | Yes | Yes | Yes | Yes |
+| Booking form      | No      | Yes     | No | Yes | Yes | Yes | Yes |
+| Edit Booking       | Yes      | No     | Yes | Yes | No | No | Yes |
+| Delete Booking       | No      | No     | Yes | Yes | Yes | No | No |
+| Review form      | No      | Yes     | No | Yes | Yes | Yes | Yes |
+| Edit Review      | No      | No     | No | No | No | No | No |
 
 ## Clone
 
