@@ -128,10 +128,6 @@ class Reservation(models.Model):
         time: Time of the booking
         additional_info: Any additional information provided
     '''
-    date = forms.DateTimeField(
-            input_formats=['%d/%m/%Y %H:%M'],
-            widget=FengyuanChenDatePickerInput()
-        )
 
     restaurants = models.ForeignKey(
         Restaurant,

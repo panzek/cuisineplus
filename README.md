@@ -497,26 +497,13 @@ The process from navigation menus to bookings deletion, as progressive action of
 
 ## Testing
 
-### PEP8 Testing
+### Validator Testing
 
-* [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+* [W3C Markup Validator](https://validator.w3.org/) was used to check the markup validity of the HTML5 for technical quality and correctness, and no errors found.
 
-### Accessibility Testing
+ ![HTML Validation Result](doc/images/html-validator-report.png)
 
-[Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
-
-* It found one issue of aria-hidden focus on homepage.
-
-**Fixed bug:**
-The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
-
-### Chrome's Lighthouse
-
-[Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) - used to test accessibility.
-  
-### W3C CSS Validator testing
-
-[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) found error in menu-image class, which has no unit after 10 in margin-top.
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used to check the markup validity of the CSS3 for technical quality and correctness, and found error in menu-image class, which has no unit after 10 in margin-top.
 
 ![W3C CSS Validator - Error](media/images/w3c-css-validator-error.png)
 
@@ -530,8 +517,94 @@ The accessibility issue was as a result of not closing the target=“_blank” f
 ```
 
 **Fixed bug:**
+
+Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 ![W3C CSS Validator- Fixed](media/images/w3c-css-validator-fixed.png)
-Fixed the issue by adding rem unit: **margin-top: 0.6rem;**
+
+* [BrowserStack](https://www.browserstack.com/) was used to test the site on different browsers and real mobile devices.
+* [Responsinator](https://www.responsinator.com/) was used to test the site on real mobile devices.
+
+### Accessibility Testing
+
+[Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
+
+1. It found one issue of aria-hidden focus on homepage.
+![Accessibility Insights - Homepage Error](media/images/accessibility-insights-homepage.png)
+
+    Fixed bug:
+
+    The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
+
+    ![Accessibility Insights - Fixed Bug](media/images/accessibility-insights-homepage-fixed.png)
+
+2. Found issue of color-contrast in the signup and login links text on both Sign In and Sign Up pages.
+
+![Accessibility Insights - Signup and Signin Error](media/images/Accessibility-Insights-signup-signin.png)
+
+**Fixed bug**
+
+### Chrome's Lighthouse
+
+[Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) was used to test accessibility, and the check returned the initial reports below:
+
+![Chrome's Lighthouse Report](media/images/lighthouse-initial-report.png)
+
+1. Initial accessibility score was 98 as a result of “failed element”, which was due to improperly ordered heading in one of the “How CuisinePlus Works” section. While the header had h2 heading, the sub-sections had h5 heading:
+
+    ```
+
+    <div class="container-fluid text-center">
+        <div class="row pt-5">
+            <h2><strong>How CuisinePlus Works</strong></h2>
+        </div>
+        <div class="row pt-4 pb-5">
+            <div class="col-md-4">
+                <i class="fa-solid fa-utensils fa-3x" aria-hidden="true"></i> 
+                <h5>Pick from our featured Restaurants</h5>  
+            </div>
+            <div class="col-md-4">
+                <i class="fa-solid fa-table fa-3x" aria-hidden="true"></i>
+                <h5>Make a booking by providing date, time, and number of guests</h5>
+            </div>
+            <div class="col-md-4 fa-3x">
+                <i class="fa-solid fa-door-open" aria-hidden="true"></i>
+                <h5>Looking forward to seeing you</h5>
+            </div>
+        </div>
+    </div>
+
+    ```
+
+    Fixed bug:
+    Fixed issue by change all the h5 tags to h3 in the subsections for properly ordered heading. When tested a second time, Accessibility reports 100% as shown below:
+
+    ![Chrome's Lighthouse - Report](media/images/lighthouse-report.png)
+
+2. Displays images with incorrect aspect ratio
+
+### PEP8 Testing
+
+* [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+
+## Manual Testing
+
+All pages, links, buttons, and forms were tested to ensure they work as expected:
+  
+### Test Header
+
+| Feature      | Expected | Works as Expected |
+| :--- | :----: | ----------- |
+| Logo      | Click the logo       | Opens the homepage       |
+| restaurants      | Click a restaurant name       | Opens individual restaurant’s detail page       |
+
+
+### Test Homepage
+
+Eight restaurants are displayed on the homepage. Click a restaurant name, it opens the individual restaurant’s detail page, as expected. 
+
+### Forms
+
+* Sign Up form
 
 ## Clone
 
