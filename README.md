@@ -41,7 +41,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 * [Validator Testing](#validator-testing)
 * [Accessibility Testing](#accessibility-testing)
 * [Chrome Lighthouse](#chrome-lighthouse-testing)
-* [PEP8 Testing](#pep8-testing)
+* [Device Testing and Browser Compatibility](#device-testing-and-browser-compatibility)
 * [Manual Testing](#manual-testing)
 
 [Clone](#clone)
@@ -527,9 +527,6 @@ The process from navigation menus to bookings deletion, as progressive action of
 Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 ![W3C CSS Validator- Fixed](media/images/w3c-css-validator-fixed.png)
 
-* [BrowserStack](https://www.browserstack.com/) was used to test the site on different browsers and real mobile devices.
-* [Responsinator](https://www.responsinator.com/) was used to test the site on real mobile devices.
-
 ### Accessibility Testing
 
 [Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
@@ -582,15 +579,23 @@ Fixed bug
     ```
 
     Fixed bug:
-    Fixed issue by change all the h5 tags to h3 in the subsections for properly ordered heading. When tested a second time, Accessibility reports 100% as shown below:
+    Fixed issue by changing all the h5 tags to h3 in the subsections for properly ordered heading. When tested a second time, Accessibility reports 100% as shown below:
 
     ![Chrome's Lighthouse - Report](media/images/lighthouse-report.png)
 
 2. Displays images with incorrect aspect ratio
 
-### PEP8 Testing
+### Device Testing and Browser Compatibility
 
-* [PEP8 online](http://pep8online.com/) was used to check the code for PEP8 requirements.
+* [Responsinator](https://www.responsinator.com/) was used to test the site on real mobile devices.
+
+iPhone 12             |       iPad Portrait
+:-------------------------:|:-------------------------:
+![iPhone 12](media/images/iPhone-12.png)  |  ![iPad Portrait](media/images/ipad-portrait.png)
+
+* **iPad Landscape**
+
+    ![iPad Landscape](media/images/ipad-landscape.png)
 
 ### Manual Testing
 
