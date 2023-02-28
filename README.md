@@ -531,13 +531,13 @@ Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 
 It found one issue of aria-hidden focus on homepage.
 
-![Accessibility Insights - Homepage Error](media/images/accessibility-insights-homepage.png)
+![Accessibility Insights - Homepage Error](media/images/Accessibility-Insights-homepage.png)
 
 Fixed bug:
 
 The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
 
-![Accessibility Insights - Fixed Bug](media/images/accessibility-insights-homepage-fixed.png)
+![Accessibility Insights - Fixed Bug](media/images/Accessibility-Insights-homepage-FIXED.png)
 
 ### Chrome Lighthouse Testing
 
