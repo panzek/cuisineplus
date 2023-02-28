@@ -11,7 +11,8 @@ class Menu(models.Model):
         name: Name of the cuisine 
         menu: Details of the food to be served
         price: Price of the cuisine
-        cuisine: Type of cuisine such as Chinese, African, Irish, intercontinental
+        cuisine: Type of cuisine such as Chinese,
+        African, Irish, intercontinental
         status: States whether the cuisine is ready or not
         likes: Customer ratings
         cuisine_image: Photo image of the cuisine
@@ -23,7 +24,9 @@ class Menu(models.Model):
     STATUS = ((0, "Not Ready"), (1, "Ready")) 
 
     restaurant = models.ForeignKey(
-        Restaurant, on_delete=models.CASCADE, related_name='restaurant_cuisines'
+        Restaurant,
+        on_delete=models.CASCADE, 
+        related_name='restaurant_cuisines'
     )
     name = models.CharField(max_length=100, null=True)
     description = models.TextField(max_length=500, null=True)
@@ -66,11 +69,18 @@ class Review(models.Model):
 
     title = models.CharField(max_length=50, null=True)
     user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, blank=True, null=True, related_name='reviewer'
+        User,
+        on_delete=models.SET_NULL, 
+        blank=True, 
+        null=True, 
+        related_name='reviewer'
     )
     body = models.TextField(max_length=350, null=True)
     restaurants = models.ForeignKey(
-        Restaurant, on_delete=models.CASCADE, null=True, related_name='restaurant_review'
+        Restaurant,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='restaurant_review'
     )
     menu = models.ForeignKey(
         Menu, on_delete=models.CASCADE, null=True, related_name='menu_review'

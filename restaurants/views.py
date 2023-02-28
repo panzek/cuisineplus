@@ -127,6 +127,7 @@ class ReservationList(generic.ListView):
 
 #  --- Reservation Update ---
 
+
 class ReservationUpdateView(UpdateView):
     model = Reservation
     form_class = ReservationForm
@@ -151,5 +152,3 @@ class RestaurantLike(View):
         else:
             restaurant.likes.add(request.user)
         return HttpResponseRedirect(reverse('restaurant_detail', args=[pk]))
-
-

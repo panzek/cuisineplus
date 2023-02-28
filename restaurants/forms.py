@@ -55,7 +55,7 @@ class ReservationForm(forms.ModelForm):
         'class': 'form-control', 
         'placeholder': 'Enter Time'
         }))
-        
+       
     additional_info = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'form-control', 
         'rows': 5, 
@@ -75,4 +75,3 @@ class ReservationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReservationForm, self).__init__(*args, **kwargs)
         self.fields['number_of_guests'].widget.attrs['min'] = 1
-        

@@ -2,9 +2,9 @@
 
 ## Introduction
 
-**CuisinePlus** is online restaurant reservation platform for diners. The goal of the application is to aggregate and showcase restaurants in Ireland. Users are able to find a restaurant they love from the featured restaurants across Ireland and make reservations at their chosen restaurants. Also, signed in users should be able to leave a review, read reviews left by other users, and like a restaurant. 
+**CuisinePlus** is online restaurant reservation platform for diners. The goal of the application is to aggregate and showcase restaurants in Ireland. Users are able to find a restaurant they love from the featured restaurants across Ireland and make reservations at their chosen restaurants. Also, signed in users should be able to leave a review, read reviews left by other users, and like a restaurant.
 
-The site is built in Django using Python, JavaScript, CSS, and HTML. It provides full CRUD functionality reservations: users can create, read, update, and delete their bookings. 
+The site is built in Django using Python, JavaScript, CSS, and HTML. It provides full CRUD functionality reservations: users can create, read, update, and delete their bookings.
 
 ![CuisinePlus Mockup](docs/images/cuisine-plus-mockup.png)
 
@@ -21,6 +21,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 * [Epics](#epics-and-user-stories)
 * [Kanban Board](#kanban-board)
 * [Design](#design)
+* [Typography](#typography)
 * [Color Scheme](#color-scheme)
 * [Wireframes](#wireframes)
   
@@ -52,7 +53,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
 
 [Acknowledgements](#acknowledgements)
 
-## User Experience 
+## User Experience
 
 ### EPICS and USER STORIES
 
@@ -76,9 +77,9 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     and I am logged in to my account\
     **Then** I can see a displayed message that I have successfully signed in .
 
-- [x] Task 1 – Create a link to a Sign-In page
-- [x] Task 2 - Create a Sign-In form for registered users to enter their login details
-- [x] Task 3 - Implement a functionality to show a successfully signed in message.
+* [x] Task 1 – Create a link to a Sign-In page
+* [x] Task 2 - Create a Sign-In form for registered users to enter their login details
+* [x] Task 3 - Implement a functionality to show a successfully signed in message.
 
 #### USER STORY: Remember me checkbox #10
 
@@ -92,7 +93,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     and I click the Sign-In button\
     **Then** I am logged in and I can always have automatic access to my account from the same system until I manually sign out
 
-- [x] Task – Implement a “remember me” functionality on login page.
+* [x] Task – Implement a “remember me” functionality on login page.
 
 #### USER STORY: Account Social Sign in #8
 
@@ -108,8 +109,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I click my preferred social media account\
     **Then** I am logged in using my existing social account IDs so that I can access my personal account information.
 
-- [ ] Task 1 - Create a social Sign-in feature for users to login with their social media accounts
-- [ ] Task 2 - Create a method to redirect the new user to the home page on successful registration.
+* [ ] Task 1 - Create a social Sign-in feature for users to login with their social media accounts
+* [ ] Task 2 - Create a method to redirect the new user to the home page on successful registration.
 
 ### EPIC: Sign Up #2
 
@@ -131,11 +132,10 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     and I click the Sign-Up button\
     **Then** I am not registered and I can see an error message that a user with that username already exists.
 
-- [x] Task 1 – Modify the AllAuth accounts templates 
-- [x] Task 2 - Create a link to a Sign-Up page 
-- [x] Task 3 - Use allauth authentication system to validate the user registration data and to prevent multiple accounts creation with same username.
-- [x] Task 4 - Create a method to redirect the new user to the home page on successful registration.
-- [ ] 
+* [x] Task 1 – Modify the AllAuth accounts templates 
+* [x] Task 2 - Create a link to a Sign-Up page 
+* [x] Task 3 - Use allauth authentication system to validate the user registration data and to prevent multiple accounts creation with same username.
+* [x] Task 4 - Create a method to redirect the new user to the home page on successful registration.
 
 #### USER STORY: Account Social Sign up #27
 
@@ -147,7 +147,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I click my preferred social media account\ 
     **Then** I can sign up using my existing social account IDs so that I can access the application.
 
-- [ ] Task 1 - Create a social Sign-Up feature for users to register with their social media accounts
+* [ ] Task 1 - Create a social Sign-Up feature for users to register with their social media accounts
 
 ### EPIC: Bookings #5
 
@@ -160,8 +160,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I am on a given restaurant page\
     **Then** I can see a form to book the restaurant  
 
-- [x] Task 1 - Create a booking form on a restaurant page
-- [ ] Task 2 - Implement a functionality to validate Number of guests and Date fields
+* [x] Task 1 - Create a booking form on a restaurant page
+* [ ] Task 2 - Implement a functionality to validate Number of guests and Date fields
 
 #### USER STORY: View my Booking #13
 
@@ -173,8 +173,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I see Manage Booking menu on My Account dropdown\ 
     **Then** I can click the Manage My Booking to view my booking.
 
-    - [x] Task 1 -  Create Manage Booking menu on My Account dropdown 
-    - [x] Task 2 - Implement functionality for users to view their booking
+* [x] Task 1 -  Create Manage Booking menu on My Account dropdown
+* [x] Task 2 - Implement functionality for users to view their booking
   
 #### USER STORY: Manage my Booking #14
 
@@ -199,9 +199,9 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     and, I click to confirm the deletion request/
     **Then** I can delete the booking and redirected to homepage.
 
-- [x] Task 1 - Implement a method for users to edit their booking 
-- [x] Task 2 – Implement a method for users to delete their booking
-- [x] Task 3 – Create a confirmation form for user to effectively delete booking. 
+* [x] Task 1 - Implement a method for users to edit their booking 
+* [x] Task 2 – Implement a method for users to delete their booking
+* [x] Task 3 – Create a confirmation form for user to effectively delete booking. 
 
 ### EPIC: Reviews and Ratings #6
 
@@ -219,8 +219,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I leave a review for the restaurant\ 
     **Then** I can see and read the reviews left by others.
 
-- [x] Task 1 – Create a functionality to display reviews to all users.
-- [x] Task 2 – Create a functionality that lets logged in users write a review.
+* [x] Task 1 – Create a functionality to display reviews to all users.
+* [x] Task 2 – Create a functionality that lets logged in users write a review.
 
 #### USER STORY: Rate a restaurant #28
 
@@ -236,8 +236,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I Like the restaurant as a positive feedback\
     **Then** I can see the number of likes for the restaurant increased by one like.
 
-- [x] Task 1 – Create a functionality that allows users to rate a restaurant by liking it.
-- [x] Task 2 – Develop a counter for number of a restaurant Likes.
+* [x] Task 1 – Create a functionality that allows users to rate a restaurant by liking it.
+* [x] Task 2 – Develop a counter for number of a restaurant Likes.
 
 #### USER STORY: View Ratings by Others #29
 
@@ -248,7 +248,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
   **When** I am on the site's homepage\ 
   **Then** I can see the ratings left by others by the number of Likes for the restaurants.
 
-- [x] Task 1 – Create a functionality that shows restaurants rating by the number of their likes.
+* [x] Task 1 – Create a functionality that shows restaurants rating by the number of their likes.
   
 ### EPIC: User Profile #3
 
@@ -266,7 +266,7 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I click the “Forgot Password?” link\
     **Then** I can reset my password if I’ve forgotten it or I want to update it for security reasons.
 
-- [ ] Task – Implement a method to reset password on login page.
+* [ ] Task – Implement a method to reset password on login page.
 
 ### EPIC: Search Restaurant and Cuisine #4
 
@@ -279,8 +279,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I can see the search bar at the top of the page in a visually distinguishable way\
     **Then** I can search for restaurant by typing the name in the search bar
 
-- [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
-- [ ] Task 2 – Implement a method for user to Search for a restaurant by name
+* [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
+* [ ] Task 2 – Implement a method for user to Search for a restaurant by name
 
 * #### USER STORY: Search by Cuisine #17
 
@@ -292,8 +292,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I search for meal by typing the meal name in the search bar\
     **Then** I can find the restaurant that offers a country’s meal of my choice
 
-- [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
-- [ ] Task 2 – Implement a method for user to Search for a restaurant by meal
+* [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
+* [ ] Task 2 – Implement a method for user to Search for a restaurant by meal
 
 #### USER STORY: Search by City #18
 
@@ -305,8 +305,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I search by typing location in the search bar\
     **Then** I can find the restaurant near me in my city
 
-- [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
-- [ ] Task 2 – Implement a method for user to Search a restaurant by location
+* [ ] Task 1 - Implement search bar functionality that is visible to the user on every page
+* [ ] Task 2 – Implement a method for user to Search a restaurant by location
 
 #### USER STORY: Search by Date and Time #19
 
@@ -317,8 +317,8 @@ The site is built in Django using Python, JavaScript, CSS, and HTML. It provides
     **When** I see a date/time select box\  
     **Then** I can book restaurant based on my preferred date and time
 
-- [ ] Task 1 - Implement search bar functionality with a date/time select box visible to the user on every page
-- [ ] Task 2 – Implement a method for user to sort restaurants by date and time
+* [ ] Task 1 - Implement search bar functionality with a date/time select box visible to the user on every page
+* [ ] Task 2 – Implement a method for user to sort restaurants by date and time
 
 ### Kanban Board
 
@@ -507,13 +507,11 @@ The process from navigation menus to bookings deletion, as progressive action of
 
 * [W3C Markup Validator](https://validator.w3.org/) was used to check the markup validity of the HTML5 for technical quality and correctness, and no errors found.
 
- ![HTML Validation Result](doc/images/html-validator-report.png)
-
-* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used to check the markup validity of the CSS3 for technical quality and correctness, and found error in menu-image class, which has no unit after 10 in margin-top.
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used to check the markup validity of the CSS3 for technical quality and correctness, and found error in menu-image class margin-top, which has no unit after 10.
 
 ![W3C CSS Validator - Error](media/images/w3c-css-validator-error.png)
 
-```
+```code
 .menu-image{
     aspect-ratio:3/1;
     margin-top: 10;
@@ -531,30 +529,25 @@ Fixed issue by adding rem unit: **margin-top: 0.6rem;**
 
 [Accessibility Insights](https://accessibilityinsights.io/) was used to check and fix accessibility issues.
 
-1. It found one issue of aria-hidden focus on homepage.
+It found one issue of aria-hidden focus on homepage.
+
 ![Accessibility Insights - Homepage Error](media/images/accessibility-insights-homepage.png)
 
-    Fixed bug:
+Fixed bug:
 
-    The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
+The accessibility issue was as a result of not closing the target=“_blank” for Twitter and Instagram icons on footer. I had to close it to fix the issue and add other accessibility requirements for links that open to external websites.
 
-    ![Accessibility Insights - Fixed Bug](media/images/accessibility-insights-homepage-fixed.png)
-
-2. Found issue of color-contrast in the signup and login links text on both Sign In and Sign Up pages.
-
-![Accessibility Insights - Signup and Signin Error](media/images/Accessibility-Insights-signup-signin.png)
-
-Fixed bug
+![Accessibility Insights - Fixed Bug](media/images/accessibility-insights-homepage-fixed.png)
 
 ### Chrome Lighthouse Testing
 
 [Chrome's Lighthouse](https://developers.google.com/web/tools/lighthouse) was used to test accessibility, and the check returned the initial reports below:
 
-![Chrome's Lighthouse Report](media/images/lighthouse-initial-report.png)
+![Chrome's Lighthouse Report](media/images/lighthouse-report-initial-report.png)
 
 1. Initial accessibility score was 98 as a result of “failed element”, which was due to improperly ordered heading in one of the “How CuisinePlus Works” section. While the header had h2 heading, the sub-sections had h5 heading:
 
-    ```
+    ```code
 
     <div class="container-fluid text-center">
         <div class="row pt-5">
@@ -579,11 +572,17 @@ Fixed bug
     ```
 
     Fixed bug:
+
     Fixed issue by changing all the h5 tags to h3 in the subsections for properly ordered heading. When tested a second time, Accessibility reports 100% as shown below:
 
-    ![Chrome's Lighthouse - Report](media/images/lighthouse-report.png)
+2. Best practices rating was a bit poor at 83 due to images with incorrect aspect ratio.
 
-2. Displays images with incorrect aspect ratio
+    Fixed bug:
+    Fixed issue by resizing all the restaurants' images and deleting height value from img-restaurant-list class in **style.css**.
+
+    When tested a second time, Accessibility reports rose to 100 and Best Practices improved significantly from 83 to 92, as shown below:
+
+    ![Chrome's Lighthouse - Report](media/images/lighthouse-report.png)
 
 ### Device Testing and Browser Compatibility
 
@@ -661,12 +660,12 @@ The Restaurant detail page contains the restaurant relevant information, and for
     3. Copy the link and go to VSCode
     4. Press F1 to display the command palette. 
     5. Enter gitcl, select the Git: Clone command, press Enter
-    6. When prompted for the Repository URL, enter the copied GitHub repository url, then press Enter. 
+    6. When prompted for the Repository URL, enter the copied GitHub repository url, then press Enter.
     7. Select (or create) the local directory into which you want to clone the project.
     8. Repository is now ready for development
 
 * Environment Variable:
-    1. Create virtual environment in the project folder - d:\workspaces>python –m venv my_project\venv 
+    1. Create virtual environment in the project folder - d:\workspaces>python –m venv my_project\venv
     2. Activate the virtual environment - d:\workspaces>my_project\venv\Scripts\activate.ps1 
     3. cd into new project folder - d:\workspaces>cd my_project
     4. To open in VSCode - d:\workspaces\my_project>code. 
@@ -691,7 +690,7 @@ The Restaurant detail page contains the restaurant relevant information, and for
 * Set environment variables
 * Add in secret key
 
-    ```
+    ```code
     import os
     os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"
     os.environ["SECRET_KEY"] = "Make up your own randomSecretKey"
@@ -703,41 +702,34 @@ The Restaurant detail page contains the restaurant relevant information, and for
 * Click Reveal Config Vars
   * Add Secret Key to Config Vars
 
-```
+```code
   SECRET_KEY, “randomSecretKey”
-
 ```
 
 ### Prepare our environment and settings.py file
 
 * In settings.py, reference env.py:
 
-    ```
-
+    ```code
     import os
     import dj_database_url
 
     if os.path.isfile("env.py"):
     import env
-
     ```
 
 * Remove the insecure secret key and replace - links to the SECRET_KEY variable on Heroku:
 
-    ```
-
+    ```code
     SECRET_KEY = os.environ.get('SECRET_KEY')
-
     ```
 
 * Comment out the old DataBases Section and Add new DATABASES Section:
 
-    ```
-
+    ```code
     DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-
     ```
 
 * Save all files and Make Migrations
@@ -747,10 +739,8 @@ The Restaurant detail page contains the restaurant relevant information, and for
 * Login to [Cloudinary](https://cloudinary.com/) and Copy your CLOUDINARY_URL e.g. API Environment Variable
 * Back to env.py and Add Cloudinary URL  
 
-    ```
-
+    ```code
     os.environ["CLOUDINARY_URL"] = "cloudinary://************************"
-
     ```
 
 * Go to [Heroku Dashboard](https://dashboard.heroku.com/login) and in Config Vars: 
@@ -760,8 +750,7 @@ The Restaurant detail page contains the restaurant relevant information, and for
 * Back to VSCode and in settings.py
 * Add Cloudinary Libraries to installed apps
 
-    ```
-
+    ```code
     INSTALLED_APPS = [
         …,
         'cloudinary_storage',
@@ -769,15 +758,13 @@ The Restaurant detail page contains the restaurant relevant information, and for
         'cloudinary',
         …,
     ]
-
     ```
 
     Note that the order is important
 
-* Tell Django to use Cloudinary to store media and static files (pPlace under the Static files Note). 
+* Tell Django to use Cloudinary to store media and static files (pPlace under the Static files Note).
 
-    ```
-
+    ```code
     STATIC_URL = '/static/'
 
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -786,21 +773,17 @@ The Restaurant detail page contains the restaurant relevant information, and for
 
     MEDIA_URL = '/media/'
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
     ```
 
 * Link file to the templates directory in Heroku (place under the BASE_DIR line)
   
-  ```
-
+  ```code
   TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-
   ```
 
 * Change the templates directory to TEMPLATES_DIR (Place within the TEMPLATES array)
 
-    ```
-
+    ```code
     TEMPLATES = [
         {
             …,
@@ -810,24 +793,19 @@ The Restaurant detail page contains the restaurant relevant information, and for
             },
         },
     ]
-
     ```
 
 * Add Heroku Hostname to ALLOWED_HOSTS (e.g. cuisineplus)
 
-    ```
-
+    ```code
     ALLOWED_HOSTS = ["PROJ_NAME.herokuapp.com", "localhost"]
-
     ```
 
 * Create Procfile (with a capital P) on the top level directory
 * In Procfile, Add code:
 
-    ```
-
+    ```code
     web: gunicorn PROJ_NAME.wsgi
-
     ```
 
 * Add, Commit, and Push
@@ -841,13 +819,13 @@ The Restaurant detail page contains the restaurant relevant information, and for
 * [Django documentation](https://docs.djangoproject.com/) -
 * [Customizing Form Fields, Widgets, Placeholders, & CSS - Python & Django](https://www.youtube.com/watch?v=quJzUzCs6Q0) - quite a helpful video on how to customize Form Fields, Widgets, and Placeholders in Django.
 * [Tinypng.com](https://tinypng.com/) – used to reduce the file size.
-* [Stackoverflow](https://stackoverflow.com/), always an important resource for answers to almost all knotty coding issues. 
+* [Stackoverflow](https://stackoverflow.com/), always an important resource for answers to almost all knotty coding issues.
   
 ## Acknowledgements
 
 I am eternally grateful for your care, love, help, and support:
   
-- [Andrew Dempsey](https://github.com/andrewdempsey2018);
-- [Akshat Garg](https://github.com/akshatnitd) and Jubril Akolade, my [Code Institute](https://github.com/Code-Institute-Org) mentors;
-- [Code Institute](https://github.com/Code-Institute-Org) tutors: Ed, Gemma, John, and Scott;   
-- Rachel and the [Code Institute](https://github.com/Code-Institute-Org) Student care team.
+* [Andrew Dempsey](https://github.com/andrewdempsey2018);
+* [Akshat Garg](https://github.com/akshatnitd) and Jubril Akolade, my [Code Institute](https://github.com/Code-Institute-Org) mentors;
+* [Code Institute](https://github.com/Code-Institute-Org) tutors: Ed, Gemma, John, and Scott;
+* Rachel and the [Code Institute](https://github.com/Code-Institute-Org) Student care team.

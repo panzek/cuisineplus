@@ -13,7 +13,7 @@ class BookingList(generic.ListView):
     context = {
         'bookings': Booking.objects.all()
     }
-    
+   
     """
     Get data from forms.py and render in booking_form
     """
@@ -22,7 +22,7 @@ class BookingList(generic.ListView):
         print(self, request, args, kwargs)
 
         bookings = Booking.objects.all()
-        
+       
         return render(
             request, 
             "bookings/booking_detail.html", 
