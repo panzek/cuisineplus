@@ -72,4 +72,7 @@ class ReservationForm(forms.ModelForm):
             'additional_info'
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(ReservationForm, self).__init__(*args, **kwargs)
+        self.fields['number_of_guests'].widget.attrs['min'] = 1
         

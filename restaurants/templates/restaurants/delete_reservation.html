@@ -13,7 +13,7 @@
           <div class="text-center">
             <form method="POST">
                 {% csrf_token %}
-                <h4>{{ user }}, are you sure you want to delete your booking?</h4>
+                <h4>{{ user|capfirst }}, are you sure you want to delete your booking?</h4>
                 <p>Your booking and its related items will be deleted.</p>
                 <div>
                     <p>
