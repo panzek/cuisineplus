@@ -14,8 +14,11 @@ from pathlib import Path
 import os
 import dj_database_url
 from django.contrib.messages import constants as messages
-if os.path.isfile('env.py'):
-    import env
+
+from dotenv import load_dotenv
+
+if os.path.isfile('.env'):
+    load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,14 +37,23 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['cuisine-plus.herokuapp.com', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['cuisineplus.bessiebeau.com', 'localhost', '127.0.0.1',]
+
 CORS_ALLOWED_ORIGINS = [
-    'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+    'https://cuisineplus.bessiebeau.com',
     
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+    'https://cuisineplus.bessiebeau.com',
 ]
+
+#CORS_ALLOWED_ORIGINS = [
+ #   'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+    
+#]
+#CSRF_TRUSTED_ORIGINS = [
+  #  'https://8000-panzek-portfolio4cuisin-mrwvipklq3v.ws-eu71.gitpod.io',
+#]
 
 # Application definition
 
@@ -121,7 +133,7 @@ WSGI_APPLICATION = 'cuisine_plus.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL')),
     }
 else:
     DATABASES = {
